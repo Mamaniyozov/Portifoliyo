@@ -11,6 +11,7 @@ const navLinks = [...document.querySelectorAll(".nav-menu a")];
 const sections = [...document.querySelectorAll("main section[id]")];
 const revealItems = document.querySelectorAll(".reveal");
 const contactForm = document.querySelector(".contact-form");
+const contactCopyButtons = [...document.querySelectorAll('.contact-copy')];
 const formNote = document.querySelector("[data-form-note]");
 
 // Theme state lives only in the current page session, ready for a future backend preference.
@@ -417,33 +418,47 @@ navLinks.forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
-// Single language toggle button: cycles through languages [uz, en, ru, tr]
-const langToggle = document.querySelector('.language-toggle');
-const availableLangs = ['uz', 'en', 'ru', 'tr'];
-if (langToggle) {
-  // initialize label (globe + code)
-  const current = document.documentElement.lang || 'uz';
-  langToggle.innerHTML = '<span class="globe-icon" aria-hidden="true">' +
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<path d="M2.5 12h19" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<path d="M12 2.5c2.5 3 2.5 12 0 19.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '</svg></span><span class="lang-code"></span>';
-  const langCode = langToggle.querySelector('.lang-code');
-  if (langCode) langCode.textContent = current.toUpperCase();
-  langToggle.setAttribute('data-lang', current);
+const langButtons = [...document.querySelectorAll('.language-option')];
 
-  langToggle.addEventListener('click', () => {
-    const cur = langToggle.getAttribute('data-lang') || (document.documentElement.lang || 'uz');
-    const idx = availableLangs.indexOf(cur);
-    const next = availableLangs[(idx + 1) % availableLangs.length];
-    langToggle.setAttribute('data-lang', next);
-    const lc = langToggle.querySelector('.lang-code');
-    if (lc) lc.textContent = next.toUpperCase();
-    applyTranslations(next);
-    console.log('Language selected:', next);
+if (langButtons.length) {
+  langButtons.forEach((btn) => {
+    const lang = btn.getAttribute('data-lang');
+    if (lang === initialLang) {
+      btn.classList.add('is-active');
+    } else {
+      btn.classList.remove('is-active');
+    }
+    btn.addEventListener('click', () => {
+      langButtons.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const selected = btn.getAttribute('data-lang');
+      if (selected) {
+        document.documentElement.lang = selected;
+        applyTranslations(selected);
+      }
+    });
   });
 }
+
+const contactCopyButtons = [...document.querySelectorAll('.contact-copy')];
+contactCopyButtons.forEach((button) => {
+  button.addEventListener('click', async () => {
+    const email = button.getAttribute('data-email');
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      button.setAttribute('aria-label', 'Email nusxalandi');
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.classList.remove('copied');
+        button.setAttribute('aria-label', 'Email manzilni nusxalash');
+      }, 1500);
+    } catch (err) {
+      console.error('Clipboard copy failed', err);
+    }
+  });
+});
 
 // Scroll reveal keeps the page calm while still giving sections a polished entrance.
 const revealObserver = new IntersectionObserver((entries) => {
