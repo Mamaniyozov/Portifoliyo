@@ -32,6 +32,7 @@
         <a href="#about" data-i18n="nav.about">Men haqimda</a>
         <a href="#skills" data-i18n="nav.skills">Ko'nikmalar</a>
         <a href="#experience" data-i18n="nav.experience">Tajriba</a>
+        <a href="#education" data-i18n="nav.education">Ta'lim</a>
         <a href="#projects" data-i18n="nav.projects">Loyihalar</a>
         <a href="#contact" data-i18n="nav.contact">Aloqa</a>
       </div>
@@ -82,7 +83,7 @@
         <div class="hero-visual reveal" aria-label="Portfolio vizual kartasi" data-i18n-attr="aria-label:profile.aria">
           <div class="profile-card">
             <div class="profile-top">
-              <div class="avatar">MM</div>
+              <div class="avatar"><img src="assets/avatar.png" alt="Muhammadyusuf Mamaniyozov"></div>
               <div>
                 <p class="profile-role" data-i18n="profile.role">Programmist-razrabotchik</p>
                 <h2>Muhammadyusuf</h2>
@@ -142,7 +143,110 @@
       </div>
     </section>
 
-    <section class="section section-muted" id="skills">
+    <section class="section section-muted" id="playground">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow">Interactive CLI</p>
+          <h2 data-i18n="playground.title">Backend Konsoli</h2>
+          <p data-i18n="playground.text">Python va Django backend tizimlariga oid buyruqlarni ishga tushirib ko'ring.</p>
+        </div>
+
+        <div class="terminal-widget reveal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-tabs">
+              <button class="terminal-tab is-active" data-terminal-tab="shell" type="button">terminal.sh</button>
+              <button class="terminal-tab" data-terminal-tab="code" type="button">views.py</button>
+              <button class="terminal-tab" data-terminal-tab="db" type="button">models.py</button>
+            </div>
+            <div class="terminal-status">python 3.14.6</div>
+          </div>
+
+          <div class="terminal-body">
+            <!-- Terminal Shell Panel -->
+            <div class="terminal-panel is-active" id="panel-shell">
+              <div class="terminal-output" id="terminal-stdout">
+                <div class="output-row">
+                  <span class="cyan">Guest@Mamaniyozov:~$</span> <span class="white">help</span>
+                </div>
+                <div class="output-row text-muted" data-i18n="terminal.helpText">
+                  Tizimga xush kelibsiz! Muhammadyusuf haqida ma'lumot olish uchun quyidagi buyruqlarni ishlating:
+                </div>
+                <div class="output-row cmd-list">
+                  <div><strong class="green">help</strong> - <span data-i18n="terminal.cmdHelp">Yordam oynasini ko'rsatish</span></div>
+                  <div><strong class="green">cat skills.json</strong> - <span data-i18n="terminal.cmdSkills">Developerning texnik ko'nikmalarini ko'rish</span></div>
+                  <div><strong class="green">python manage.py test</strong> - <span data-i18n="terminal.cmdTest">Django testlar to'plamini ishga tushirish</span></div>
+                  <div><strong class="green">python manage.py runserver</strong> - <span data-i18n="terminal.cmdRun">Django development serverini yoqish</span></div>
+                  <div><strong class="green">python manage.py migrate</strong> - <span data-i18n="terminal.cmdMigrate">Ma'lumotlar bazasi migratsiyalarini bajarish</span></div>
+                  <div><strong class="green">clear</strong> - <span data-i18n="terminal.cmdClear">Konsol ekranini tozalash</span></div>
+                </div>
+              </div>
+              <form class="terminal-input-row" id="terminal-form">
+                <span class="cyan">Guest@Mamaniyozov:~$</span>
+                <input type="text" id="terminal-input" autocomplete="off" placeholder="Type command here..." aria-label="Terminal input">
+                <span class="cursor"></span>
+              </form>
+              <div class="terminal-quick-actions">
+                <button type="button" class="btn-quick" data-cmd="cat skills.json">cat skills.json</button>
+                <button type="button" class="btn-quick" data-cmd="python manage.py test">python manage.py test</button>
+                <button type="button" class="btn-quick" data-cmd="python manage.py runserver">python manage.py runserver</button>
+                <button type="button" class="btn-quick" data-cmd="python manage.py migrate">python manage.py migrate</button>
+              </div>
+            </div>
+
+            <!-- Django code Tab -->
+            <div class="terminal-panel" id="panel-code">
+              <pre class="code-block"><code class="python"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse
+<span class="keyword">from</span> django.views.decorators.http <span class="keyword">import</span> require_GET
+<span class="keyword">from</span> .models <span class="keyword">import</span> Developer
+
+<span class="decorator">@require_GET</span>
+<span class="keyword">def</span> <span class="function">get_profile</span>(request):
+    <span class="comment"># Fetch profile data with prefetched skills</span>
+    developer = Developer.objects.select_related(<span class="string">'profile'</span>).first()
+    
+    response_data = {
+        <span class="string">"name"</span>: developer.full_name,
+        <span class="string">"role"</span>: developer.role,
+        <span class="string">"experience"</span>: developer.experience_years,
+        <span class="string">"status"</span>: <span class="string">"Available for work (remote/office)"</span>,
+        <span class="string">"active_projects"</span>: list(developer.projects.values(<span class="string">'title'</span>, <span class="string">'tech_stack'</span>))
+    }
+    
+    <span class="keyword">return</span> JsonResponse(response_data, safe=<span class="keyword">False</span>)</code></pre>
+            </div>
+
+            <!-- DB models Code Tab -->
+            <div class="terminal-panel" id="panel-db">
+              <pre class="code-block"><code class="python"><span class="keyword">from</span> django.db <span class="keyword">import</span> models
+
+<span class="keyword">class</span> <span class="class">Developer</span>(models.Model):
+    full_name = models.CharField(max_length=<span class="number">200</span>)
+    role = models.CharField(max_length=<span class="number">100</span>)
+    experience_years = models.DecimalField(max_digits=<span class="number">3</span>, decimal_places=<span class="number">1</span>)
+    email = models.EmailField(unique=<span class="keyword">True</span>)
+    is_available = models.BooleanField(default=<span class="keyword">True</span>)
+
+    <span class="keyword">def</span> <span class="function">__str__</span>(self):
+        <span class="keyword">return</span> self.full_name
+
+<span class="keyword">class</span> <span class="class">Project</span>(models.Model):
+    developer = models.ForeignKey(Developer, on_delete=models.CASCADE, related_name=<span class="string">'projects'</span>)
+    title = models.CharField(max_length=<span class="number">200</span>)
+    description = models.TextField()
+    tech_stack = models.JSONField()
+    github_link = models.URLField(blank=<span class="keyword">True</span>)</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
       <div class="container">
         <div class="section-heading centered reveal">
           <p class="eyebrow">Skills</p>
@@ -150,45 +254,93 @@
           <p data-i18n="skills.text">Texnologiyalar amaliy ish tajribasi va rezyume ma'lumotlari asosida guruhlandi.</p>
         </div>
 
-        <div class="skills-grid">
-          <article class="skill-card reveal">
-            <div class="card-head">
-              <span class="card-icon">BE</span>
-              <h3>Backend</h3>
-            </div>
-            <ul class="skill-bars">
-              <li><span>Python</span><div class="bar"><i style="width: 92%"></i></div></li>
-              <li><span>Django REST Framework</span><div class="bar"><i style="width: 88%"></i></div></li>
-              <li><span>PostgreSQL</span><div class="bar"><i style="width: 78%"></i></div></li>
-              <li><span>Flask</span><div class="bar"><i style="width: 68%"></i></div></li>
-            </ul>
-          </article>
+        <div class="skills-tab-container reveal">
+          <div class="skills-tabs" role="tablist" aria-label="Skills categories">
+            <button class="skills-tab-btn is-active" type="button" role="tab" aria-selected="true" data-tab="backend">
+              <span class="tab-icon">BE</span>
+              <span>Backend</span>
+            </button>
+            <button class="skills-tab-btn" type="button" role="tab" aria-selected="false" data-tab="frontend">
+              <span class="tab-icon">FE</span>
+              <span data-i18n="skills.tabFrontend">Frontend</span>
+            </button>
+            <button class="skills-tab-btn" type="button" role="tab" aria-selected="false" data-tab="tools">
+              <span class="tab-icon">TD</span>
+              <span data-i18n="skills.tabTools">Tools & Deploy</span>
+            </button>
+          </div>
 
-          <article class="skill-card reveal">
-            <div class="card-head">
-              <span class="card-icon">FE</span>
-              <h3>Frontend</h3>
+          <div class="skills-content-panel">
+            <!-- Backend Tab Content -->
+            <div class="skills-panel is-active" id="tab-backend" role="tabpanel">
+              <div class="panel-header">
+                <h3 data-i18n="skills.backendHeader">Backend Development</h3>
+                <p data-i18n="skills.backendDesc">Biznes mantiq, yuqori yuklamali REST API, xavfsizlik va ma'lumotlar ombori arxitekturasi.</p>
+              </div>
+              <ul class="skill-bars">
+                <li>
+                  <div class="skill-info"><span>Python (Django / Flask)</span><strong>92%</strong></div>
+                  <div class="bar"><i data-width="92%"></i></div>
+                </li>
+                <li>
+                  <div class="skill-info"><span>Django REST Framework</span><strong>88%</strong></div>
+                  <div class="bar"><i data-width="88%"></i></div>
+                </li>
+                <li>
+                  <div class="skill-info"><span>PostgreSQL (SQL / Optimization)</span><strong>78%</strong></div>
+                  <div class="bar"><i data-width="78%"></i></div>
+                </li>
+              </ul>
             </div>
-            <ul class="skill-bars">
-              <li><span>HTML</span><div class="bar"><i style="width: 82%"></i></div></li>
-              <li><span>CSS</span><div class="bar"><i style="width: 80%"></i></div></li>
-              <li><span>JavaScript</span><div class="bar"><i style="width: 76%"></i></div></li>
-              <li><span>Responsive UI</span><div class="bar"><i style="width: 74%"></i></div></li>
-            </ul>
-          </article>
 
-          <article class="skill-card reveal">
-            <div class="card-head">
-              <span class="card-icon">TD</span>
-              <h3>Tools & Deploy</h3>
+            <!-- Frontend Tab Content -->
+            <div class="skills-panel" id="tab-frontend" role="tabpanel">
+              <div class="panel-header">
+                <h3 data-i18n="skills.frontendHeader">Frontend Development</h3>
+                <p data-i18n="skills.frontendDesc">Responsive dizayn, interaktiv foydalanuvchi interfeyslari va mijoz tomoni logikasi.</p>
+              </div>
+              <ul class="skill-bars">
+                <li>
+                  <div class="skill-info"><span>HTML5 / CSS3</span><strong>82%</strong></div>
+                  <div class="bar"><i data-width="82%"></i></div>
+                </li>
+                <li>
+                  <div class="skill-info"><span>JavaScript (ES6+ / DOM)</span><strong>76%</strong></div>
+                  <div class="bar"><i data-width="76%"></i></div>
+                </li>
+                <li>
+                  <div class="skill-info"><span>Responsive & Modern UI (CSS Grid / Flexbox)</span><strong>74%</strong></div>
+                  <div class="bar"><i data-width="74%"></i></div>
+                </li>
+              </ul>
             </div>
-            <ul class="skill-bars">
-              <li><span>Git</span><div class="bar"><i style="width: 90%"></i></div></li>
-              <li><span>Docker</span><div class="bar"><i style="width: 74%"></i></div></li>
-              <li><span>Railway</span><div class="bar"><i style="width: 72%"></i></div></li>
-              <li><span>Linux / DevOps</span><div class="bar"><i style="width: 70%"></i></div></li>
-            </ul>
-          </article>
+
+            <!-- Tools & Deploy Tab Content -->
+            <div class="skills-panel" id="tab-tools" role="tabpanel">
+              <div class="panel-header">
+                <h3 data-i18n="skills.toolsHeader">DevOps & Tools</h3>
+                <p data-i18n="skills.toolsDesc">Loyiha deploymenti, konteynerlashtirish va jamoaviy versiya nazorati modullari.</p>
+              </div>
+              <ul class="skill-bars">
+                <li>
+                  <div class="skill-info"><span>Git / GitHub</span><strong>90%</strong></div>
+                  <div class="bar"><i data-width="90%"></i></div>
+                </li>
+                <li>
+                  <div class="skill-info"><span>Docker (Containerization)</span><strong>74%</strong></div>
+                  <div class="bar"><i data-width="74%"></i></div>
+                </li>
+                <li>
+                  <div class="skill-info"><span>Railway / Heroku / Deploy</span><strong>72%</strong></div>
+                  <div class="bar"><i data-width="72%"></i></div>
+                </li>
+                <li>
+                  <div class="skill-info"><span>Linux / Bash scripting / CI-CD</span><strong>70%</strong></div>
+                  <div class="bar"><i data-width="70%"></i></div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -226,6 +378,25 @@
       </div>
     </section>
 
+    <section class="section section-muted" id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Education</p>
+          <h2 data-i18n="education.title">Ta'lim</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-date" data-i18n="education.dates">2021 - 2025</div>
+            <div class="timeline-card">
+              <h3 data-i18n="education.tuit">Toshkent Axborot Texnologiyalari Universiteti</h3>
+              <p class="company" data-i18n="education.degree">Dasturiy ta'minot muhandisligi, Bakalavr</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-muted" id="projects">
       <div class="container">
         <div class="section-heading centered reveal">
@@ -233,10 +404,17 @@
           <h2 data-i18n="projects.title">Loyihalar</h2>
         </div>
 
+        <div class="project-filters reveal">
+          <button class="filter-btn is-active" data-filter="all" type="button" data-i18n="projects.filterAll">Barchasi</button>
+          <button class="filter-btn" data-filter="backend" type="button">Backend</button>
+          <button class="filter-btn" data-filter="frontend" type="button">Frontend</button>
+          <button class="filter-btn" data-filter="fullstack" type="button" data-i18n="projects.filterFullstack">Full-Stack</button>
+        </div>
+
         <div class="projects-grid">
-          <article class="project-card reveal">
+          <article class="project-card reveal" data-category="backend fullstack">
             <div class="project-media">
-              <span>HRMM</span>
+              <img src="assets/project_hrmm.png" alt="HRMM - Enterprise HR Management System">
             </div>
             <div class="project-body">
               <h3>HRMM - Enterprise HR Management System</h3>
@@ -251,14 +429,14 @@
               </div>
               <div class="project-links">
                 <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
-                <a href="#contact" data-i18n="projects.demo">Demo so'rash</a>
+                <button class="btn-details" type="button" data-project-id="hrmm" data-i18n="projects.details">Batafsil</button>
               </div>
             </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-media alt">
-              <span>API</span>
+          <article class="project-card reveal" data-category="backend">
+            <div class="project-media">
+              <img src="assets/project_api.png" alt="REST API Backend Modules">
             </div>
             <div class="project-body">
               <h3>REST API Backend Modules</h3>
@@ -272,13 +450,14 @@
               </div>
               <div class="project-links">
                 <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
+                <button class="btn-details" type="button" data-project-id="api" data-i18n="projects.details">Batafsil</button>
               </div>
             </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-media third">
-              <span>CRM</span>
+          <article class="project-card reveal" data-category="frontend fullstack">
+            <div class="project-media">
+              <img src="assets/project_crm.png" alt="Business Automation Tools">
             </div>
             <div class="project-body">
               <h3>Business Automation Tools</h3>
@@ -293,6 +472,7 @@
               </div>
               <div class="project-links">
                 <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
+                <button class="btn-details" type="button" data-project-id="crm" data-i18n="projects.details">Batafsil</button>
               </div>
             </div>
           </article>
@@ -332,18 +512,18 @@
         </div>
 
         <form class="contact-form reveal" action="#" method="post">
-          <label>
-            <span data-i18n="form.name">Ismingiz</span>
-            <input type="text" name="name" placeholder="Ismingizni kiriting" required data-i18n-attr="placeholder:form.namePlaceholder">
-          </label>
-          <label>
-            <span data-i18n="form.email">Email</span>
-            <input type="email" name="email" placeholder="email@example.com" required>
-          </label>
-          <label>
-            <span data-i18n="form.message">Xabar</span>
-            <textarea name="message" rows="5" placeholder="Loyiha yoki taklif haqida yozing" required data-i18n-attr="placeholder:form.messagePlaceholder"></textarea>
-          </label>
+          <div class="form-group">
+            <input type="text" id="contact-name" name="name" placeholder=" " required autocomplete="name">
+            <label for="contact-name" data-i18n="form.name">Ismingiz</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="contact-email" name="email" placeholder=" " required autocomplete="email">
+            <label for="contact-email" data-i18n="form.email">Email</label>
+          </div>
+          <div class="form-group">
+            <textarea id="contact-message" name="message" rows="5" placeholder=" " required></textarea>
+            <label for="contact-message" data-i18n="form.message">Xabar</label>
+          </div>
           <button class="btn btn-primary" type="submit" data-i18n="form.submit">Xabar yuborish</button>
           <p class="form-note" data-form-note aria-live="polite"></p>
         </form>
@@ -360,6 +540,31 @@
       </div>
     </div>
   </footer>
+
+  <!-- Detailed Project Modal -->
+  <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content">
+      <button class="modal-close-btn" type="button" aria-label="Modalni yopish" data-close-modal>&times;</button>
+      <div class="modal-body-content" id="modal-body-content">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Success Modal -->
+  <div class="project-modal" id="contact-success-modal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" data-close-success-modal></div>
+    <div class="modal-content success-modal-content" style="text-align: center; max-width: 420px; padding: 42px 28px;">
+      <button class="modal-close-btn" type="button" aria-label="Modalni yopish" data-close-success-modal>&times;</button>
+      <div style="font-size: 3.5rem; margin-bottom: 20px; color: var(--accent); line-height: 1;">✓</div>
+      <h3 data-i18n="form.successTitle" style="font-size: 1.5rem; margin-bottom: 12px; font-weight: 800;">Xabar tayyorlandi!</h3>
+      <p data-i18n="form.successText" style="color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.5;">
+        Xabaringiz muvaffaqiyatli saqlandi. Bog'lanish uchun pochtangizga tez orada javob yuboramiz!
+      </p>
+      <button class="btn btn-primary" type="button" data-close-success-modal style="width: 100%;">OK</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
