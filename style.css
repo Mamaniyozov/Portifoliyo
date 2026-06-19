@@ -661,9 +661,29 @@ h3 {
 }
 
 .language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   min-width: 44px;
   height: 40px;
+  padding: 6px 10px;
   font-weight: 900;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+.globe-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.lang-code {
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
 }
   margin-top: 42px;
 }
