@@ -202,6 +202,69 @@ textarea {
   font-weight: 700;
 }
 
+/* Icon button base used for language badges and the theme control */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.language-switcher {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.language-option.is-active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff;
+  border-color: transparent;
+}
+
+.theme-toggle.icon-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  padding: 0;
+}
+
+.theme-icon {
+  font-size: 1rem;
+  display: inline-block;
+}
+
+/* Keep the text for accessibility but visually de-emphasize it when using icon style */
+.theme-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .theme-icon {
   color: var(--accent);
 }
