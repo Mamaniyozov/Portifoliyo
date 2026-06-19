@@ -1,5 +1,6 @@
 :root {
   --bg: #f7f9fc;
+  --bg-rgb: 247, 249, 252;
   --surface: #ffffff;
   --surface-soft: #eef3f8;
   --text: #111827;
@@ -15,6 +16,7 @@
 
 body.dark-theme {
   --bg: #090d14;
+  --bg-rgb: 9, 13, 20;
   --surface: #111827;
   --surface-soft: #172132;
   --text: #f4f7fb;
@@ -38,9 +40,28 @@ html {
 body {
   margin: 0;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
+  overflow-x: hidden;
+  background:
+    linear-gradient(135deg, rgba(var(--bg-rgb), 0.95), rgba(var(--bg-rgb), 0.78)),
+    var(--bg);
   color: var(--text);
   line-height: 1.6;
+}
+
+#web-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.site-header,
+main,
+.footer {
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -65,8 +86,7 @@ textarea {
 
 .section-muted {
   background:
-    linear-gradient(180deg, transparent 0%, var(--surface-soft) 100%),
-    var(--bg);
+    linear-gradient(180deg, rgba(var(--bg-rgb), 0.48) 0%, color-mix(in srgb, var(--surface-soft) 72%, transparent) 100%);
 }
 
 .site-header {
@@ -209,8 +229,7 @@ textarea {
   overflow: hidden;
   background:
     radial-gradient(circle at 18% 20%, var(--accent-soft), transparent 32%),
-    radial-gradient(circle at 88% 16%, rgba(38, 99, 255, 0.12), transparent 30%),
-    var(--bg);
+    radial-gradient(circle at 88% 16%, rgba(38, 99, 255, 0.12), transparent 30%);
 }
 
 .hero-grid {
@@ -337,8 +356,9 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background:
-    linear-gradient(145deg, color-mix(in srgb, var(--surface) 88%, var(--accent-soft)), var(--surface)),
-    var(--surface);
+    linear-gradient(145deg, color-mix(in srgb, var(--surface) 86%, var(--accent-soft)), color-mix(in srgb, var(--surface) 90%, transparent)),
+    rgba(var(--bg-rgb), 0.12);
+  backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
 }
 
@@ -482,7 +502,8 @@ h3 {
 .contact-form {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(14px);
   box-shadow: 0 18px 50px rgba(17, 24, 39, 0.06);
 }
 
@@ -515,6 +536,13 @@ h3 {
 
 .skill-card {
   padding: 26px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--line));
+  box-shadow: var(--shadow);
 }
 
 .card-head {
