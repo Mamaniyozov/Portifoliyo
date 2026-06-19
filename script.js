@@ -11,7 +11,6 @@ const navLinks = [...document.querySelectorAll(".nav-menu a")];
 const sections = [...document.querySelectorAll("main section[id]")];
 const revealItems = document.querySelectorAll(".reveal");
 const contactForm = document.querySelector(".contact-form");
-const contactCopyButtons = [...document.querySelectorAll('.contact-copy')];
 const formNote = document.querySelector("[data-form-note]");
 
 // Theme state lives only in the current page session, ready for a future backend preference.
@@ -440,25 +439,6 @@ if (langButtons.length) {
   });
 }
 
-const contactCopyButtons = [...document.querySelectorAll('.contact-copy')];
-contactCopyButtons.forEach((button) => {
-  button.addEventListener('click', async () => {
-    const email = button.getAttribute('data-email');
-    if (!email) return;
-
-    try {
-      await navigator.clipboard.writeText(email);
-      button.setAttribute('aria-label', 'Email nusxalandi');
-      button.classList.add('copied');
-      setTimeout(() => {
-        button.classList.remove('copied');
-        button.setAttribute('aria-label', 'Email manzilni nusxalash');
-      }, 1500);
-    } catch (err) {
-      console.error('Clipboard copy failed', err);
-    }
-  });
-});
 
 // Scroll reveal keeps the page calm while still giving sections a polished entrance.
 const revealObserver = new IntersectionObserver((entries) => {
