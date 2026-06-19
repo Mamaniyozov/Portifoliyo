@@ -204,6 +204,104 @@ const translations = {
       'form.sent': "Xabaringiz tayyor. Backend ulangandan keyin yuborish faollashadi.",
       'footer.copy': "© 2026 Muhammadyusuf Mamaniyozov. Barcha huquqlar himoyalangan."
   },
+    ru: {
+      // Russian translations (initial placeholders copied from English)
+      'nav.about': 'About',
+      'nav.skills': 'Skills',
+      'nav.experience': 'Experience',
+      'nav.projects': 'Projects',
+      'nav.contact': 'Contact',
+      'nav.aria': 'Main navigation',
+      'brand.aria': 'Go to home',
+      'menu.open': 'Open menu',
+      'language.aria': 'Choose language',
+      'theme.aria': 'Toggle color scheme',
+      'hero.text': 'I build reliable, scalable web systems for business using Django, PostgreSQL and vanilla JavaScript. I specialise in backend architecture, deployment and role-based access control.',
+      'hero.projects': 'View projects',
+      'hero.contact': 'Contact',
+      'hero.metaAria': 'Short details',
+      'hero.experience': '3 years 6 months experience',
+      'hero.fulltime': 'Full-time, no relocation',
+      'profile.aria': 'Portfolio visual card',
+      'profile.role': 'Software developer',
+      'profile.location': '23 years, Tashkent',
+      'profile.status': 'Available for work, remote or office',
+      'profile.years': 'Years of experience',
+      'profile.focus': 'Primary focus',
+      'about.title': 'About',
+      'about.p1': 'I digitise business processes, optimise internal CRM/ERP modules and fix bugs in existing systems. My strengths are backend logic, data modelling, REST APIs, deployment and solving production issues systematically.',
+      'about.p2': 'Resume-level skills: Git, web development, Python, Django REST Framework and REST API. Intermediate with Docker, PostgreSQL, Linux, Flask, HTML and DevOps.',
+      'about.langUz': 'Uzbek: native',
+      'skills.title': 'Skills',
+      'skills.text': 'Technologies grouped by practical experience and resume data.',
+      'experience.title': 'Experience',
+      'experience.currentDate': 'Sep 2025 - present',
+      'experience.currentText': 'Worked on bugfixing and recovery of legacy project modules in Karmed system.',
+      'experience.freelanceDate': 'Jan 2023 - Sep 2025',
+      'experience.freelanceText': 'Freelance backend developer building business web projects.',
+      'projects.title': 'Projects',
+      'projects.hrmm': 'Enterprise HR Management System built with Django + PostgreSQL.',
+      'projects.demo': 'Request demo',
+      'projects.api': 'Authentication, permission, CRUD and reporting modules.',
+      'projects.crm': 'Automation tools for small and medium businesses.',
+      'contact.title': 'Contact',
+      'contact.text': 'Get in touch for collaboration, job offers or project discussion.',
+      'form.name': 'Your name',
+      'form.email': 'Email',
+      'form.message': 'Message',
+      'form.submit': 'Send message',
+      'form.sent': 'Your message is ready. Sending will be enabled once backend is connected.',
+      'footer.copy': '© 2026 Muhammadyusuf Mamaniyozov. All rights reserved.'
+    },
+    tr: {
+      // Turkish translations (initial placeholders copied from English)
+      'nav.about': 'About',
+      'nav.skills': 'Skills',
+      'nav.experience': 'Experience',
+      'nav.projects': 'Projects',
+      'nav.contact': 'Contact',
+      'nav.aria': 'Main navigation',
+      'brand.aria': 'Go to home',
+      'menu.open': 'Open menu',
+      'language.aria': 'Choose language',
+      'theme.aria': 'Toggle color scheme',
+      'hero.text': 'I build reliable, scalable web systems for business using Django, PostgreSQL and vanilla JavaScript. I specialise in backend architecture, deployment and role-based access control.',
+      'hero.projects': 'View projects',
+      'hero.contact': 'Contact',
+      'hero.metaAria': 'Short details',
+      'hero.experience': '3 years 6 months experience',
+      'hero.fulltime': 'Full-time, no relocation',
+      'profile.aria': 'Portfolio visual card',
+      'profile.role': 'Software developer',
+      'profile.location': '23 years, Tashkent',
+      'profile.status': 'Available for work, remote or office',
+      'profile.years': 'Years of experience',
+      'profile.focus': 'Primary focus',
+      'about.title': 'About',
+      'about.p1': 'I digitise business processes, optimise internal CRM/ERP modules and fix bugs in existing systems. My strengths are backend logic, data modelling, REST APIs, deployment and solving production issues systematically.',
+      'about.p2': 'Resume-level skills: Git, web development, Python, Django REST Framework and REST API. Intermediate with Docker, PostgreSQL, Linux, Flask, HTML and DevOps.',
+      'about.langUz': 'Uzbek: native',
+      'skills.title': 'Skills',
+      'skills.text': 'Technologies grouped by practical experience and resume data.',
+      'experience.title': 'Experience',
+      'experience.currentDate': 'Sep 2025 - present',
+      'experience.currentText': 'Worked on bugfixing and recovery of legacy project modules in Karmed system.',
+      'experience.freelanceDate': 'Jan 2023 - Sep 2025',
+      'experience.freelanceText': 'Freelance backend developer building business web projects.',
+      'projects.title': 'Projects',
+      'projects.hrmm': 'Enterprise HR Management System built with Django + PostgreSQL.',
+      'projects.demo': 'Request demo',
+      'projects.api': 'Authentication, permission, CRUD and reporting modules.',
+      'projects.crm': 'Automation tools for small and medium businesses.',
+      'contact.title': 'Contact',
+      'contact.text': 'Get in touch for collaboration, job offers or project discussion.',
+      'form.name': 'Your name',
+      'form.email': 'Email',
+      'form.message': 'Message',
+      'form.submit': 'Send message',
+      'form.sent': 'Your message is ready. Sending will be enabled once backend is connected.',
+      'footer.copy': '© 2026 Muhammadyusuf Mamaniyozov. All rights reserved.'
+    },
   en: {
     'nav.about': 'About',
     'nav.skills': 'Skills',
@@ -321,17 +419,25 @@ navLinks.forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
-// Language icon buttons: toggle active state and expose selected language via dataset
-const langButtons = [...document.querySelectorAll('.language-option')];
-langButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    langButtons.forEach((b) => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
-    const selected = btn.getAttribute('data-lang');
-    applyTranslations(selected);
-    console.log('Language selected:', selected);
+// Single language toggle button: cycles through languages [uz, en, ru, tr]
+const langToggle = document.querySelector('.language-toggle');
+const availableLangs = ['uz', 'en', 'ru', 'tr'];
+if (langToggle) {
+  // initialize label
+  const current = document.documentElement.lang || 'uz';
+  langToggle.textContent = current.toUpperCase();
+  langToggle.setAttribute('data-lang', current);
+
+  langToggle.addEventListener('click', () => {
+    const cur = langToggle.getAttribute('data-lang') || (document.documentElement.lang || 'uz');
+    const idx = availableLangs.indexOf(cur);
+    const next = availableLangs[(idx + 1) % availableLangs.length];
+    langToggle.setAttribute('data-lang', next);
+    langToggle.textContent = next.toUpperCase();
+    applyTranslations(next);
+    console.log('Language selected:', next);
   });
-});
+}
 
 // Scroll reveal keeps the page calm while still giving sections a polished entrance.
 const revealObserver = new IntersectionObserver((entries) => {
