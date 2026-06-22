@@ -158,9 +158,9 @@ textarea {
 }
 
 .nav-menu {
-  gap: 24px;
+  gap: 28px;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 600;
 }
 
@@ -369,6 +369,11 @@ h1 {
   font-size: clamp(2.4rem, 6vw, 5rem);
   line-height: 1.02;
   letter-spacing: 0;
+}
+
+.hero-name {
+  font-size: clamp(1.7rem, 3.8vw, 3.2rem);
+  line-height: 1.08;
 }
 
 h2 {
@@ -652,6 +657,44 @@ h3 {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 24px;
+}
+
+.about-highlight {
+  position: relative;
+  margin-top: 22px;
+  padding: 18px 20px 18px 24px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  overflow: hidden;
+}
+
+.about-highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.06), transparent 60%);
+  pointer-events: none;
+}
+
+.about-highlight-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-highlight p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.7;
 }
 
 .projects-grid {
