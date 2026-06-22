@@ -961,7 +961,8 @@ h3 {
 .contact-link strong {
   min-width: 0;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  word-break: break-all;
 }
 
 .contact-form {
