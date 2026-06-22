@@ -237,34 +237,64 @@ textarea {
 }
 
 .language-option {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.flag-icon {
-  font-size: 1.15rem;
+.language-option:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(var(--accent-rgb), 0.2);
 }
 
 .language-option.is-active {
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  color: #fff;
-  border-color: transparent;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(var(--accent-rgb), 0.25);
+  transform: translateY(-2px);
+}
+
+.flag-svg {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 .theme-toggle.icon-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle.icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(var(--accent-rgb), 0.2);
 }
 
 .theme-icon {
-  font-size: 1rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
 }
 
 /* Keep the text for accessibility but visually de-emphasize it when using icon style */
@@ -475,37 +505,42 @@ h3 {
 .profile-role {
   margin: 0 0 4px;
   color: var(--accent);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .profile-top h2 {
-  font-size: 1.55rem;
+  font-size: 1.35rem;
+  margin: 0;
 }
 
 .profile-top p:last-child {
   margin: 4px 0 0;
   color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .status-row {
   position: relative;
   gap: 10px;
-  margin: 26px 0;
-  padding: 14px;
+  margin: 20px 0;
+  padding: 10px 14px;
   border-radius: var(--radius);
   background: var(--surface-soft);
   color: var(--muted);
   font-weight: 700;
+  font-size: 0.78rem;
   z-index: 1;
 }
 
 .status-dot {
-  width: 10px;
+  width: 9px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 8px var(--accent-soft);
+  box-shadow: 0 0 0 7px var(--accent-soft);
 }
 
 .metric-grid {
@@ -513,15 +548,16 @@ h3 {
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 .metric-grid div {
   min-width: 0;
-  padding: 16px 12px;
+  padding: 12px 8px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
+  text-align: center;
 }
 
 .metric-grid strong,
@@ -531,13 +567,13 @@ h3 {
 
 .metric-grid strong {
   color: var(--text);
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .metric-grid span {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 700;
 }
 
@@ -546,11 +582,15 @@ h3 {
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 8px;
+  margin-top: 20px;
 }
 
-.tech-cloud span,
+.tech-cloud span {
+  padding: 5px 8px;
+  font-size: 0.76rem;
+}
+
 .tags span {
   padding: 7px 10px;
 }
@@ -903,11 +943,19 @@ h3 {
 .contact-link span {
   width: 42px;
   aspect-ratio: 1;
-  border-radius: 8px;
+  border-radius: 10px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-link:hover span {
   color: #fff;
   background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  font-size: 0.82rem;
-  font-weight: 800;
+  transform: scale(1.05);
 }
 
 .contact-link strong {

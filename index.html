@@ -39,21 +39,64 @@
 
       <div class="language-switcher" aria-label="Tilni tanlash" data-i18n-attr="aria-label:language.aria">
         <button class="icon-btn language-option is-active" type="button" data-lang="uz" aria-label="O'zbek tili" title="O'zbekcha">
-          <span class="flag-icon">🇺🇿</span>
+          <svg class="flag-svg" viewBox="0 0 24 24">
+            <clipPath id="uz-clip"><circle cx="12" cy="12" r="10"/></clipPath>
+            <g clip-path="url(#uz-clip)">
+              <rect x="0" y="0" width="24" height="8" fill="#00b5e2"/>
+              <rect x="0" y="8" width="24" height="8" fill="#ffffff"/>
+              <rect x="0" y="16" width="24" height="8" fill="#1eb53a"/>
+              <rect x="0" y="7.5" width="24" height="1" fill="#d22630"/>
+              <rect x="0" y="15.5" width="24" height="1" fill="#d22630"/>
+              <path d="M 6 4 A 2 2 0 1 0 9.5 6.8 A 1.8 1.8 0 1 1 6 4 Z" fill="#ffffff"/>
+              <circle cx="11" cy="3.5" r="0.3" fill="#ffffff"/>
+              <circle cx="12.2" cy="3.5" r="0.3" fill="#ffffff"/>
+              <circle cx="13.4" cy="3.5" r="0.3" fill="#ffffff"/>
+              <circle cx="11" cy="4.7" r="0.3" fill="#ffffff"/>
+              <circle cx="12.2" cy="4.7" r="0.3" fill="#ffffff"/>
+              <circle cx="13.4" cy="4.7" r="0.3" fill="#ffffff"/>
+              <circle cx="11" cy="5.9" r="0.3" fill="#ffffff"/>
+              <circle cx="12.2" cy="5.9" r="0.3" fill="#ffffff"/>
+              <circle cx="13.4" cy="5.9" r="0.3" fill="#ffffff"/>
+            </g>
+          </svg>
         </button>
         <button class="icon-btn language-option" type="button" data-lang="en" aria-label="Ingliz tili" title="Inglizcha">
-          <span class="flag-icon">🇬🇧</span>
+          <svg class="flag-svg" viewBox="0 0 24 24">
+            <clipPath id="gb-clip"><circle cx="12" cy="12" r="10"/></clipPath>
+            <g clip-path="url(#gb-clip)">
+              <rect width="24" height="24" fill="#012169"/>
+              <path d="M0 0 L24 24 M24 0 L0 24" stroke="#ffffff" stroke-width="3"/>
+              <path d="M0 0 L24 24 M24 0 L0 24" stroke="#C8102E" stroke-width="1.8"/>
+              <path d="M12 0 v24 M0 12 h24" stroke="#ffffff" stroke-width="4.8"/>
+              <path d="M12 0 v24 M0 12 h24" stroke="#C8102E" stroke-width="2.8"/>
+            </g>
+          </svg>
         </button>
         <button class="icon-btn language-option" type="button" data-lang="ru" aria-label="Rus tili" title="Ruscha">
-          <span class="flag-icon">🇷🇺</span>
+          <svg class="flag-svg" viewBox="0 0 24 24">
+            <clipPath id="ru-clip"><circle cx="12" cy="12" r="10"/></clipPath>
+            <g clip-path="url(#ru-clip)">
+              <rect x="0" y="0" width="24" height="8" fill="#ffffff"/>
+              <rect x="0" y="8" width="24" height="8" fill="#0039a6"/>
+              <rect x="0" y="16" width="24" height="8" fill="#d52b1e"/>
+            </g>
+          </svg>
         </button>
         <button class="icon-btn language-option" type="button" data-lang="tr" aria-label="Turk tili" title="Turkcha">
-          <span class="flag-icon">🇹🇷</span>
+          <svg class="flag-svg" viewBox="0 0 24 24">
+            <clipPath id="tr-clip"><circle cx="12" cy="12" r="10"/></clipPath>
+            <g clip-path="url(#tr-clip)">
+              <rect width="24" height="24" fill="#e30a17"/>
+              <circle cx="10.5" cy="12" r="4.5" fill="#ffffff"/>
+              <circle cx="12" cy="12" r="3.6" fill="#e30a17"/>
+              <polygon points="15,12 16.5,12.5 15.6,13.8 15.6,15.2 14.5,14.3 13.1,14.8 13.8,13.5 13.2,12 14.5,12.6" fill="#ffffff" transform="rotate(-15 15 12)"/>
+            </g>
+          </svg>
         </button>
       </div>
 
       <button class="theme-toggle icon-btn" type="button" aria-label="Rang rejimini almashtirish" data-theme-toggle data-i18n-attr="aria-label:theme.aria">
-        <span class="theme-icon" aria-hidden="true">◐</span>
+        <span class="theme-icon" aria-hidden="true"></span>
         <span class="theme-label">Light</span>
       </button>
     </nav>
@@ -101,7 +144,7 @@
               </div>
               <div>
                 <strong>B1</strong>
-                <span>English / Russian</span>
+                <span data-i18n="profile.langs">EN / RU / TR</span>
               </div>
               <div>
                 <strong>Backend</strong>
@@ -136,8 +179,9 @@
           </p>
           <div class="info-strip">
             <span data-i18n="about.langUz">O'zbek tili: native</span>
-            <span>English: B1</span>
-            <span>Russian: B1</span>
+            <span data-i18n="about.langEn">English: B1</span>
+            <span data-i18n="about.langRu">Russian: B1</span>
+            <span data-i18n="about.langTr">Turkish: B1</span>
           </div>
         </div>
       </div>
@@ -257,15 +301,32 @@
         <div class="skills-tab-container reveal">
           <div class="skills-tabs" role="tablist" aria-label="Skills categories">
             <button class="skills-tab-btn is-active" type="button" role="tab" aria-selected="true" data-tab="backend">
-              <span class="tab-icon">BE</span>
+              <span class="tab-icon">
+                <svg class="tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                  <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
+                </svg>
+              </span>
               <span>Backend</span>
             </button>
             <button class="skills-tab-btn" type="button" role="tab" aria-selected="false" data-tab="frontend">
-              <span class="tab-icon">FE</span>
+              <span class="tab-icon">
+                <svg class="tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                  <rect width="20" height="14" x="2" y="3" rx="2" ry="2"/>
+                  <line x1="8" x2="16" y1="21" y2="21"/>
+                  <line x1="12" x2="12" y1="17" y2="21"/>
+                </svg>
+              </span>
               <span data-i18n="skills.tabFrontend">Frontend</span>
             </button>
             <button class="skills-tab-btn" type="button" role="tab" aria-selected="false" data-tab="tools">
-              <span class="tab-icon">TD</span>
+              <span class="tab-icon">
+                <svg class="tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                  <polyline points="4 17 10 11 4 5"/>
+                  <line x1="12" x2="20" y1="19" y2="19"/>
+                </svg>
+              </span>
               <span data-i18n="skills.tabTools">Tools & Deploy</span>
             </button>
           </div>
@@ -489,24 +550,49 @@
         </div>
 
         <div class="contact-panel reveal">
-          <a class="contact-link" href="mailto:mamaniyozovmuhammadyusuf5@gmail.com">
-            <span>@</span>
+          <a class="contact-link" href="mailto:mamaniyozovmuhammadyusuf5@gmail.com" aria-label="Email">
+            <span>
+              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </span>
             <strong>mamaniyozovmuhammadyusuf5@gmail.com</strong>
           </a>
-          <a class="contact-link" href="tel:+998930065538">
-            <span>Tel</span>
+          <a class="contact-link" href="tel:+998930065538" aria-label="Telefon">
+            <span>
+              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </span>
             <strong>+998 93 006 55 38</strong>
           </a>
-          <a class="contact-link" href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noreferrer">
-            <span>TG</span>
+          <a class="contact-link" href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <span>
+              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <path d="m22 2-7 20-4-9-9-4Z"/>
+                <path d="M22 2 11 13"/>
+              </svg>
+            </span>
             <strong>@Muhammadyusuf_5538</strong>
           </a>
-          <a class="contact-link" href="https://www.linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/" target="_blank" rel="noreferrer">
-            <span>in</span>
+          <a class="contact-link" href="https://www.linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <span>
+              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </span>
             <strong>LinkedIn</strong>
           </a>
-          <a class="contact-link" href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">
-            <span>GH</span>
+          <a class="contact-link" href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <span>
+              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+            </span>
             <strong>GitHub</strong>
           </a>
         </div>

@@ -186,11 +186,15 @@ const translations = {
     'profile.location': "23 yosh, Toshkent",
     'profile.status': "Ishga tayyor, remote yoki ofis",
     'profile.years': "Yil tajriba",
+    'profile.langs': "EN / RU / TR",
     'profile.focus': "Asosiy yo'nalish",
     'about.title': "Men haqimda",
     'about.p1': `Men biznes jarayonlarini raqamlashtirish, ichki CRM/ERP modullarini optimallashtirish va mavjud tizimlarda xatolarni aniqlab tuzatish bilan shug'ullanadigan dasturchiman. Asosiy kuchli tomonlarim: backend logic, ma'lumotlar bazasi modeli, REST API, deploy va production muammolarini tizimli hal qilish.`,
     'about.p2': `Rezyume ma'lumotlariga ko'ra, asosiy darajadagi texnologiyalarim: Git, web-dasturlash, Python, dasturiy ta'minot ishlab chiqish, Django REST Framework va REST API. O'rta darajada Docker, PostgreSQL, Linux, Flask, HTML va DevOps bilan ishlayman.`,
-    'about.langUz': "O'zbek tili: native",
+    'about.langUz': "O'zbek tili: ona tili",
+    'about.langEn': "Ingliz tili: B1",
+    'about.langRu': "Rus tili: B1",
+    'about.langTr': "Turk tili: B1",
     'skills.title': "Ko'nikmalar",
     'skills.text': "Texnologiyalar amaliy ish tajribasi va rezyume ma'lumotlari asosida guruhlandi.",
     'skills.tabFrontend': "Frontend",
@@ -257,11 +261,15 @@ const translations = {
     'profile.location': '23 года, Ташкент',
     'profile.status': 'Готов работать, удаленно или в офисе',
     'profile.years': 'Годы опыта',
+    'profile.langs': 'EN / RU / TR',
     'profile.focus': 'Основное направление',
     'about.title': 'Обо мне',
     'about.p1': 'Я занимаюсь цифровизацией бизнес-процессов, оптимизацией внутренних CRM/ERP модулей и исправлением ошибок в существующих системах. Мои сильные стороны: бэкенд-логика, моделирование данных, REST API, деплой и системное решение production-проблем.',
     'about.p2': 'В резюме: Git, веб-разработка, Python, Django REST Framework и REST API. Средний уровень: Docker, PostgreSQL, Linux, Flask, HTML и DevOps.',
     'about.langUz': 'Узбекский: родной',
+    'about.langEn': 'Английский: B1',
+    'about.langRu': 'Русский: B1',
+    'about.langTr': 'Турецкий: B1',
     'skills.title': 'Навыки',
     'skills.text': 'Технологии, сгруппированные по практическому опыту и данным резюме.',
     'skills.tabFrontend': "Фронтенд",
@@ -328,11 +336,15 @@ const translations = {
     'profile.location': '23 yaş, Taşkent',
     'profile.status': 'İşe hazır, uzaktan veya ofiste',
     'profile.years': 'Deneyim yılları',
+    'profile.langs': 'EN / RU / TR',
     'profile.focus': 'Ana odak',
     'about.title': 'Hakkımda',
     'about.p1': 'İş süreçlerini dijitalleştiriyor, dahili CRM/ERP modüllerini optimize ediyor ve mevcut sistemlerdeki hataları gideriyorum. Güçlü yanlarım: backend mantığı, veri modelleme, REST API, dağıtım ve production sorunlarını sistematik çözme.',
     'about.p2': 'Özgeçmiş düzeyinde: Git, web geliştirme, Python, Django REST Framework ve REST API. Orta düzeyde Docker, PostgreSQL, Linux, Flask, HTML ve DevOps.',
     'about.langUz': 'Özbekçe: ana dil',
+    'about.langEn': 'İngilizce: B1',
+    'about.langRu': 'Rusça: B1',
+    'about.langTr': 'Türkçe: B1',
     'skills.title': 'Beceriler',
     'skills.text': 'Teknolojiler, pratik deneyim ve özgeçmiş verilerine göre gruplandırıldı.',
     'skills.tabFrontend': "Frontend",
@@ -399,11 +411,15 @@ const translations = {
     'profile.location': '23 years, Tashkent',
     'profile.status': 'Available for work, remote or office',
     'profile.years': 'Years of experience',
+    'profile.langs': 'EN / RU / TR',
     'profile.focus': 'Primary focus',
     'about.title': 'About',
     'about.p1': 'I digitise business processes, optimise internal CRM/ERP modules and fix bugs in existing systems. My strengths are backend logic, data modelling, REST APIs, deployment and solving production issues systematically.',
     'about.p2': 'Resume-level skills: Git, web development, Python, Django REST Framework and REST API. Intermediate with Docker, PostgreSQL, Linux, Flask, HTML and DevOps.',
     'about.langUz': "Uzbek: native",
+    'about.langEn': "English: B1",
+    'about.langRu': "Russian: B1",
+    'about.langTr': "Turkish: B1",
     'skills.title': 'Skills',
     'skills.text': 'Technologies grouped by practical experience and resume data.',
     'skills.tabFrontend': "Frontend",
@@ -511,7 +527,9 @@ navToggle.addEventListener("click", () => {
 
 function updateThemeUI() {
   themeLabel.textContent = isDark ? "Dark" : "Light";
-  themeIcon.textContent = isDark ? "🌙" : "☀️";
+  themeIcon.innerHTML = isDark 
+    ? `<svg class="theme-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`
+    : `<svg class="theme-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
 }
 
 // Initialize Theme UI state
