@@ -3,605 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Muhammadyusuf Mamaniyozov Tulqin - Python, Django, PostgreSQL va vanilla JavaScript bilan ishlaydigan full-stack dasturchi portfoliosi.">
-  <meta name="keywords" content="Muhammadyusuf Mamaniyozov, Full-Stack Developer, Python, Django, PostgreSQL, JavaScript, Portfolio">
+  <meta name="description" content="Muhammadyusuf Mamaniyozov Tulqin - Django, DRF, PostgreSQL va vanilla JavaScript bilan ishlaydigan full-stack dasturchi. HRMM va RBYS loyihalari.">
+  <meta name="keywords" content="Muhammadyusuf Mamaniyozov, Full-Stack Developer, Python, Django, DRF, PostgreSQL, ASP.NET, JavaScript, Portfolio">
   <meta name="author" content="Muhammadyusuf Mamaniyozov Tulqin">
+  <meta name="theme-color" content="#0A0A0F">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Muhammadyusuf Mamaniyozov | Full-Stack Developer">
+  <meta property="og:description" content="Django, DRF, PostgreSQL va vanilla JavaScript asosida ishonchli web tizimlar quruvchi full-stack dasturchi.">
+  <meta property="og:image" content="assets/avatar.png">
+  <meta property="og:locale" content="uz_UZ">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Muhammadyusuf Mamaniyozov | Full-Stack Developer">
+  <meta name="twitter:description" content="Django, DRF, PostgreSQL va vanilla JavaScript asosida ishonchli web tizimlar quruvchi full-stack dasturchi.">
+  <meta name="twitter:image" content="assets/avatar.png">
+
   <title>Muhammadyusuf Mamaniyozov | Full-Stack Developer</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <canvas id="web-canvas" aria-hidden="true"></canvas>
+<body class="dark-theme">
+  <!-- Ambient gradient blobs (decorative) -->
+  <div class="ambient" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <span class="grid-overlay"></span>
+  </div>
+
+  <a class="skip-link" href="#projects" data-i18n="a11y.skip">Asosiy kontentga o'tish</a>
 
   <header class="site-header" data-header>
     <nav class="nav container" aria-label="Asosiy navigatsiya" data-i18n-attr="aria-label:nav.aria">
       <a class="brand" href="#home" aria-label="Bosh sahifaga o'tish" data-i18n-attr="aria-label:brand.aria">
         <span class="brand-mark">MM</span>
-        <span>Mamaniyozov</span>
+        <span class="brand-name">Mamaniyozov</span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-label="Menyuni ochish" aria-expanded="false" data-nav-toggle data-i18n-attr="aria-label:menu.open">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
       <div class="nav-menu" data-nav-menu>
-        <a href="#about" data-i18n="nav.about">Men haqimda</a>
         <a href="#skills" data-i18n="nav.skills">Ko'nikmalar</a>
-        <a href="#experience" data-i18n="nav.experience">Tajriba</a>
-        <a href="#education" data-i18n="nav.education">Ta'lim</a>
         <a href="#projects" data-i18n="nav.projects">Loyihalar</a>
+        <a href="#about" data-i18n="nav.about">Men haqimda</a>
         <a href="#contact" data-i18n="nav.contact">Aloqa</a>
       </div>
 
-      <div class="language-switcher" aria-label="Tilni tanlash" data-i18n-attr="aria-label:language.aria">
-        <button class="icon-btn language-option is-active" type="button" data-lang="uz" aria-label="O'zbek tili" title="O'zbekcha">
-          <svg class="flag-svg" viewBox="0 0 24 24">
-            <clipPath id="uz-clip"><circle cx="12" cy="12" r="10"/></clipPath>
-            <g clip-path="url(#uz-clip)">
-              <rect x="0" y="0" width="24" height="8" fill="#00b5e2"/>
-              <rect x="0" y="8" width="24" height="8" fill="#ffffff"/>
-              <rect x="0" y="16" width="24" height="8" fill="#1eb53a"/>
-              <rect x="0" y="7.5" width="24" height="1" fill="#d22630"/>
-              <rect x="0" y="15.5" width="24" height="1" fill="#d22630"/>
-              <path d="M 6 4 A 2 2 0 1 0 9.5 6.8 A 1.8 1.8 0 1 1 6 4 Z" fill="#ffffff"/>
-              <circle cx="11" cy="3.5" r="0.3" fill="#ffffff"/>
-              <circle cx="12.2" cy="3.5" r="0.3" fill="#ffffff"/>
-              <circle cx="13.4" cy="3.5" r="0.3" fill="#ffffff"/>
-              <circle cx="11" cy="4.7" r="0.3" fill="#ffffff"/>
-              <circle cx="12.2" cy="4.7" r="0.3" fill="#ffffff"/>
-              <circle cx="13.4" cy="4.7" r="0.3" fill="#ffffff"/>
-              <circle cx="11" cy="5.9" r="0.3" fill="#ffffff"/>
-              <circle cx="12.2" cy="5.9" r="0.3" fill="#ffffff"/>
-              <circle cx="13.4" cy="5.9" r="0.3" fill="#ffffff"/>
-            </g>
-          </svg>
+      <div class="nav-actions">
+        <div class="language-switcher" role="group" aria-label="Tilni tanlash" data-i18n-attr="aria-label:language.aria">
+          <button class="lang-option is-active" type="button" data-lang="uz" aria-label="O'zbek tili" title="O'zbekcha">UZ</button>
+          <button class="lang-option" type="button" data-lang="en" aria-label="Ingliz tili" title="English">EN</button>
+          <button class="lang-option" type="button" data-lang="ru" aria-label="Rus tili" title="Русский">RU</button>
+          <button class="lang-option" type="button" data-lang="tr" aria-label="Turk tili" title="Türkçe">TR</button>
+        </div>
+
+        <button class="theme-toggle" type="button" aria-label="Rang rejimini almashtirish" data-theme-toggle data-i18n-attr="aria-label:theme.aria">
+          <span class="theme-icon" aria-hidden="true"></span>
         </button>
-        <button class="icon-btn language-option" type="button" data-lang="en" aria-label="Ingliz tili" title="Inglizcha">
-          <svg class="flag-svg" viewBox="0 0 24 24">
-            <clipPath id="gb-clip"><circle cx="12" cy="12" r="10"/></clipPath>
-            <g clip-path="url(#gb-clip)">
-              <rect width="24" height="24" fill="#012169"/>
-              <path d="M0 0 L24 24 M24 0 L0 24" stroke="#ffffff" stroke-width="3"/>
-              <path d="M0 0 L24 24 M24 0 L0 24" stroke="#C8102E" stroke-width="1.8"/>
-              <path d="M12 0 v24 M0 12 h24" stroke="#ffffff" stroke-width="4.8"/>
-              <path d="M12 0 v24 M0 12 h24" stroke="#C8102E" stroke-width="2.8"/>
-            </g>
-          </svg>
-        </button>
-        <button class="icon-btn language-option" type="button" data-lang="ru" aria-label="Rus tili" title="Ruscha">
-          <svg class="flag-svg" viewBox="0 0 24 24">
-            <clipPath id="ru-clip"><circle cx="12" cy="12" r="10"/></clipPath>
-            <g clip-path="url(#ru-clip)">
-              <rect x="0" y="0" width="24" height="8" fill="#ffffff"/>
-              <rect x="0" y="8" width="24" height="8" fill="#0039a6"/>
-              <rect x="0" y="16" width="24" height="8" fill="#d52b1e"/>
-            </g>
-          </svg>
-        </button>
-        <button class="icon-btn language-option" type="button" data-lang="tr" aria-label="Turk tili" title="Turkcha">
-          <svg class="flag-svg" viewBox="0 0 24 24">
-            <clipPath id="tr-clip"><circle cx="12" cy="12" r="10"/></clipPath>
-            <g clip-path="url(#tr-clip)">
-              <rect width="24" height="24" fill="#e30a17"/>
-              <circle cx="10.5" cy="12" r="4.5" fill="#ffffff"/>
-              <circle cx="12" cy="12" r="3.6" fill="#e30a17"/>
-              <polygon points="15,12 16.5,12.5 15.6,13.8 15.6,15.2 14.5,14.3 13.1,14.8 13.8,13.5 13.2,12 14.5,12.6" fill="#ffffff" transform="rotate(-15 15 12)"/>
-            </g>
-          </svg>
+
+        <button class="nav-toggle" type="button" aria-label="Menyuni ochish" aria-expanded="false" data-nav-toggle data-i18n-attr="aria-label:menu.open">
+          <span></span><span></span><span></span>
         </button>
       </div>
-
-      <button class="theme-toggle icon-btn" type="button" aria-label="Rang rejimini almashtirish" data-theme-toggle data-i18n-attr="aria-label:theme.aria">
-        <span class="theme-icon" aria-hidden="true"></span>
-        <span class="theme-label">Light</span>
-      </button>
     </nav>
   </header>
 
-  <main>
-    <section class="hero section" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Python / Django / Backend</p>
-          <h1 class="hero-name">Muhammadyusuf Mamaniyozov Tulqin</h1>
-          <p class="hero-title">Full-Stack Developer</p>
-          <p class="hero-text" data-i18n="hero.text">
-            Django, PostgreSQL va vanilla JavaScript asosida biznes uchun ishonchli, kengayadigan web tizimlar yarataman. Backend arxitekturasi, deployment va rollarga asoslangan access control bilan ishlashga ixtisoslashganman.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects" data-i18n="hero.projects">Loyihalarni ko'rish</a>
-            <a class="btn btn-secondary" href="#contact" data-i18n="hero.contact">Bog'lanish</a>
-          </div>
-          <div class="hero-meta" aria-label="Qisqa ma'lumotlar" data-i18n-attr="aria-label:hero.metaAria">
-            <span>Tashkent, Uzbekistan</span>
-            <span data-i18n="hero.experience">3 yil 6 oy tajriba</span>
-            <span data-i18n="hero.fulltime">Full-time, relokatsiyasiz</span>
-          </div>
+  <main id="home">
+    <!-- ================= HERO ================= -->
+    <section class="hero container" aria-labelledby="hero-heading">
+      <div class="hero-inner reveal">
+        <p class="eyebrow"><span class="status-dot"></span><span data-i18n="hero.available">Ishga tayyor · Remote / Ofis</span></p>
+        <h1 class="hero-name" id="hero-heading">Muhammadyusuf<br>Mamaniyozov</h1>
+        <p class="hero-title"><span class="gradient-text" data-i18n="hero.role">Full-Stack Developer</span></p>
+        <p class="hero-text" data-i18n="hero.text">
+          Django, DRF, PostgreSQL va vanilla JavaScript asosida biznes uchun ishonchli, kengayadigan web tizimlar yarataman. Backend arxitekturasi, deployment va rollarga asoslangan access control bo'yicha ixtisoslashganman.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects" data-i18n="hero.projects">Loyihalarni ko'rish</a>
+          <a class="btn btn-secondary" href="#contact" data-i18n="hero.contact">Bog'lanish</a>
         </div>
-
-        <div class="hero-visual reveal" aria-label="Portfolio vizual kartasi" data-i18n-attr="aria-label:profile.aria">
-          <div class="profile-card">
-            <div class="profile-top">
-              <div class="avatar"><img src="assets/avatar.png" alt="Muhammadyusuf Mamaniyozov"></div>
-              <div>
-                <p class="profile-role" data-i18n="profile.role">Programmist-razrabotchik</p>
-                <h2>Muhammadyusuf</h2>
-                <p data-i18n="profile.location">23 yosh, Toshkent</p>
-              </div>
-            </div>
-            <div class="status-row">
-              <span class="status-dot"></span>
-              <span data-i18n="profile.status">Ishga tayyor, remote yoki ofis</span>
-            </div>
-            <div class="metric-grid">
-              <div>
-                <strong>3.5+</strong>
-                <span data-i18n="profile.years">Yil tajriba</span>
-              </div>
-              <div>
-                <strong>B1</strong>
-                <span data-i18n="profile.langs">EN / RU / TR</span>
-              </div>
-              <div>
-                <strong>Backend</strong>
-                <span data-i18n="profile.focus">Asosiy yo'nalish</span>
-              </div>
-            </div>
-            <div class="tech-cloud" aria-label="Asosiy texnologiyalar" data-i18n-attr="aria-label:profile.techAria">
-              <span>Python</span>
-              <span>Django REST</span>
-              <span>PostgreSQL</span>
-              <span>Docker</span>
-              <span>Git</span>
-              <span>Railway</span>
-            </div>
+        <dl class="hero-stats" aria-label="Qisqa statistika" data-i18n-attr="aria-label:hero.metaAria">
+          <div class="hero-stat">
+            <dt>3.5+</dt><dd data-i18n="hero.statYears">yil tajriba</dd>
           </div>
-        </div>
+          <div class="hero-stat">
+            <dt>2</dt><dd data-i18n="hero.statProjects">yirik loyiha</dd>
+          </div>
+          <div class="hero-stat">
+            <dt>4</dt><dd data-i18n="hero.statLangs">til (UZ/EN/RU/TR)</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="container split">
-        <div class="section-heading reveal">
-          <p class="eyebrow">About</p>
-          <h2 data-i18n="about.title">Men haqimda</h2>
-        </div>
-        <div class="content-panel reveal">
+    <!-- ================= SKILLS ================= -->
+    <section class="section container" id="skills" aria-labelledby="skills-heading">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="skills.eyebrow">Tech Stack</p>
+        <h2 id="skills-heading" data-i18n="skills.title">Ko'nikmalar</h2>
+        <p class="section-sub" data-i18n="skills.text">Amaliy ish tajribasi asosida guruhlangan texnologiyalar.</p>
+      </div>
+
+      <div class="bento bento-skills">
+        <article class="card card-accent span-6 reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+          </div>
+          <h3 data-i18n="skills.backendTitle">Backend</h3>
+          <p data-i18n="skills.backendDesc">Biznes mantiq, REST API, xavfsizlik va ma'lumotlar ombori arxitekturasi.</p>
+          <ul class="chip-list">
+            <li>Python</li><li>Django 5.2</li><li>DRF</li><li>PostgreSQL</li><li>ASP.NET</li><li>Flask</li>
+          </ul>
+        </article>
+
+        <article class="card span-6 reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3 data-i18n="skills.frontendTitle">Frontend</h3>
+          <p data-i18n="skills.frontendDesc">Responsive, interaktiv interfeyslar va mijoz tomoni logikasi.</p>
+          <ul class="chip-list">
+            <li>Vanilla JS (ES6+)</li><li>HTML5</li><li>CSS3</li><li>CSS Grid</li><li>Flexbox</li>
+          </ul>
+        </article>
+
+        <article class="card span-6 reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>
+          </div>
+          <h3 data-i18n="skills.devopsTitle">DevOps &amp; Deploy</h3>
+          <p data-i18n="skills.devopsDesc">Konteynerlashtirish, deployment va production qo'llab-quvvatlash.</p>
+          <ul class="chip-list">
+            <li>Docker</li><li>Railway</li><li>IIS</li><li>Linux</li><li>CI/CD</li>
+          </ul>
+        </article>
+
+        <article class="card span-6 reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 data-i18n="skills.toolsTitle">Tools</h3>
+          <p data-i18n="skills.toolsDesc">Versiya nazorati, hisobot generatsiyasi va integratsiyalar.</p>
+          <ul class="chip-list">
+            <li>Git / GitHub</li><li>FastReport</li><li>Telegram Bot API</li><li>REST</li><li>i18n</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="section container" id="projects" aria-labelledby="projects-heading">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="projects.eyebrow">Ishlar</p>
+        <h2 id="projects-heading" data-i18n="projects.title">Loyihalar</h2>
+        <p class="section-sub" data-i18n="projects.text">Ishlab chiqarilgan ikkita real tizim.</p>
+      </div>
+
+      <div class="bento bento-projects">
+        <!-- HRMM -->
+        <article class="card project-card span-7 reveal" data-project-id="hrmm">
+          <div class="project-media">
+            <img src="assets/project_hrmm.png" alt="HRMM - Human Resource Management System" loading="lazy" width="800" height="450">
+            <span class="project-badge project-badge-live" data-i18n="projects.live">Live · Railway</span>
+          </div>
+          <div class="project-body">
+            <h3>HRMM</h3>
+            <p class="project-sub" data-i18n="projects.hrmmSub">Human Resource Management System</p>
+            <p data-i18n="projects.hrmmDesc">
+              Xodimlarni boshqarish tizimi: JWT autentifikatsiya, ko'p tilli (i18n) interfeys, dark/light tema, arxivlash tizimi va Telegram bot integratsiyasi. Django 5.2 + DRF backend, vanilla JS frontend, Railway'da deploy qilingan.
+            </p>
+            <ul class="tags">
+              <li>Django</li><li>DRF</li><li>PostgreSQL</li><li>JavaScript</li><li>Railway</li><li>Docker</li>
+            </ul>
+            <div class="project-links">
+              <button class="btn btn-small btn-primary btn-details" type="button" data-project-id="hrmm" data-i18n="projects.details">Batafsil</button>
+              <a class="btn btn-small btn-ghost" href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- RBYS -->
+        <article class="card project-card span-5 reveal" data-project-id="rbys">
+          <div class="project-media">
+            <img src="assets/project_api.png" alt="RBYS - Dorixona / ombor boshqaruv tizimi" loading="lazy" width="800" height="450">
+            <span class="project-badge project-badge-private" data-i18n="projects.private">Private loyiha</span>
+          </div>
+          <div class="project-body">
+            <h3>RBYS</h3>
+            <p class="project-sub" data-i18n="projects.rbysSub">Dorixona / ombor boshqaruv tizimi</p>
+            <p data-i18n="projects.rbysDesc">
+              Inventarizatsiya hisobotlari, murakkab SQL (CTE'lar, ko'p jadvalli join'lar) va FastReport orqali hisobot generatsiyasi. ASP.NET/IIS + PostgreSQL asosida qurilgan.
+            </p>
+            <ul class="tags">
+              <li>ASP.NET</li><li>PostgreSQL</li><li>IIS</li><li>FastReport</li><li>SQL</li>
+            </ul>
+            <div class="project-links">
+              <button class="btn btn-small btn-primary btn-details" type="button" data-project-id="rbys" data-i18n="projects.details">Batafsil</button>
+              <span class="private-note" data-i18n="projects.privateNote">Kod yopiq (NDA)</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT / EXPERIENCE / EDUCATION ================= -->
+    <section class="section container" id="about" aria-labelledby="about-heading">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="about.eyebrow">Profil</p>
+        <h2 id="about-heading" data-i18n="about.title">Men haqimda</h2>
+      </div>
+
+      <div class="bento bento-about">
+        <article class="card card-accent span-7 reveal about-bio">
+          <div class="about-top">
+            <img class="about-avatar" src="assets/avatar.png" alt="Muhammadyusuf Mamaniyozov" loading="lazy" width="72" height="72">
+            <div>
+              <h3>Muhammadyusuf Mamaniyozov</h3>
+              <p class="about-role" data-i18n="about.role">Full-Stack Developer · Toshkent</p>
+            </div>
+          </div>
           <p data-i18n="about.p1">
-            Men biznes jarayonlarini raqamlashtirish, ichki CRM/ERP modullarini optimallashtirish va mavjud tizimlarda xatolarni aniqlab tuzatish bilan shug'ullanadigan dasturchiman. Asosiy kuchli tomonlarim: backend logic, ma'lumotlar bazasi modeli, REST API, deploy va production muammolarini tizimli hal qilish.
+            Biznes jarayonlarini raqamlashtirish, ichki CRM/ERP modullarini optimallashtirish va mavjud tizimlardagi xatolarni tizimli hal qilish bilan shug'ullanaman. Kuchli tomonlarim: backend logic, ma'lumotlar bazasi modeli, REST API va production muammolarini hal qilish.
           </p>
           <p data-i18n="about.p2">
-            Rezyume ma'lumotlariga ko'ra, asosiy darajadagi texnologiyalarim: Git, web-dasturlash, Python, dasturiy ta'minot ishlab chiqish, Django REST Framework va REST API. O'rta darajada Docker, PostgreSQL, Linux, Flask, HTML va DevOps bilan ishlayman.
+            Backend va frontend'ni birga olib boradigan full-stack yondashuvda ishlayman: aniq arxitektura, o'qiladigan kod va ishonchli deploy.
           </p>
-          <div class="about-highlight reveal">
-            <div class="about-highlight-label">Karmed</div>
-            <p data-i18n="about.p3">Karmed tizimini ishlatish va qo'llab-quvvatlash: tizimdagi xatolarni tuzatish, Postgres bazasidan ma'lumotlarni ajratib olish va tuzatish, FastReport yordamida hujjatlarni tuzatish, muammoli loyihalarning backend va Telegram botlarini tiklash va ba'zi hollarda loyihani to'liq tiklash.</p>
+          <ul class="lang-strip" aria-label="Til bilimlari">
+            <li data-i18n="about.langUz">O'zbek: ona tili</li>
+            <li data-i18n="about.langEn">English: B1</li>
+            <li data-i18n="about.langRu">Русский: B1</li>
+            <li data-i18n="about.langTr">Türkçe: B1</li>
+          </ul>
+        </article>
+
+        <article class="card span-5 reveal">
+          <h3 class="card-kicker" data-i18n="experience.title">Tajriba</h3>
+          <ol class="timeline">
+            <li>
+              <span class="timeline-date" data-i18n="experience.currentDate">Sen 2025 — hozir</span>
+              <strong>RIO / RIATM</strong>
+              <p data-i18n="experience.currentText">Karmed tizimida bugfixing, funksiyalarni yaxshilash va muammoli loyihalarni tiklash.</p>
+            </li>
+            <li>
+              <span class="timeline-date" data-i18n="experience.freelanceDate">Yan 2023 — Sen 2025</span>
+              <strong data-i18n="experience.freelanceRole">Freelance Backend Developer</strong>
+              <p data-i18n="experience.freelanceText">Biznes uchun web loyihalar, backend dasturlash va mavjud kodni tahlil qilish.</p>
+            </li>
+          </ol>
+        </article>
+
+        <article class="card span-12 reveal edu-card">
+          <div>
+            <h3 class="card-kicker" data-i18n="education.title">Ta'lim</h3>
+            <strong data-i18n="education.tuit">Toshkent Axborot Texnologiyalari Universiteti</strong>
+            <p class="about-role" data-i18n="education.degree">Dasturiy ta'minot muhandisligi, Bakalavr</p>
           </div>
-          <div class="info-strip">
-            <span data-i18n="about.langUz">O'zbek tili: native</span>
-            <span data-i18n="about.langEn">English: B1</span>
-            <span data-i18n="about.langRu">Russian: B1</span>
-            <span data-i18n="about.langTr">Turkish: B1</span>
-          </div>
-        </div>
+          <span class="timeline-date" data-i18n="education.dates">2021 — 2025</span>
+        </article>
       </div>
     </section>
 
-    <section class="section section-muted" id="playground">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="eyebrow">Interactive CLI</p>
-          <h2 data-i18n="playground.title">Backend Konsoli</h2>
-          <p data-i18n="playground.text">Python va Django backend tizimlariga oid buyruqlarni ishga tushirib ko'ring.</p>
-        </div>
-
-        <div class="terminal-widget reveal">
-          <div class="terminal-header">
-            <div class="terminal-dots">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-            <div class="terminal-tabs">
-              <button class="terminal-tab is-active" data-terminal-tab="shell" type="button">terminal.sh</button>
-              <button class="terminal-tab" data-terminal-tab="code" type="button">views.py</button>
-              <button class="terminal-tab" data-terminal-tab="db" type="button">models.py</button>
-            </div>
-            <div class="terminal-status">python 3.14.6</div>
-          </div>
-
-          <div class="terminal-body">
-            <!-- Terminal Shell Panel -->
-            <div class="terminal-panel is-active" id="panel-shell">
-              <div class="terminal-output" id="terminal-stdout">
-                <div class="output-row">
-                  <span class="cyan">Guest@Mamaniyozov:~$</span> <span class="white">help</span>
-                </div>
-                <div class="output-row text-muted" data-i18n="terminal.helpText">
-                  Tizimga xush kelibsiz! Muhammadyusuf haqida ma'lumot olish uchun quyidagi buyruqlarni ishlating:
-                </div>
-                <div class="output-row cmd-list">
-                  <div><strong class="green">help</strong> - <span data-i18n="terminal.cmdHelp">Yordam oynasini ko'rsatish</span></div>
-                  <div><strong class="green">cat skills.json</strong> - <span data-i18n="terminal.cmdSkills">Developerning texnik ko'nikmalarini ko'rish</span></div>
-                  <div><strong class="green">python manage.py test</strong> - <span data-i18n="terminal.cmdTest">Django testlar to'plamini ishga tushirish</span></div>
-                  <div><strong class="green">python manage.py runserver</strong> - <span data-i18n="terminal.cmdRun">Django development serverini yoqish</span></div>
-                  <div><strong class="green">python manage.py migrate</strong> - <span data-i18n="terminal.cmdMigrate">Ma'lumotlar bazasi migratsiyalarini bajarish</span></div>
-                  <div><strong class="green">clear</strong> - <span data-i18n="terminal.cmdClear">Konsol ekranini tozalash</span></div>
-                </div>
-              </div>
-              <form class="terminal-input-row" id="terminal-form">
-                <span class="cyan">Guest@Mamaniyozov:~$</span>
-                <input type="text" id="terminal-input" autocomplete="off" placeholder="Type command here..." aria-label="Terminal input">
-                <span class="cursor"></span>
-              </form>
-              <div class="terminal-quick-actions">
-                <button type="button" class="btn-quick" data-cmd="cat skills.json">cat skills.json</button>
-                <button type="button" class="btn-quick" data-cmd="python manage.py test">python manage.py test</button>
-                <button type="button" class="btn-quick" data-cmd="python manage.py runserver">python manage.py runserver</button>
-                <button type="button" class="btn-quick" data-cmd="python manage.py migrate">python manage.py migrate</button>
-              </div>
-            </div>
-
-            <!-- Django code Tab -->
-            <div class="terminal-panel" id="panel-code">
-              <pre class="code-block"><code class="python"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse
-<span class="keyword">from</span> django.views.decorators.http <span class="keyword">import</span> require_GET
-<span class="keyword">from</span> .models <span class="keyword">import</span> Developer
-
-<span class="decorator">@require_GET</span>
-<span class="keyword">def</span> <span class="function">get_profile</span>(request):
-    <span class="comment"># Fetch profile data with prefetched skills</span>
-    developer = Developer.objects.select_related(<span class="string">'profile'</span>).first()
-    
-    response_data = {
-        <span class="string">"name"</span>: developer.full_name,
-        <span class="string">"role"</span>: developer.role,
-        <span class="string">"experience"</span>: developer.experience_years,
-        <span class="string">"status"</span>: <span class="string">"Available for work (remote/office)"</span>,
-        <span class="string">"active_projects"</span>: list(developer.projects.values(<span class="string">'title'</span>, <span class="string">'tech_stack'</span>))
-    }
-    
-    <span class="keyword">return</span> JsonResponse(response_data, safe=<span class="keyword">False</span>)</code></pre>
-            </div>
-
-            <!-- DB models Code Tab -->
-            <div class="terminal-panel" id="panel-db">
-              <pre class="code-block"><code class="python"><span class="keyword">from</span> django.db <span class="keyword">import</span> models
-
-<span class="keyword">class</span> <span class="class">Developer</span>(models.Model):
-    full_name = models.CharField(max_length=<span class="number">200</span>)
-    role = models.CharField(max_length=<span class="number">100</span>)
-    experience_years = models.DecimalField(max_digits=<span class="number">3</span>, decimal_places=<span class="number">1</span>)
-    email = models.EmailField(unique=<span class="keyword">True</span>)
-    is_available = models.BooleanField(default=<span class="keyword">True</span>)
-
-    <span class="keyword">def</span> <span class="function">__str__</span>(self):
-        <span class="keyword">return</span> self.full_name
-
-<span class="keyword">class</span> <span class="class">Project</span>(models.Model):
-    developer = models.ForeignKey(Developer, on_delete=models.CASCADE, related_name=<span class="string">'projects'</span>)
-    title = models.CharField(max_length=<span class="number">200</span>)
-    description = models.TextField()
-    tech_stack = models.JSONField()
-    github_link = models.URLField(blank=<span class="keyword">True</span>)</code></pre>
-            </div>
-          </div>
-        </div>
+    <!-- ================= CONTACT ================= -->
+    <section class="section container" id="contact" aria-labelledby="contact-heading">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="contact.eyebrow">Aloqa</p>
+        <h2 id="contact-heading" data-i18n="contact.title">Bog'lanish</h2>
+        <p class="section-sub" data-i18n="contact.text">Hamkorlik, ish taklifi yoki loyiha muhokamasi uchun yozing.</p>
       </div>
-    </section>
 
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="eyebrow">Skills</p>
-          <h2 data-i18n="skills.title">Ko'nikmalar</h2>
-          <p data-i18n="skills.text">Texnologiyalar amaliy ish tajribasi va rezyume ma'lumotlari asosida guruhlandi.</p>
-        </div>
-
-        <div class="skills-tab-container reveal">
-          <div class="skills-tabs" role="tablist" aria-label="Skills categories">
-            <button class="skills-tab-btn is-active" type="button" role="tab" aria-selected="true" data-tab="backend">
-              <span class="tab-icon">
-                <svg class="tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-                  <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-                  <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
-                </svg>
-              </span>
-              <span>Backend</span>
-            </button>
-            <button class="skills-tab-btn" type="button" role="tab" aria-selected="false" data-tab="frontend">
-              <span class="tab-icon">
-                <svg class="tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-                  <rect width="20" height="14" x="2" y="3" rx="2" ry="2"/>
-                  <line x1="8" x2="16" y1="21" y2="21"/>
-                  <line x1="12" x2="12" y1="17" y2="21"/>
-                </svg>
-              </span>
-              <span data-i18n="skills.tabFrontend">Frontend</span>
-            </button>
-            <button class="skills-tab-btn" type="button" role="tab" aria-selected="false" data-tab="tools">
-              <span class="tab-icon">
-                <svg class="tab-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-                  <polyline points="4 17 10 11 4 5"/>
-                  <line x1="12" x2="20" y1="19" y2="19"/>
-                </svg>
-              </span>
-              <span data-i18n="skills.tabTools">Tools & Deploy</span>
-            </button>
-          </div>
-
-          <div class="skills-content-panel">
-            <!-- Backend Tab Content -->
-            <div class="skills-panel is-active" id="tab-backend" role="tabpanel">
-              <div class="panel-header">
-                <h3 data-i18n="skills.backendHeader">Backend Development</h3>
-                <p data-i18n="skills.backendDesc">Biznes mantiq, yuqori yuklamali REST API, xavfsizlik va ma'lumotlar ombori arxitekturasi.</p>
-              </div>
-              <ul class="skill-bars">
-                <li>
-                  <div class="skill-info"><span>Python (Django / Flask)</span><strong>92%</strong></div>
-                  <div class="bar"><i data-width="92%"></i></div>
-                </li>
-                <li>
-                  <div class="skill-info"><span>Django REST Framework</span><strong>88%</strong></div>
-                  <div class="bar"><i data-width="88%"></i></div>
-                </li>
-                <li>
-                  <div class="skill-info"><span>PostgreSQL (SQL / Optimization)</span><strong>78%</strong></div>
-                  <div class="bar"><i data-width="78%"></i></div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Frontend Tab Content -->
-            <div class="skills-panel" id="tab-frontend" role="tabpanel">
-              <div class="panel-header">
-                <h3 data-i18n="skills.frontendHeader">Frontend Development</h3>
-                <p data-i18n="skills.frontendDesc">Responsive dizayn, interaktiv foydalanuvchi interfeyslari va mijoz tomoni logikasi.</p>
-              </div>
-              <ul class="skill-bars">
-                <li>
-                  <div class="skill-info"><span>HTML5 / CSS3</span><strong>82%</strong></div>
-                  <div class="bar"><i data-width="82%"></i></div>
-                </li>
-                <li>
-                  <div class="skill-info"><span>JavaScript (ES6+ / DOM)</span><strong>76%</strong></div>
-                  <div class="bar"><i data-width="76%"></i></div>
-                </li>
-                <li>
-                  <div class="skill-info"><span>Responsive & Modern UI (CSS Grid / Flexbox)</span><strong>74%</strong></div>
-                  <div class="bar"><i data-width="74%"></i></div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Tools & Deploy Tab Content -->
-            <div class="skills-panel" id="tab-tools" role="tabpanel">
-              <div class="panel-header">
-                <h3 data-i18n="skills.toolsHeader">DevOps & Tools</h3>
-                <p data-i18n="skills.toolsDesc">Loyiha deploymenti, konteynerlashtirish va jamoaviy versiya nazorati modullari.</p>
-              </div>
-              <ul class="skill-bars">
-                <li>
-                  <div class="skill-info"><span>Git / GitHub</span><strong>90%</strong></div>
-                  <div class="bar"><i data-width="90%"></i></div>
-                </li>
-                <li>
-                  <div class="skill-info"><span>Docker (Containerization)</span><strong>74%</strong></div>
-                  <div class="bar"><i data-width="74%"></i></div>
-                </li>
-                <li>
-                  <div class="skill-info"><span>Railway / Heroku / Deploy</span><strong>72%</strong></div>
-                  <div class="bar"><i data-width="72%"></i></div>
-                </li>
-                <li>
-                  <div class="skill-info"><span>Linux / Bash scripting / CI-CD</span><strong>70%</strong></div>
-                  <div class="bar"><i data-width="70%"></i></div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="experience">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Experience</p>
-          <h2 data-i18n="experience.title">Ish tajribasi</h2>
-        </div>
-
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-date" data-i18n="experience.currentDate">Sep 2025 - hozir</div>
-            <div class="timeline-card">
-              <h3>RIO vs RIATM</h3>
-              <p class="company">Tashkent / cancercenter.uz</p>
-              <p data-i18n="experience.currentText">
-                Karmed tizimida xatolarni tuzatish, mavjud funksiyalarni yaxshilash, eski backend/frontend qismlarini tekshirish va muammoli loyihalarni qayta tiklash bo'yicha ishladim. Yo'nalish: tibbiyot, farmatsevtika, klinik tekshiruvlar.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal">
-            <div class="timeline-date" data-i18n="experience.freelanceDate">Yan 2023 - Sen 2025</div>
-            <div class="timeline-card">
-              <h3>Freelance Backend Developer</h3>
-              <p class="company">Samarqand / remote</p>
-              <p data-i18n="experience.freelanceText">
-                Biznes uchun web loyihalar yaratish, backend dasturlash, bug fixing, mavjud kodni tahlil qilish va noldan loyiha ko'tarish bilan shug'ullandim. CRM, marketing, reklama, BTL, PR va konsalting yo'nalishlaridagi vazifalarda qatnashganman.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="education">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Education</p>
-          <h2 data-i18n="education.title">Ta'lim</h2>
-        </div>
-
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-date" data-i18n="education.dates">2021 - 2025</div>
-            <div class="timeline-card">
-              <h3 data-i18n="education.tuit">Toshkent Axborot Texnologiyalari Universiteti</h3>
-              <p class="company" data-i18n="education.degree">Dasturiy ta'minot muhandisligi, Bakalavr</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="projects">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="eyebrow">Projects</p>
-          <h2 data-i18n="projects.title">Loyihalar</h2>
-        </div>
-
-        <div class="project-filters reveal">
-          <button class="filter-btn is-active" data-filter="all" type="button" data-i18n="projects.filterAll">Barchasi</button>
-          <button class="filter-btn" data-filter="backend" type="button">Backend</button>
-          <button class="filter-btn" data-filter="frontend" type="button">Frontend</button>
-          <button class="filter-btn" data-filter="fullstack" type="button" data-i18n="projects.filterFullstack">Full-Stack</button>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card reveal" data-category="backend fullstack">
-            <div class="project-media">
-              <img src="assets/project_hrmm.png" alt="HRMM - Enterprise HR Management System">
-            </div>
-            <div class="project-body">
-              <h3>HRMM - Enterprise HR Management System</h3>
-              <p data-i18n="projects.hrmm">
-                Korxona xodimlarini boshqarish uchun Django + PostgreSQL asosidagi tizim. Multi-theme appearance module, role-based access, vanilla JS interaktiv modullar va Railway deploy bilan ishlab chiqilgan.
-              </p>
-              <div class="tags">
-                <span>Django</span>
-                <span>PostgreSQL</span>
-                <span>Vanilla JS</span>
-                <span>Railway</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
-                <button class="btn-details" type="button" data-project-id="hrmm" data-i18n="projects.details">Batafsil</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal" data-category="backend">
-            <div class="project-media">
-              <img src="assets/project_api.png" alt="REST API Backend Modules">
-            </div>
-            <div class="project-body">
-              <h3>REST API Backend Modules</h3>
-              <p data-i18n="projects.api">
-                Authentication, permission, CRUD, reporting va biznes logikani ajratilgan backend servislar sifatida qurish bo'yicha amaliy modullar.
-              </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>DRF</span>
-                <span>REST API</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
-                <button class="btn-details" type="button" data-project-id="api" data-i18n="projects.details">Batafsil</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal" data-category="frontend fullstack">
-            <div class="project-media">
-              <img src="assets/project_crm.png" alt="Business Automation Tools">
-            </div>
-            <div class="project-body">
-              <h3>Business Automation Tools</h3>
-              <p data-i18n="projects.crm">
-                Kichik va o'rta biznes uchun ichki jarayonlarni avtomatlashtirish: dashboard, ma'lumotlar modeli, forma validatsiyasi va deploy jarayonlari.
-              </p>
-              <div class="tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Docker</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
-                <button class="btn-details" type="button" data-project-id="crm" data-i18n="projects.details">Batafsil</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container contact-grid">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Contact</p>
-          <h2 data-i18n="contact.title">Aloqa</h2>
-          <p data-i18n="contact.text">Hamkorlik, ish taklifi yoki loyiha muhokamasi uchun bog'lanishingiz mumkin.</p>
-        </div>
-
-        <div class="contact-panel reveal">
+      <div class="bento bento-contact">
+        <div class="card span-5 reveal contact-links">
           <a class="contact-link" href="mailto:mamaniyozovmuhammadyusuf5@gmail.com" aria-label="Email">
-            <span>
-              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-                <rect width="20" height="16" x="2" y="4" rx="2"/>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-            </span>
-            <strong>mamaniyozovmuhammadyusuf5@gmail.com</strong>
-          </a>
-          <a class="contact-link" href="tel:+998930065538" aria-label="Telefon">
-            <span>
-              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </span>
-            <strong>+998 93 006 55 38</strong>
+            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+            <span><small>Email</small><strong>mamaniyozovmuhammadyusuf5@gmail.com</strong></span>
           </a>
           <a class="contact-link" href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noreferrer" aria-label="Telegram">
-            <span>
-              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-                <path d="m22 2-7 20-4-9-9-4Z"/>
-                <path d="M22 2 11 13"/>
-              </svg>
-            </span>
-            <strong>@Muhammadyusuf_5538</strong>
-          </a>
-          <a class="contact-link" href="https://www.linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <span>
-              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect width="4" height="12" x="2" y="9"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
-            </span>
-            <strong>LinkedIn</strong>
+            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+            <span><small>Telegram</small><strong>@Muhammadyusuf_5538</strong></span>
           </a>
           <a class="contact-link" href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <span>
-              <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-                <path d="M9 18c-4.51 2-5-2-7-2"/>
-              </svg>
-            </span>
-            <strong>GitHub</strong>
+            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span>
+            <span><small>GitHub</small><strong>github.com/Mamaniyozov</strong></span>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></span>
+            <span><small>LinkedIn</small><strong>Muhammadyusuf Mamaniyozov</strong></span>
           </a>
         </div>
 
-        <form class="contact-form reveal" action="#" method="post">
+        <form class="card span-7 reveal contact-form" action="#" method="post" novalidate>
           <div class="form-group">
             <input type="text" id="contact-name" name="name" placeholder=" " required autocomplete="name">
             <label for="contact-name" data-i18n="form.name">Ismingiz</label>
@@ -624,35 +317,34 @@
   <footer class="footer">
     <div class="container footer-inner">
       <p data-i18n="footer.copy">© 2026 Muhammadyusuf Mamaniyozov. Barcha huquqlar himoyalangan.</p>
-      <div>
+      <div class="footer-links">
         <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noreferrer">Telegram</a>
         <a href="https://www.linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </div>
   </footer>
 
-  <!-- Detailed Project Modal -->
-  <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog">
+  <!-- Project Detail Modal -->
+  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-backdrop" data-close-modal></div>
     <div class="modal-content">
-      <button class="modal-close-btn" type="button" aria-label="Modalni yopish" data-close-modal>&times;</button>
-      <div class="modal-body-content" id="modal-body-content">
-        <!-- Rendered dynamically by JavaScript -->
-      </div>
+      <button class="modal-close" type="button" aria-label="Modalni yopish" data-close-modal data-i18n-attr="aria-label:modal.close">&times;</button>
+      <div id="modal-body-content"><!-- rendered by JS --></div>
     </div>
   </div>
 
   <!-- Contact Success Modal -->
-  <div class="project-modal" id="contact-success-modal" aria-hidden="true" role="dialog">
+  <div class="modal" id="contact-success-modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-backdrop" data-close-success-modal></div>
-    <div class="modal-content success-modal-content" style="text-align: center; max-width: 420px; padding: 42px 28px;">
-      <button class="modal-close-btn" type="button" aria-label="Modalni yopish" data-close-success-modal>&times;</button>
-      <div style="font-size: 3.5rem; margin-bottom: 20px; color: var(--accent); line-height: 1;">✓</div>
-      <h3 data-i18n="form.successTitle" style="font-size: 1.5rem; margin-bottom: 12px; font-weight: 800;">Xabar tayyorlandi!</h3>
-      <p data-i18n="form.successText" style="color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.5;">
-        Xabaringiz muvaffaqiyatli saqlandi. Bog'lanish uchun pochtangizga tez orada javob yuboramiz!
-      </p>
-      <button class="btn btn-primary" type="button" data-close-success-modal style="width: 100%;">OK</button>
+    <div class="modal-content success-content">
+      <button class="modal-close" type="button" aria-label="Modalni yopish" data-close-success-modal>&times;</button>
+      <div class="success-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h3 data-i18n="form.successTitle">Xabar tayyorlandi!</h3>
+      <p data-i18n="form.successText">Xabaringiz muvaffaqiyatli saqlandi. Tez orada aloqaga chiqamiz!</p>
+      <button class="btn btn-primary" type="button" data-close-success-modal>OK</button>
     </div>
   </div>
 
