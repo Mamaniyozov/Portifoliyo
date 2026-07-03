@@ -6,7 +6,7 @@
   <meta name="description" content="Muhammadyusuf Mamaniyozov Tulqin - Django, DRF, PostgreSQL va vanilla JavaScript bilan ishlaydigan full-stack dasturchi. HRMM va RBYS loyihalari.">
   <meta name="keywords" content="Muhammadyusuf Mamaniyozov, Full-Stack Developer, Python, Django, DRF, PostgreSQL, ASP.NET, JavaScript, Portfolio">
   <meta name="author" content="Muhammadyusuf Mamaniyozov Tulqin">
-  <meta name="theme-color" content="#0A0A0F">
+  <meta name="theme-color" content="#0F172A">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -159,51 +159,117 @@
       <div class="section-head reveal">
         <p class="eyebrow" data-i18n="projects.eyebrow">Ishlar</p>
         <h2 id="projects-heading" data-i18n="projects.title">Loyihalar</h2>
-        <p class="section-sub" data-i18n="projects.text">Ishlab chiqarilgan ikkita real tizim.</p>
+        <p class="section-sub" data-i18n="projects.text">Muammo → yechim → arxitektura → natija formatidagi real tizimlar.</p>
       </div>
 
-      <div class="bento bento-projects">
-        <!-- HRMM -->
-        <article class="card project-card span-7 reveal" data-project-id="hrmm">
-          <div class="project-media">
-            <img src="assets/project_hrmm.png" alt="HRMM - Human Resource Management System" loading="lazy" width="800" height="450">
-            <span class="project-badge project-badge-live" data-i18n="projects.live">Live · Railway</span>
-          </div>
-          <div class="project-body">
-            <h3>HRMM</h3>
-            <p class="project-sub" data-i18n="projects.hrmmSub">Human Resource Management System</p>
-            <p data-i18n="projects.hrmmDesc">
-              Xodimlarni boshqarish tizimi: JWT autentifikatsiya, ko'p tilli (i18n) interfeys, dark/light tema, arxivlash tizimi va Telegram bot integratsiyasi. Django 5.2 + DRF backend, vanilla JS frontend, Railway'da deploy qilingan.
-            </p>
-            <ul class="tags">
-              <li>Django</li><li>DRF</li><li>PostgreSQL</li><li>JavaScript</li><li>Railway</li><li>Docker</li>
-            </ul>
-            <div class="project-links">
-              <button class="btn btn-small btn-primary btn-details" type="button" data-project-id="hrmm" data-i18n="projects.details">Batafsil</button>
+      <div class="case-list">
+        <!-- HRMM case study -->
+        <article class="card case-study reveal">
+          <header class="case-head">
+            <div>
+              <h3>HRMM</h3>
+              <p class="project-sub" data-i18n="projects.hrmmSub">Human Resource Management System</p>
+            </div>
+            <div class="case-meta">
+              <span class="project-badge project-badge-live" data-i18n="projects.live">Live · Railway</span>
               <a class="btn btn-small btn-ghost" href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
             </div>
+          </header>
+          <ul class="tags">
+            <li>Django 5.2</li><li>DRF</li><li>PostgreSQL</li><li>JavaScript</li><li>Railway</li><li>Docker</li>
+          </ul>
+          <div class="case-grid">
+            <div class="case-block">
+              <h4 data-i18n="case.problem">Muammo</h4>
+              <p data-i18n="projects.hrmmProblem">Xodimlar ma'lumotlari tarqoq holda yuritilar, kadrlar hisobi va davomat qo'lda boshqarilar, hisobotlar sekin tayyorlanar edi.</p>
+            </div>
+            <div class="case-block">
+              <h4 data-i18n="case.solution">Yechim</h4>
+              <p data-i18n="projects.hrmmSolution">Django 5.2 + DRF asosida markazlashgan tizim: JWT autentifikatsiya, rollarga asoslangan ruxsatlar, ko'p tilli (i18n) interfeys, arxivlash tizimi va Telegram bot bildirishnomalari.</p>
+            </div>
+            <div class="case-block">
+              <h4 data-i18n="case.result">Natija</h4>
+              <p data-i18n="projects.hrmmResult">Railway'da production'da ishlamoqda: yagona ma'lumotlar bazasi, tezkor kadrlar hisobi va dark/light temali zamonaviy interfeys.</p>
+            </div>
+          </div>
+          <div class="case-arch">
+            <h4 data-i18n="case.architecture">Arxitektura</h4>
+            <svg class="arch-svg" viewBox="0 0 640 196" role="img" aria-label="HRMM arxitekturasi: Vanilla JS UI, DRF REST API, PostgreSQL va Telegram Bot">
+              <defs>
+                <marker id="arw-hrmm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" class="arch-arrow"/>
+                </marker>
+              </defs>
+              <rect class="arch-box" x="8" y="34" width="168" height="60" rx="10"/>
+              <text class="arch-label" x="92" y="60" text-anchor="middle">Vanilla JS UI</text>
+              <text class="arch-sub" x="92" y="80" text-anchor="middle">Frontend</text>
+              <line class="arch-line" x1="176" y1="64" x2="228" y2="64" marker-end="url(#arw-hrmm)"/>
+              <rect class="arch-box arch-box-accent" x="236" y="34" width="168" height="60" rx="10"/>
+              <text class="arch-label" x="320" y="60" text-anchor="middle">DRF REST API</text>
+              <text class="arch-sub" x="320" y="80" text-anchor="middle">Django 5.2 · JWT</text>
+              <line class="arch-line" x1="404" y1="64" x2="456" y2="64" marker-end="url(#arw-hrmm)"/>
+              <rect class="arch-box" x="464" y="34" width="168" height="60" rx="10"/>
+              <text class="arch-label" x="548" y="60" text-anchor="middle">PostgreSQL</text>
+              <text class="arch-sub" x="548" y="80" text-anchor="middle">Database</text>
+              <line class="arch-line arch-line-dashed" x1="320" y1="94" x2="320" y2="136" marker-end="url(#arw-hrmm)"/>
+              <rect class="arch-box" x="236" y="142" width="168" height="46" rx="10"/>
+              <text class="arch-label" x="320" y="170" text-anchor="middle">Telegram Bot</text>
+            </svg>
           </div>
         </article>
 
-        <!-- RBYS -->
-        <article class="card project-card span-5 reveal" data-project-id="rbys">
-          <div class="project-media">
-            <img src="assets/project_api.png" alt="RBYS - Dorixona / ombor boshqaruv tizimi" loading="lazy" width="800" height="450">
-            <span class="project-badge project-badge-private" data-i18n="projects.private">Private loyiha</span>
-          </div>
-          <div class="project-body">
-            <h3>RBYS</h3>
-            <p class="project-sub" data-i18n="projects.rbysSub">Dorixona / ombor boshqaruv tizimi</p>
-            <p data-i18n="projects.rbysDesc">
-              Inventarizatsiya hisobotlari, murakkab SQL (CTE'lar, ko'p jadvalli join'lar) va FastReport orqali hisobot generatsiyasi. ASP.NET/IIS + PostgreSQL asosida qurilgan.
-            </p>
-            <ul class="tags">
-              <li>ASP.NET</li><li>PostgreSQL</li><li>IIS</li><li>FastReport</li><li>SQL</li>
-            </ul>
-            <div class="project-links">
-              <button class="btn btn-small btn-primary btn-details" type="button" data-project-id="rbys" data-i18n="projects.details">Batafsil</button>
+        <!-- RBYS case study -->
+        <article class="card case-study reveal">
+          <header class="case-head">
+            <div>
+              <h3>RBYS</h3>
+              <p class="project-sub" data-i18n="projects.rbysSub">Dorixona / ombor boshqaruv tizimi</p>
+            </div>
+            <div class="case-meta">
+              <span class="project-badge project-badge-private" data-i18n="projects.private">Private loyiha</span>
               <span class="private-note" data-i18n="projects.privateNote">Kod yopiq (NDA)</span>
             </div>
+          </header>
+          <ul class="tags">
+            <li>ASP.NET</li><li>PostgreSQL</li><li>IIS</li><li>FastReport</li><li>SQL</li>
+          </ul>
+          <div class="case-grid">
+            <div class="case-block">
+              <h4 data-i18n="case.problem">Muammo</h4>
+              <p data-i18n="projects.rbysProblem">Dorixona va ombor inventarizatsiyasi qo'lda yuritilib, hisobotlar sekin tayyorlanar va xatolarga moyil edi.</p>
+            </div>
+            <div class="case-block">
+              <h4 data-i18n="case.solution">Yechim</h4>
+              <p data-i18n="projects.rbysSolution">ASP.NET + PostgreSQL asosidagi tizim: CTE va ko'p jadvalli join'lar bilan murakkab SQL so'rovlari, FastReport orqali chop etiladigan hisobotlar generatsiyasi.</p>
+            </div>
+            <div class="case-block">
+              <h4 data-i18n="case.result">Natija</h4>
+              <p data-i18n="projects.rbysResult">IIS'da production'da ishlamoqda: inventarizatsiya hisobotlari avtomatlashtirildi, hujjatlar bir tugma bilan generatsiya qilinadi.</p>
+            </div>
+          </div>
+          <div class="case-arch">
+            <h4 data-i18n="case.architecture">Arxitektura</h4>
+            <svg class="arch-svg" viewBox="0 0 640 196" role="img" aria-label="RBYS arxitekturasi: ASP.NET UI, ASP.NET Backend, PostgreSQL va FastReport">
+              <defs>
+                <marker id="arw-rbys" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" class="arch-arrow"/>
+                </marker>
+              </defs>
+              <rect class="arch-box" x="8" y="34" width="168" height="60" rx="10"/>
+              <text class="arch-label" x="92" y="60" text-anchor="middle">ASP.NET UI</text>
+              <text class="arch-sub" x="92" y="80" text-anchor="middle">IIS</text>
+              <line class="arch-line" x1="176" y1="64" x2="228" y2="64" marker-end="url(#arw-rbys)"/>
+              <rect class="arch-box arch-box-accent" x="236" y="34" width="168" height="60" rx="10"/>
+              <text class="arch-label" x="320" y="60" text-anchor="middle">ASP.NET Backend</text>
+              <text class="arch-sub" x="320" y="80" text-anchor="middle">Business logic · SQL</text>
+              <line class="arch-line" x1="404" y1="64" x2="456" y2="64" marker-end="url(#arw-rbys)"/>
+              <rect class="arch-box" x="464" y="34" width="168" height="60" rx="10"/>
+              <text class="arch-label" x="548" y="60" text-anchor="middle">PostgreSQL</text>
+              <text class="arch-sub" x="548" y="80" text-anchor="middle">CTE · Joins</text>
+              <line class="arch-line arch-line-dashed" x1="320" y1="94" x2="320" y2="136" marker-end="url(#arw-rbys)"/>
+              <rect class="arch-box" x="236" y="142" width="168" height="46" rx="10"/>
+              <text class="arch-label" x="320" y="170" text-anchor="middle">FastReport</text>
+            </svg>
           </div>
         </article>
       </div>
@@ -241,6 +307,11 @@
 
         <article class="card span-5 reveal">
           <h3 class="card-kicker" data-i18n="experience.title">Tajriba</h3>
+          <div class="exp-metrics">
+            <span data-i18n="experience.metricYears">3.5+ yil tajriba</span>
+            <span data-i18n="experience.metricProjects">2 yirik tizim</span>
+            <span data-i18n="experience.metricProd">Production'da</span>
+          </div>
           <ol class="timeline">
             <li>
               <span class="timeline-date" data-i18n="experience.currentDate">Sen 2025 — hozir</span>
@@ -324,15 +395,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Project Detail Modal -->
-  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-content">
-      <button class="modal-close" type="button" aria-label="Modalni yopish" data-close-modal data-i18n-attr="aria-label:modal.close">&times;</button>
-      <div id="modal-body-content"><!-- rendered by JS --></div>
-    </div>
-  </div>
 
   <!-- Contact Success Modal -->
   <div class="modal" id="contact-success-modal" aria-hidden="true" role="dialog" aria-modal="true">

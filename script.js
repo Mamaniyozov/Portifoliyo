@@ -90,15 +90,22 @@ const translations = {
     "skills.toolsDesc": "Versiya nazorati, hisobot generatsiyasi va integratsiyalar.",
     "projects.eyebrow": "Ishlar",
     "projects.title": "Loyihalar",
-    "projects.text": "Ishlab chiqarilgan ikkita real tizim.",
-    "projects.details": "Batafsil",
+    "projects.text": "Muammo → yechim → arxitektura → natija formatidagi real tizimlar.",
+    "case.problem": "Muammo",
+    "case.solution": "Yechim",
+    "case.architecture": "Arxitektura",
+    "case.result": "Natija",
     "projects.live": "Live · Railway",
     "projects.private": "Private loyiha",
     "projects.privateNote": "Kod yopiq (NDA)",
     "projects.hrmmSub": "Human Resource Management System",
-    "projects.hrmmDesc": "Xodimlarni boshqarish tizimi: JWT autentifikatsiya, ko'p tilli (i18n) interfeys, dark/light tema, arxivlash tizimi va Telegram bot integratsiyasi. Django 5.2 + DRF backend, vanilla JS frontend, Railway'da deploy qilingan.",
+    "projects.hrmmProblem": "Xodimlar ma'lumotlari tarqoq holda yuritilar, kadrlar hisobi va davomat qo'lda boshqarilar, hisobotlar sekin tayyorlanar edi.",
+    "projects.hrmmSolution": "Django 5.2 + DRF asosida markazlashgan tizim: JWT autentifikatsiya, rollarga asoslangan ruxsatlar, ko'p tilli (i18n) interfeys, arxivlash tizimi va Telegram bot bildirishnomalari.",
+    "projects.hrmmResult": "Railway'da production'da ishlamoqda: yagona ma'lumotlar bazasi, tezkor kadrlar hisobi va dark/light temali zamonaviy interfeys.",
     "projects.rbysSub": "Dorixona / ombor boshqaruv tizimi",
-    "projects.rbysDesc": "Inventarizatsiya hisobotlari, murakkab SQL (CTE'lar, ko'p jadvalli join'lar) va FastReport orqali hisobot generatsiyasi. ASP.NET/IIS + PostgreSQL asosida qurilgan.",
+    "projects.rbysProblem": "Dorixona va ombor inventarizatsiyasi qo'lda yuritilib, hisobotlar sekin tayyorlanar va xatolarga moyil edi.",
+    "projects.rbysSolution": "ASP.NET + PostgreSQL asosidagi tizim: CTE va ko'p jadvalli join'lar bilan murakkab SQL so'rovlari, FastReport orqali chop etiladigan hisobotlar generatsiyasi.",
+    "projects.rbysResult": "IIS'da production'da ishlamoqda: inventarizatsiya hisobotlari avtomatlashtirildi, hujjatlar bir tugma bilan generatsiya qilinadi.",
     "about.eyebrow": "Profil",
     "about.title": "Men haqimda",
     "about.role": "Full-Stack Developer · Toshkent",
@@ -109,6 +116,9 @@ const translations = {
     "about.langRu": "Русский: B1",
     "about.langTr": "Türkçe: B1",
     "experience.title": "Tajriba",
+    "experience.metricYears": "3.5+ yil tajriba",
+    "experience.metricProjects": "2 yirik tizim",
+    "experience.metricProd": "Production'da",
     "experience.currentDate": "Sen 2025 — hozir",
     "experience.currentText": "Karmed tizimida bugfixing, funksiyalarni yaxshilash va muammoli loyihalarni tiklash.",
     "experience.freelanceDate": "Yan 2023 — Sen 2025",
@@ -167,15 +177,22 @@ const translations = {
     "skills.toolsDesc": "Version control, report generation and integrations.",
     "projects.eyebrow": "Work",
     "projects.title": "Projects",
-    "projects.text": "Two real systems shipped to production.",
-    "projects.details": "Details",
+    "projects.text": "Real systems in a problem → solution → architecture → result format.",
+    "case.problem": "Problem",
+    "case.solution": "Solution",
+    "case.architecture": "Architecture",
+    "case.result": "Result",
     "projects.live": "Live · Railway",
     "projects.private": "Private project",
     "projects.privateNote": "Closed source (NDA)",
     "projects.hrmmSub": "Human Resource Management System",
-    "projects.hrmmDesc": "Employee management system: JWT authentication, multilingual (i18n) interface, dark/light theme, archiving system and Telegram bot integration. Django 5.2 + DRF backend, vanilla JS frontend, deployed on Railway.",
+    "projects.hrmmProblem": "Employee data was scattered, HR records and attendance were managed manually, and reporting was slow.",
+    "projects.hrmmSolution": "A centralised system built on Django 5.2 + DRF: JWT authentication, role-based permissions, multilingual (i18n) interface, archiving system and Telegram bot notifications.",
+    "projects.hrmmResult": "Running in production on Railway: a single source of truth, fast HR records and a modern dark/light themed interface.",
     "projects.rbysSub": "Pharmacy / warehouse management system",
-    "projects.rbysDesc": "Inventory reports, complex SQL (CTEs, multi-table joins) and report generation via FastReport. Built on ASP.NET/IIS + PostgreSQL.",
+    "projects.rbysProblem": "Pharmacy and warehouse inventory was tracked manually; reports were slow and error-prone.",
+    "projects.rbysSolution": "A system built on ASP.NET + PostgreSQL: complex SQL queries with CTEs and multi-table joins, printable report generation via FastReport.",
+    "projects.rbysResult": "In production on IIS: inventory reporting is automated and documents are generated with a single click.",
     "about.eyebrow": "Profile",
     "about.title": "About",
     "about.role": "Full-Stack Developer · Tashkent",
@@ -186,6 +203,9 @@ const translations = {
     "about.langRu": "Russian: B1",
     "about.langTr": "Turkish: B1",
     "experience.title": "Experience",
+    "experience.metricYears": "3.5+ years of experience",
+    "experience.metricProjects": "2 major systems",
+    "experience.metricProd": "In production",
     "experience.currentDate": "Sep 2025 — present",
     "experience.currentText": "Bugfixing, feature improvements and recovery of legacy projects in the Karmed system.",
     "experience.freelanceDate": "Jan 2023 — Sep 2025",
@@ -244,15 +264,22 @@ const translations = {
     "skills.toolsDesc": "Контроль версий, генерация отчётов и интеграции.",
     "projects.eyebrow": "Работы",
     "projects.title": "Проекты",
-    "projects.text": "Две реальные системы в production.",
-    "projects.details": "Подробнее",
+    "projects.text": "Реальные системы в формате проблема → решение → архитектура → результат.",
+    "case.problem": "Проблема",
+    "case.solution": "Решение",
+    "case.architecture": "Архитектура",
+    "case.result": "Результат",
     "projects.live": "Live · Railway",
     "projects.private": "Приватный проект",
     "projects.privateNote": "Закрытый код (NDA)",
     "projects.hrmmSub": "Система управления персоналом",
-    "projects.hrmmDesc": "Система управления сотрудниками: JWT-аутентификация, многоязычный (i18n) интерфейс, тёмная/светлая тема, система архивации и интеграция с Telegram-ботом. Бэкенд Django 5.2 + DRF, фронтенд на чистом JS, задеплоено на Railway.",
+    "projects.hrmmProblem": "Данные сотрудников велись разрозненно, кадровый учёт и посещаемость — вручную, отчёты готовились медленно.",
+    "projects.hrmmSolution": "Централизованная система на Django 5.2 + DRF: JWT-аутентификация, ролевые права, многоязычный (i18n) интерфейс, система архивации и уведомления через Telegram-бот.",
+    "projects.hrmmResult": "Работает в production на Railway: единая база данных, быстрый кадровый учёт и современный интерфейс с тёмной/светлой темой.",
     "projects.rbysSub": "Система управления аптекой / складом",
-    "projects.rbysDesc": "Отчёты по инвентаризации, сложный SQL (CTE, многотабличные join'ы) и генерация отчётов через FastReport. Построено на ASP.NET/IIS + PostgreSQL.",
+    "projects.rbysProblem": "Инвентаризация аптеки и склада велась вручную; отчёты были медленными и подверженными ошибкам.",
+    "projects.rbysSolution": "Система на ASP.NET + PostgreSQL: сложные SQL-запросы с CTE и многотабличными join'ами, генерация печатных отчётов через FastReport.",
+    "projects.rbysResult": "В production на IIS: отчётность по инвентаризации автоматизирована, документы генерируются в один клик.",
     "about.eyebrow": "Профиль",
     "about.title": "Обо мне",
     "about.role": "Full-Stack Developer · Ташкент",
@@ -263,6 +290,9 @@ const translations = {
     "about.langRu": "Русский: B1",
     "about.langTr": "Турецкий: B1",
     "experience.title": "Опыт",
+    "experience.metricYears": "3.5+ лет опыта",
+    "experience.metricProjects": "2 крупные системы",
+    "experience.metricProd": "В production",
     "experience.currentDate": "Сен 2025 — настоящее",
     "experience.currentText": "Исправление ошибок, улучшение функций и восстановление устаревших проектов в системе Karmed.",
     "experience.freelanceDate": "Янв 2023 — Сен 2025",
@@ -321,15 +351,22 @@ const translations = {
     "skills.toolsDesc": "Sürüm kontrolü, rapor üretimi ve entegrasyonlar.",
     "projects.eyebrow": "İşler",
     "projects.title": "Projeler",
-    "projects.text": "Production'a çıkarılmış iki gerçek sistem.",
-    "projects.details": "Detaylar",
+    "projects.text": "Sorun → çözüm → mimari → sonuç formatında gerçek sistemler.",
+    "case.problem": "Sorun",
+    "case.solution": "Çözüm",
+    "case.architecture": "Mimari",
+    "case.result": "Sonuç",
     "projects.live": "Live · Railway",
     "projects.private": "Özel proje",
     "projects.privateNote": "Kapalı kaynak (NDA)",
     "projects.hrmmSub": "İnsan Kaynakları Yönetim Sistemi",
-    "projects.hrmmDesc": "Personel yönetim sistemi: JWT kimlik doğrulama, çok dilli (i18n) arayüz, koyu/açık tema, arşivleme sistemi ve Telegram bot entegrasyonu. Django 5.2 + DRF backend, vanilla JS frontend, Railway üzerinde dağıtıldı.",
+    "projects.hrmmProblem": "Personel verileri dağınık tutuluyor, İK kayıtları ve devam takibi manuel yönetiliyor, raporlar yavaş hazırlanıyordu.",
+    "projects.hrmmSolution": "Django 5.2 + DRF tabanlı merkezi sistem: JWT kimlik doğrulama, rol tabanlı yetkiler, çok dilli (i18n) arayüz, arşivleme sistemi ve Telegram bot bildirimleri.",
+    "projects.hrmmResult": "Railway üzerinde production'da: tek veri kaynağı, hızlı İK kayıtları ve koyu/açık temalı modern arayüz.",
     "projects.rbysSub": "Eczane / depo yönetim sistemi",
-    "projects.rbysDesc": "Envanter raporları, karmaşık SQL (CTE'ler, çok tablolu join'ler) ve FastReport ile rapor üretimi. ASP.NET/IIS + PostgreSQL üzerine kurulu.",
+    "projects.rbysProblem": "Eczane ve depo envanteri manuel tutuluyordu; raporlar yavaş ve hataya açıktı.",
+    "projects.rbysSolution": "ASP.NET + PostgreSQL tabanlı sistem: CTE'ler ve çok tablolu join'lerle karmaşık SQL sorguları, FastReport ile yazdırılabilir rapor üretimi.",
+    "projects.rbysResult": "IIS üzerinde production'da: envanter raporlaması otomatikleştirildi, belgeler tek tıkla üretiliyor.",
     "about.eyebrow": "Profil",
     "about.title": "Hakkımda",
     "about.role": "Full-Stack Developer · Taşkent",
@@ -340,6 +377,9 @@ const translations = {
     "about.langRu": "Rusça: B1",
     "about.langTr": "Türkçe: B1",
     "experience.title": "Deneyim",
+    "experience.metricYears": "3.5+ yıl deneyim",
+    "experience.metricProjects": "2 büyük sistem",
+    "experience.metricProd": "Production'da",
     "experience.currentDate": "Eyl 2025 — şimdi",
     "experience.currentText": "Karmed sisteminde hata düzeltme, özellik iyileştirme ve eski projelerin onarımı.",
     "experience.freelanceDate": "Oca 2023 — Eyl 2025",
@@ -497,140 +537,8 @@ document.querySelectorAll("[data-close-success-modal]").forEach((el) =>
   el.addEventListener("click", () => closeModal(contactSuccessModal))
 );
 
-/* ---------- Project detail modal ---------- */
-const projectModal = document.getElementById("project-modal");
-const modalBodyContent = document.getElementById("modal-body-content");
-const detailsButtons = [...document.querySelectorAll(".btn-details")];
-
-const projectDetailsData = {
-  hrmm: {
-    tags: ["Django 5.2", "DRF", "PostgreSQL", "JavaScript", "Railway", "Docker"],
-    image: "assets/project_hrmm.png",
-    uz: {
-      title: "HRMM", subtitle: "Human Resource Management System",
-      desc: "Korxona xodimlarini boshqarish tizimi. Django 5.2 + DRF backend va vanilla JS frontend asosida qurilgan, Railway'da deploy qilingan.",
-      challenges: [
-        "JWT asosida xavfsiz autentifikatsiya va rollarga asoslangan access control (RBAC).",
-        "Ko'p tilli (i18n) interfeys hamda dark/light tema qo'llab-quvvatlash.",
-        "Arxivlash tizimi va Telegram bot integratsiyasi orqali bildirishnomalar."
-      ],
-      metrics: [{ val: "i18n", label: "Ko'p tilli interfeys" }, { val: "JWT", label: "Xavfsiz autentifikatsiya" }]
-    },
-    en: {
-      title: "HRMM", subtitle: "Human Resource Management System",
-      desc: "Enterprise employee management system built with a Django 5.2 + DRF backend and vanilla JS frontend, deployed on Railway.",
-      challenges: [
-        "Secure JWT authentication and role-based access control (RBAC).",
-        "Multilingual (i18n) interface with dark/light theme support.",
-        "Archiving system and Telegram bot integration for notifications."
-      ],
-      metrics: [{ val: "i18n", label: "Multilingual UI" }, { val: "JWT", label: "Secure auth" }]
-    },
-    ru: {
-      title: "HRMM", subtitle: "Система управления персоналом",
-      desc: "Корпоративная система управления сотрудниками на бэкенде Django 5.2 + DRF и фронтенде на чистом JS, задеплоено на Railway.",
-      challenges: [
-        "Безопасная JWT-аутентификация и ролевой доступ (RBAC).",
-        "Многоязычный (i18n) интерфейс с тёмной/светлой темой.",
-        "Система архивации и интеграция с Telegram-ботом для уведомлений."
-      ],
-      metrics: [{ val: "i18n", label: "Многоязычный UI" }, { val: "JWT", label: "Безопасная авторизация" }]
-    },
-    tr: {
-      title: "HRMM", subtitle: "İnsan Kaynakları Yönetim Sistemi",
-      desc: "Django 5.2 + DRF backend ve vanilla JS frontend ile kurulan, Railway üzerinde dağıtılan kurumsal personel yönetim sistemi.",
-      challenges: [
-        "Güvenli JWT kimlik doğrulama ve rol tabanlı erişim kontrolü (RBAC).",
-        "Çok dilli (i18n) arayüz ve koyu/açık tema desteği.",
-        "Arşivleme sistemi ve bildirimler için Telegram bot entegrasyonu."
-      ],
-      metrics: [{ val: "i18n", label: "Çok dilli arayüz" }, { val: "JWT", label: "Güvenli kimlik doğrulama" }]
-    }
-  },
-  rbys: {
-    tags: ["ASP.NET", "PostgreSQL", "IIS", "FastReport", "SQL"],
-    image: "assets/project_api.png",
-    uz: {
-      title: "RBYS", subtitle: "Dorixona / ombor boshqaruv tizimi",
-      desc: "Dorixona va ombor uchun inventarizatsiya va hisobot tizimi. ASP.NET/IIS + PostgreSQL asosida qurilgan (private, NDA).",
-      challenges: [
-        "Murakkab SQL: CTE'lar va ko'p jadvalli join'lar bilan inventarizatsiya hisobotlari.",
-        "FastReport orqali chop etiladigan hisobotlar generatsiyasi.",
-        "IIS'da deploy va production muhitini qo'llab-quvvatlash."
-      ],
-      metrics: [{ val: "CTE", label: "Murakkab SQL" }, { val: "FastReport", label: "Hisobot generatsiyasi" }]
-    },
-    en: {
-      title: "RBYS", subtitle: "Pharmacy / warehouse management system",
-      desc: "Inventory and reporting system for pharmacy and warehouse operations. Built on ASP.NET/IIS + PostgreSQL (private, NDA).",
-      challenges: [
-        "Complex SQL: inventory reports using CTEs and multi-table joins.",
-        "Printable report generation via FastReport.",
-        "Deployment on IIS and production environment support."
-      ],
-      metrics: [{ val: "CTE", label: "Complex SQL" }, { val: "FastReport", label: "Report generation" }]
-    },
-    ru: {
-      title: "RBYS", subtitle: "Система управления аптекой / складом",
-      desc: "Система инвентаризации и отчётности для аптеки и склада. Построена на ASP.NET/IIS + PostgreSQL (приватный, NDA).",
-      challenges: [
-        "Сложный SQL: отчёты по инвентаризации с CTE и многотабличными join'ами.",
-        "Генерация печатных отчётов через FastReport.",
-        "Деплой на IIS и поддержка production-окружения."
-      ],
-      metrics: [{ val: "CTE", label: "Сложный SQL" }, { val: "FastReport", label: "Генерация отчётов" }]
-    },
-    tr: {
-      title: "RBYS", subtitle: "Eczane / depo yönetim sistemi",
-      desc: "Eczane ve depo operasyonları için envanter ve raporlama sistemi. ASP.NET/IIS + PostgreSQL üzerine kurulu (özel, NDA).",
-      challenges: [
-        "Karmaşık SQL: CTE'ler ve çok tablolu join'lerle envanter raporları.",
-        "FastReport ile yazdırılabilir rapor üretimi.",
-        "IIS üzerinde dağıtım ve production ortamı desteği."
-      ],
-      metrics: [{ val: "CTE", label: "Karmaşık SQL" }, { val: "FastReport", label: "Rapor üretimi" }]
-    }
-  }
-};
-
-function openProjectModal(projectId) {
-  if (!projectModal || !modalBodyContent) return;
-  const project = projectDetailsData[projectId];
-  if (!project) return;
-
-  const lang = document.documentElement.lang || "uz";
-  const data = project[lang] || project.en;
-  const achTitle = getTranslation(lang, "modal.achievements");
-
-  const challengesHtml = data.challenges.map((ch) => `<li>${ch}</li>`).join("");
-  const metricsHtml = data.metrics
-    .map((m) => `<div class="modal-metric-card"><strong>${m.val}</strong><span>${m.label}</span></div>`)
-    .join("");
-  const tagsHtml = project.tags.map((t) => `<span>${t}</span>`).join("");
-
-  modalBodyContent.innerHTML = `
-    <h2 id="modal-title">${data.title}</h2>
-    <div class="modal-subtitle">${data.subtitle}</div>
-    <img src="${project.image}" alt="${data.title}">
-    <div class="modal-tags">${tagsHtml}</div>
-    <p>${data.desc}</p>
-    <h4 class="modal-section-title">${achTitle}</h4>
-    <ul>${challengesHtml}</ul>
-    <div class="modal-metrics-grid">${metricsHtml}</div>
-  `;
-  openModal(projectModal);
-}
-
-detailsButtons.forEach((btn) => {
-  btn.addEventListener("click", () => openProjectModal(btn.getAttribute("data-project-id")));
-});
-document.querySelectorAll("[data-close-modal]").forEach((el) =>
-  el.addEventListener("click", () => closeModal(projectModal))
-);
-
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    closeModal(projectModal);
     closeModal(contactSuccessModal);
   }
 });
