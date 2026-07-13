@@ -1,0 +1,10 @@
+node_modules/
+.claude-flow/
+.claude/
+.mcp.json
+ruvector.db
+package-lock.json
+.env
+.env.local
+*.log
+.DS_Store

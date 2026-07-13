@@ -3,412 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Muhammadyusuf Mamaniyozov Tulqin - Django, DRF, PostgreSQL va vanilla JavaScript bilan ishlaydigan full-stack dasturchi. HRMM va RBYS loyihalari.">
-  <meta name="keywords" content="Muhammadyusuf Mamaniyozov, Full-Stack Developer, Python, Django, DRF, PostgreSQL, ASP.NET, JavaScript, Portfolio">
-  <meta name="author" content="Muhammadyusuf Mamaniyozov Tulqin">
-  <meta name="theme-color" content="#0F172A">
+  <meta name="description" content="Muhammadyusuf Mamaniyozov — Django va ASP.NET yo'nalishida ishlaydigan Full-Stack dasturchi. HRMM va boshqa loyihalar bilan tanishing.">
+  <meta name="keywords" content="Muhammadyusuf Mamaniyozov, Full-Stack Developer, Django, ASP.NET, Python, PostgreSQL, Docker, Portfolio">
+  <meta name="author" content="Muhammadyusuf Mamaniyozov">
+  <meta name="theme-color" content="#05070c">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Muhammadyusuf Mamaniyozov | Full-Stack Developer">
-  <meta property="og:description" content="Django, DRF, PostgreSQL va vanilla JavaScript asosida ishonchli web tizimlar quruvchi full-stack dasturchi.">
+  <meta property="og:title" content="Muhammadyusuf Mamaniyozov | Antigravity Developer">
+  <meta property="og:description" content="Django va ASP.NET asosida ishonchli web tizimlar quruvchi Full-Stack dasturchi.">
   <meta property="og:image" content="assets/avatar.png">
   <meta property="og:locale" content="uz_UZ">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Muhammadyusuf Mamaniyozov | Full-Stack Developer">
-  <meta name="twitter:description" content="Django, DRF, PostgreSQL va vanilla JavaScript asosida ishonchli web tizimlar quruvchi full-stack dasturchi.">
+  <meta name="twitter:title" content="Muhammadyusuf Mamaniyozov | Antigravity Developer">
+  <meta name="twitter:description" content="Django va ASP.NET asosida ishonchli web tizimlar quruvchi Full-Stack dasturchi.">
   <meta name="twitter:image" content="assets/avatar.png">
 
-  <title>Muhammadyusuf Mamaniyozov | Full-Stack Developer</title>
+  <title>Muhammadyusuf Mamaniyozov | Antigravity Developer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
-  <!-- Ambient gradient blobs (decorative) -->
-  <div class="ambient" aria-hidden="true">
-    <span class="blob blob-1"></span>
-    <span class="blob blob-2"></span>
-    <span class="blob blob-3"></span>
-    <span class="grid-overlay"></span>
+<body>
+  <!-- Background layer: grid + ambient neon glows -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="glow glow-violet"></div>
+    <div class="glow glow-indigo"></div>
   </div>
 
-  <a class="skip-link" href="#projects" data-i18n="a11y.skip">Asosiy kontentga o'tish</a>
+  <main class="page">
 
-  <header class="site-header" data-header>
-    <nav class="nav container" aria-label="Asosiy navigatsiya" data-i18n-attr="aria-label:nav.aria">
-      <a class="brand" href="#home" aria-label="Bosh sahifaga o'tish" data-i18n-attr="aria-label:brand.aria">
-        <span class="brand-mark">MM</span>
-        <span class="brand-name">Mamaniyozov</span>
-      </a>
-
-      <div class="nav-menu" data-nav-menu>
-        <a href="#skills" data-i18n="nav.skills">Ko'nikmalar</a>
-        <a href="#projects" data-i18n="nav.projects">Loyihalar</a>
-        <a href="#about" data-i18n="nav.about">Men haqimda</a>
-        <a href="#contact" data-i18n="nav.contact">Aloqa</a>
-      </div>
-
-      <div class="nav-actions">
-        <div class="language-switcher" role="group" aria-label="Tilni tanlash" data-i18n-attr="aria-label:language.aria">
-          <button class="lang-option is-active" type="button" data-lang="uz" aria-label="O'zbek tili" title="O'zbekcha">UZ</button>
-          <button class="lang-option" type="button" data-lang="en" aria-label="Ingliz tili" title="English">EN</button>
-          <button class="lang-option" type="button" data-lang="ru" aria-label="Rus tili" title="Русский">RU</button>
-          <button class="lang-option" type="button" data-lang="tr" aria-label="Turk tili" title="Türkçe">TR</button>
-        </div>
-
-        <button class="theme-toggle" type="button" aria-label="Rang rejimini almashtirish" data-theme-toggle data-i18n-attr="aria-label:theme.aria">
-          <span class="theme-icon" aria-hidden="true"></span>
-        </button>
-
-        <button class="nav-toggle" type="button" aria-label="Menyuni ochish" aria-expanded="false" data-nav-toggle data-i18n-attr="aria-label:menu.open">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <main id="home">
     <!-- ================= HERO ================= -->
-    <section class="hero container" aria-labelledby="hero-heading">
-      <div class="hero-inner reveal">
-        <p class="eyebrow"><span class="status-dot"></span><span data-i18n="hero.available">Ishga tayyor · Remote / Ofis</span></p>
-        <h1 class="hero-name" id="hero-heading">Muhammadyusuf<br>Mamaniyozov</h1>
-        <p class="hero-title"><span class="gradient-text" data-i18n="hero.role">Full-Stack Developer</span></p>
-        <p class="hero-text" data-i18n="hero.text">
-          Django, DRF, PostgreSQL va vanilla JavaScript asosida biznes uchun ishonchli, kengayadigan web tizimlar yarataman. Backend arxitekturasi, deployment va rollarga asoslangan access control bo'yicha ixtisoslashganman.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects" data-i18n="hero.projects">Loyihalarni ko'rish</a>
-          <a class="btn btn-secondary" href="#contact" data-i18n="hero.contact">Bog'lanish</a>
+    <section class="hero" aria-labelledby="hero-heading">
+      <p class="status-badge">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text">// SYSTEM STATUS: ACTIVE <span class="status-sub">(Ishga tayyor · Remote / Ofis)</span></span>
+      </p>
+
+      <h1 id="hero-heading" class="hero-name">Muhammadyusuf<br>Mamaniyozov</h1>
+      <p class="hero-sub">ANTIGRAVITY DEVELOPER</p>
+      <p class="hero-desc">Full-Stack Django &amp; ASP.NET dasturchi — ishonchli backend arxitektura va sezilarli darajada silliq interfeyslar quraman.</p>
+
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="core-shape">
+          <span class="ring ring-1"></span>
+          <span class="ring ring-2"></span>
+          <span class="ring ring-3"></span>
+          <span class="core-glow"></span>
+          <svg class="core-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z"/>
+            <path d="M12 2 L12 22 M4 7 L20 17 M20 7 L4 17"/>
+            <circle cx="12" cy="12" r="2.6"/>
+          </svg>
         </div>
-        <dl class="hero-stats" aria-label="Qisqa statistika" data-i18n-attr="aria-label:hero.metaAria">
-          <div class="hero-stat">
-            <dt>3.5+</dt><dd data-i18n="hero.statYears">yil tajriba</dd>
-          </div>
-          <div class="hero-stat">
-            <dt>2</dt><dd data-i18n="hero.statProjects">yirik loyiha</dd>
-          </div>
-          <div class="hero-stat">
-            <dt>4</dt><dd data-i18n="hero.statLangs">til (UZ/EN/RU/TR)</dd>
-          </div>
-        </dl>
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
       </div>
     </section>
 
-    <!-- ================= SKILLS ================= -->
-    <section class="section container" id="skills" aria-labelledby="skills-heading">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="skills.eyebrow">Tech Stack</p>
-        <h2 id="skills-heading" data-i18n="skills.title">Ko'nikmalar</h2>
-        <p class="section-sub" data-i18n="skills.text">Amaliy ish tajribasi asosida guruhlangan texnologiyalar.</p>
-      </div>
+    <!-- ================= BENTO GRID ================= -->
+    <section class="bento" aria-label="Portfolio bo'limlari">
 
-      <div class="bento bento-skills">
-        <article class="card card-accent span-6 reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+      <!-- ---- LEFT COLUMN ---- -->
+      <div class="col col-left">
+
+        <!-- ABOUT ME -->
+        <article class="card card-about">
+          <div class="avatar-frame">
+            <img src="assets/avatar.png" alt="Muhammadyusuf Mamaniyozov" loading="lazy">
           </div>
-          <h3 data-i18n="skills.backendTitle">Backend</h3>
-          <p data-i18n="skills.backendDesc">Biznes mantiq, REST API, xavfsizlik va ma'lumotlar ombori arxitekturasi.</p>
-          <ul class="chip-list">
-            <li>Python</li><li>Django 5.2</li><li>DRF</li><li>PostgreSQL</li><li>ASP.NET</li><li>Flask</li>
-          </ul>
-        </article>
-
-        <article class="card span-6 reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <h3 data-i18n="skills.frontendTitle">Frontend</h3>
-          <p data-i18n="skills.frontendDesc">Responsive, interaktiv interfeyslar va mijoz tomoni logikasi.</p>
-          <ul class="chip-list">
-            <li>Vanilla JS (ES6+)</li><li>HTML5</li><li>CSS3</li><li>CSS Grid</li><li>Flexbox</li>
-          </ul>
-        </article>
-
-        <article class="card span-6 reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>
-          </div>
-          <h3 data-i18n="skills.devopsTitle">DevOps &amp; Deploy</h3>
-          <p data-i18n="skills.devopsDesc">Konteynerlashtirish, deployment va production qo'llab-quvvatlash.</p>
-          <ul class="chip-list">
-            <li>Docker</li><li>Railway</li><li>IIS</li><li>Linux</li><li>CI/CD</li>
-          </ul>
-        </article>
-
-        <article class="card span-6 reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <h3 data-i18n="skills.toolsTitle">Tools</h3>
-          <p data-i18n="skills.toolsDesc">Versiya nazorati, hisobot generatsiyasi va integratsiyalar.</p>
-          <ul class="chip-list">
-            <li>Git / GitHub</li><li>FastReport</li><li>Telegram Bot API</li><li>REST</li><li>i18n</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ================= PROJECTS ================= -->
-    <section class="section container" id="projects" aria-labelledby="projects-heading">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="projects.eyebrow">Ishlar</p>
-        <h2 id="projects-heading" data-i18n="projects.title">Loyihalar</h2>
-        <p class="section-sub" data-i18n="projects.text">Muammo → yechim → arxitektura → natija formatidagi real tizimlar.</p>
-      </div>
-
-      <div class="case-list">
-        <!-- HRMM case study -->
-        <article class="card case-study reveal">
-          <header class="case-head">
-            <div>
-              <h3>HRMM</h3>
-              <p class="project-sub" data-i18n="projects.hrmmSub">Human Resource Management System</p>
-            </div>
-            <div class="case-meta">
-              <span class="project-badge project-badge-live" data-i18n="projects.live">Live · Railway</span>
-              <a class="btn btn-small btn-ghost" href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </header>
-          <ul class="tags">
-            <li>Django 5.2</li><li>DRF</li><li>PostgreSQL</li><li>JavaScript</li><li>Railway</li><li>Docker</li>
-          </ul>
-          <div class="case-grid">
-            <div class="case-block">
-              <h4 data-i18n="case.problem">Muammo</h4>
-              <p data-i18n="projects.hrmmProblem">Xodimlar ma'lumotlari tarqoq holda yuritilar, kadrlar hisobi va davomat qo'lda boshqarilar, hisobotlar sekin tayyorlanar edi.</p>
-            </div>
-            <div class="case-block">
-              <h4 data-i18n="case.solution">Yechim</h4>
-              <p data-i18n="projects.hrmmSolution">Django 5.2 + DRF asosida markazlashgan tizim: JWT autentifikatsiya, rollarga asoslangan ruxsatlar, ko'p tilli (i18n) interfeys, arxivlash tizimi va Telegram bot bildirishnomalari.</p>
-            </div>
-            <div class="case-block">
-              <h4 data-i18n="case.result">Natija</h4>
-              <p data-i18n="projects.hrmmResult">Railway'da production'da ishlamoqda: yagona ma'lumotlar bazasi, tezkor kadrlar hisobi va dark/light temali zamonaviy interfeys.</p>
-            </div>
-          </div>
-          <div class="case-arch">
-            <h4 data-i18n="case.architecture">Arxitektura</h4>
-            <svg class="arch-svg" viewBox="0 0 640 196" role="img" aria-label="HRMM arxitekturasi: Vanilla JS UI, DRF REST API, PostgreSQL va Telegram Bot">
-              <defs>
-                <marker id="arw-hrmm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                  <path d="M0,0 L10,5 L0,10 z" class="arch-arrow"/>
-                </marker>
-              </defs>
-              <rect class="arch-box" x="8" y="34" width="168" height="60" rx="10"/>
-              <text class="arch-label" x="92" y="60" text-anchor="middle">Vanilla JS UI</text>
-              <text class="arch-sub" x="92" y="80" text-anchor="middle">Frontend</text>
-              <line class="arch-line" x1="176" y1="64" x2="228" y2="64" marker-end="url(#arw-hrmm)"/>
-              <rect class="arch-box arch-box-accent" x="236" y="34" width="168" height="60" rx="10"/>
-              <text class="arch-label" x="320" y="60" text-anchor="middle">DRF REST API</text>
-              <text class="arch-sub" x="320" y="80" text-anchor="middle">Django 5.2 · JWT</text>
-              <line class="arch-line" x1="404" y1="64" x2="456" y2="64" marker-end="url(#arw-hrmm)"/>
-              <rect class="arch-box" x="464" y="34" width="168" height="60" rx="10"/>
-              <text class="arch-label" x="548" y="60" text-anchor="middle">PostgreSQL</text>
-              <text class="arch-sub" x="548" y="80" text-anchor="middle">Database</text>
-              <line class="arch-line arch-line-dashed" x1="320" y1="94" x2="320" y2="136" marker-end="url(#arw-hrmm)"/>
-              <rect class="arch-box" x="236" y="142" width="168" height="46" rx="10"/>
-              <text class="arch-label" x="320" y="170" text-anchor="middle">Telegram Bot</text>
-            </svg>
+          <div class="card-body">
+            <p class="card-eyebrow">// ABOUT ME</p>
+            <h2 class="card-title">Salom, men Muhammadyusufman</h2>
+            <p class="card-text">Django va ASP.NET texnologiyalari asosida to'liq funksional web tizimlar quraman: REST API, ma'lumotlar bazasi arxitekturasi va production darajasidagi deployment. Har bir loyihada tozalik, tezlik va barqarorlikka e'tibor qarataman.</p>
+            <a class="btn btn-primary" href="assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download>
+              <span>CV yuklab olish</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            </a>
           </div>
         </article>
 
-        <!-- RBYS case study -->
-        <article class="card case-study reveal">
-          <header class="case-head">
-            <div>
-              <h3>RBYS</h3>
-              <p class="project-sub" data-i18n="projects.rbysSub">Dorixona / ombor boshqaruv tizimi</p>
+        <!-- TECH STACK -->
+        <article class="card card-stack">
+          <p class="card-eyebrow">// TECH STACK</p>
+          <div class="stack-grid">
+            <div class="stack-tile" title="Django">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.9 2.4h3.2v15.4c-1.6.3-2.8.4-4.1.4-3.9 0-5.9-1.8-5.9-5.1 0-3.2 2.2-5.3 5.5-5.3.5 0 .9 0 1.3.1V2.4Zm0 8.5c-.4-.1-.6-.1-1-.1-1.6 0-2.5 1-2.5 2.7 0 1.7.9 2.6 2.4 2.6.4 0 .7 0 1.1-.1v-5.1ZM16.9 7.1h3.2v10.4c0 1.8-.1 2.6-.5 3.4-.4.8-1 1.3-1.9 1.7l-3-1.4c.9-.4 1.4-.8 1.7-1.4.3-.6.5-1.4.5-3.1V7.1Zm0-4.7h3.2v3.2h-3.2V2.4Z"/></svg>
+              <span>Django</span>
             </div>
-            <div class="case-meta">
-              <span class="project-badge project-badge-private" data-i18n="projects.private">Private loyiha</span>
-              <span class="private-note" data-i18n="projects.privateNote">Kod yopiq (NDA)</span>
+            <div class="stack-tile" title="Python">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.9 2c-4 0-3.7 1.7-3.7 1.7v1.8h3.8v.5H6.6S4 5.7 4 9.9c0 4.2 2.3 4 2.3 4h1.4V12s-.1-2.3 2.2-2.3h3.7s2.2 0 2.2-2.1V4.3S16.2 2 11.9 2Zm-2.1 1.2c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7ZM12.1 22c4 0 3.7-1.7 3.7-1.7v-1.8h-3.8v-.5h5.4S20 18.3 20 14.1c0-4.2-2.3-4-2.3-4h-1.4V12s.1 2.3-2.2 2.3H10.4s-2.2 0-2.2 2.1v3.3S7.8 22 12.1 22Zm2.1-1.2c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7Z"/></svg>
+              <span>Python</span>
             </div>
-          </header>
-          <ul class="tags">
-            <li>ASP.NET</li><li>PostgreSQL</li><li>IIS</li><li>FastReport</li><li>SQL</li>
-          </ul>
-          <div class="case-grid">
-            <div class="case-block">
-              <h4 data-i18n="case.problem">Muammo</h4>
-              <p data-i18n="projects.rbysProblem">Dorixona va ombor inventarizatsiyasi qo'lda yuritilib, hisobotlar sekin tayyorlanar va xatolarga moyil edi.</p>
+            <div class="stack-tile" title="PostgreSQL">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.1 2.3c-1.9 0-3.6.6-4.9 1.7-1-.3-2-.5-2.9-.4-1.6.1-2.9.8-3.8 2-1.6 2.1-1.7 5.5-.3 9.4.9 2.5 2.3 4.6 3.2 5.6.5.6 1.1.9 1.7.9.4 0 .7-.1 1-.4.4-.4.6-1 .6-1.9v-2.6c.5.1 1 .2 1.6.2.3 0 .6 0 .9-.1v1.9c0 .9.2 1.5.6 1.9.3.3.6.4 1 .4.6 0 1.2-.3 1.7-.9 1-1.1 2.4-3.3 3.2-5.9 1.2-3.6 1-6.7-.5-8.7-1-1.4-2.6-2.1-4.1-2.1Zm-.2 1.5c1 0 2 .5 2.7 1.4 1.1 1.5 1.2 4.1.1 7.2-.7 2.3-1.9 4.2-2.8 5.2-.2.2-.4.3-.5.3-.1 0-.1 0-.1-.3v-3.1c0-.3-.2-.5-.5-.5-.1 0-.2 0-.3.1-.5.2-1.1.3-1.6.3-.6 0-1.2-.1-1.7-.3-.1-.1-.2-.1-.3-.1-.3 0-.5.2-.5.5v3.1c0 .3 0 .3-.1.3-.1 0-.3-.1-.5-.3-.8-.9-2.1-2.9-2.9-5.1-1.2-3.5-1.2-6.4 0-8 .7-.9 1.6-1.4 2.7-1.5.2 0 .4 0 .6 0 .5.6 1.2 1.4 2 1.9.2.1.4.1.6 0 1-.7 2.2-1.1 3.1-1.1Z"/></svg>
+              <span>PostgreSQL</span>
             </div>
-            <div class="case-block">
-              <h4 data-i18n="case.solution">Yechim</h4>
-              <p data-i18n="projects.rbysSolution">ASP.NET + PostgreSQL asosidagi tizim: CTE va ko'p jadvalli join'lar bilan murakkab SQL so'rovlari, FastReport orqali chop etiladigan hisobotlar generatsiyasi.</p>
+            <div class="stack-tile" title="JavaScript">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3Zm14.3 13.1c-.2-.7-.7-1.2-1.9-1.7-.5-.2-1-.4-1.2-.6-.2-.2-.3-.4-.3-.7 0-.5.4-.9 1.1-.9.5 0 .9.2 1.2.7l1.1-.7c-.5-.9-1.3-1.3-2.3-1.3-1.5 0-2.5.9-2.5 2.2 0 1.2.7 1.8 1.8 2.3.6.3 1 .5 1.2.7.2.2.3.4.3.7 0 .5-.5.8-1.2.8-.7 0-1.2-.3-1.6-1l-1.2.7c.5 1 1.4 1.6 2.8 1.6 1.6 0 2.7-.8 2.7-2.3-.1-.1-.1-.3-.1-.5Zm-6.4-4.5H9.5v4.4c0 .9-.4 1.1-.9 1.1-.5 0-.8-.4-1-.8l-1.2.7c.3.8 1 1.5 2.3 1.5 1.4 0 2.2-.7 2.2-2.4V11.6Z"/></svg>
+              <span>JavaScript</span>
             </div>
-            <div class="case-block">
-              <h4 data-i18n="case.result">Natija</h4>
-              <p data-i18n="projects.rbysResult">IIS'da production'da ishlamoqda: inventarizatsiya hisobotlari avtomatlashtirildi, hujjatlar bir tugma bilan generatsiya qilinadi.</p>
+            <div class="stack-tile" title="Docker">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.9c-.5-.4-1.6-.5-2.4-.4-.1-.8-.6-1.4-1.3-2l-.4-.3-.3.4c-.4.5-.6 1.4-.5 2.1-.2.1-.5.3-1 .3H2.6c-.2 1.2 0 4.1 1.8 6.1C5.7 16.6 7.8 17.4 10.4 17.4c5.4 0 9.6-2.5 11.5-6.9.7 0 2.2 0 2.9-1.4 0 0-.9-.2-1.8-.2Zm-16.6 1h1.7v1.7H5.4V9.9Zm2.2 0h1.7v1.7H7.6V9.9Zm2.2 0h1.7v1.7H9.8V9.9Zm2.2 0h1.7v1.7h-1.7V9.9Zm-6.6-2.2h1.7v1.7H5.4V7.7Zm2.2 0h1.7v1.7H7.6V7.7Zm2.2 0h1.7v1.7H9.8V7.7Zm2.2 0h1.7v1.7h-1.7V7.7Zm0-2.2h1.7v1.7h-1.7V5.5Z"/></svg>
+              <span>Docker</span>
             </div>
-          </div>
-          <div class="case-arch">
-            <h4 data-i18n="case.architecture">Arxitektura</h4>
-            <svg class="arch-svg" viewBox="0 0 640 196" role="img" aria-label="RBYS arxitekturasi: ASP.NET UI, ASP.NET Backend, PostgreSQL va FastReport">
-              <defs>
-                <marker id="arw-rbys" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                  <path d="M0,0 L10,5 L0,10 z" class="arch-arrow"/>
-                </marker>
-              </defs>
-              <rect class="arch-box" x="8" y="34" width="168" height="60" rx="10"/>
-              <text class="arch-label" x="92" y="60" text-anchor="middle">ASP.NET UI</text>
-              <text class="arch-sub" x="92" y="80" text-anchor="middle">IIS</text>
-              <line class="arch-line" x1="176" y1="64" x2="228" y2="64" marker-end="url(#arw-rbys)"/>
-              <rect class="arch-box arch-box-accent" x="236" y="34" width="168" height="60" rx="10"/>
-              <text class="arch-label" x="320" y="60" text-anchor="middle">ASP.NET Backend</text>
-              <text class="arch-sub" x="320" y="80" text-anchor="middle">Business logic · SQL</text>
-              <line class="arch-line" x1="404" y1="64" x2="456" y2="64" marker-end="url(#arw-rbys)"/>
-              <rect class="arch-box" x="464" y="34" width="168" height="60" rx="10"/>
-              <text class="arch-label" x="548" y="60" text-anchor="middle">PostgreSQL</text>
-              <text class="arch-sub" x="548" y="80" text-anchor="middle">CTE · Joins</text>
-              <line class="arch-line arch-line-dashed" x1="320" y1="94" x2="320" y2="136" marker-end="url(#arw-rbys)"/>
-              <rect class="arch-box" x="236" y="142" width="168" height="46" rx="10"/>
-              <text class="arch-label" x="320" y="170" text-anchor="middle">FastReport</text>
-            </svg>
+            <div class="stack-tile stack-tile-more" title="Yana texnologiyalar">
+              <span class="more-plus">+</span>
+              <span>Yana</span>
+            </div>
           </div>
         </article>
       </div>
-    </section>
 
-    <!-- ================= ABOUT / EXPERIENCE / EDUCATION ================= -->
-    <section class="section container" id="about" aria-labelledby="about-heading">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="about.eyebrow">Profil</p>
-        <h2 id="about-heading" data-i18n="about.title">Men haqimda</h2>
-      </div>
+      <!-- ---- RIGHT COLUMN ---- -->
+      <div class="col col-right">
 
-      <div class="bento bento-about">
-        <article class="card card-accent span-7 reveal about-bio">
-          <div class="about-top">
-            <img class="about-avatar" src="assets/avatar.png" alt="Muhammadyusuf Mamaniyozov" loading="lazy" width="72" height="72">
-            <div>
-              <h3>Muhammadyusuf Mamaniyozov</h3>
-              <p class="about-role" data-i18n="about.role">Full-Stack Developer · Toshkent</p>
+        <!-- FEATURED PROJECT -->
+        <article class="card card-project">
+          <p class="card-eyebrow">// FEATURED PROJECT</p>
+          <div class="project-mockup" aria-hidden="true">
+            <div class="mockup-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-row w-70"></div>
+              <div class="mockup-row w-40"></div>
+              <div class="mockup-grid">
+                <span></span><span></span><span></span>
+              </div>
             </div>
           </div>
-          <p data-i18n="about.p1">
-            Biznes jarayonlarini raqamlashtirish, ichki CRM/ERP modullarini optimallashtirish va mavjud tizimlardagi xatolarni tizimli hal qilish bilan shug'ullanaman. Kuchli tomonlarim: backend logic, ma'lumotlar bazasi modeli, REST API va production muammolarini hal qilish.
-          </p>
-          <p data-i18n="about.p2">
-            Backend va frontend'ni birga olib boradigan full-stack yondashuvda ishlayman: aniq arxitektura, o'qiladigan kod va ishonchli deploy.
-          </p>
-          <ul class="lang-strip" aria-label="Til bilimlari">
-            <li data-i18n="about.langUz">O'zbek: ona tili</li>
-            <li data-i18n="about.langEn">English: B1</li>
-            <li data-i18n="about.langRu">Русский: B1</li>
-            <li data-i18n="about.langTr">Türkçe: B1</li>
-          </ul>
-        </article>
-
-        <article class="card span-5 reveal">
-          <h3 class="card-kicker" data-i18n="experience.title">Tajriba</h3>
-          <div class="exp-metrics">
-            <span data-i18n="experience.metricYears">3.5+ yil tajriba</span>
-            <span data-i18n="experience.metricProjects">2 yirik tizim</span>
-            <span data-i18n="experience.metricProd">Production'da</span>
+          <h2 class="card-title">HRMM — Human Resource Management System</h2>
+          <p class="card-text">Xodimlar bazasi, davomat va hisobotlarni boshqarish uchun Django + DRF asosida qurilgan to'liq funksional HR tizimi.</p>
+          <div class="tag-row">
+            <span class="tag">Django</span>
+            <span class="tag">DRF</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Telegram Bot</span>
           </div>
-          <ol class="timeline">
-            <li>
-              <span class="timeline-date" data-i18n="experience.currentDate">Sen 2025 — hozir</span>
-              <strong>RIO / RIATM</strong>
-              <p data-i18n="experience.currentText">Karmed tizimida bugfixing, funksiyalarni yaxshilash va muammoli loyihalarni tiklash.</p>
-            </li>
-            <li>
-              <span class="timeline-date" data-i18n="experience.freelanceDate">Yan 2023 — Sen 2025</span>
-              <strong data-i18n="experience.freelanceRole">Freelance Backend Developer</strong>
-              <p data-i18n="experience.freelanceText">Biznes uchun web loyihalar, backend dasturlash va mavjud kodni tahlil qilish.</p>
-            </li>
-          </ol>
+          <a class="link-arrow" href="#">Loyihani ko'rish <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="card span-12 reveal edu-card">
-          <div>
-            <h3 class="card-kicker" data-i18n="education.title">Ta'lim</h3>
-            <strong data-i18n="education.tuit">Toshkent Axborot Texnologiyalari Universiteti</strong>
-            <p class="about-role" data-i18n="education.degree">Dasturiy ta'minot muhandisligi, Bakalavr</p>
+        <!-- EXPERIENCE -->
+        <article class="card card-experience">
+          <p class="card-eyebrow">// EXPERIENCE</p>
+          <div class="stat-grid">
+            <div class="stat">
+              <span class="stat-num">3.5+</span>
+              <span class="stat-label">Yillik tajriba</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">20+</span>
+              <span class="stat-label">Bajarilgan loyiha</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">10+</span>
+              <span class="stat-label">Mamnun mijoz</span>
+            </div>
           </div>
-          <span class="timeline-date" data-i18n="education.dates">2021 — 2025</span>
-        </article>
-      </div>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-    <section class="section container" id="contact" aria-labelledby="contact-heading">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="contact.eyebrow">Aloqa</p>
-        <h2 id="contact-heading" data-i18n="contact.title">Bog'lanish</h2>
-        <p class="section-sub" data-i18n="contact.text">Hamkorlik, ish taklifi yoki loyiha muhokamasi uchun yozing.</p>
-      </div>
-
-      <div class="bento bento-contact">
-        <div class="card span-5 reveal contact-links">
-          <a class="contact-link" href="mailto:mamaniyozovmuhammadyusuf5@gmail.com" aria-label="Email">
-            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
-            <span><small>Email</small><strong>mamaniyozovmuhammadyusuf5@gmail.com</strong></span>
+          <a class="btn btn-ghost" href="#">
+            <span>Yo'lni ko'rish</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
           </a>
-          <a class="contact-link" href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noreferrer" aria-label="Telegram">
-            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
-            <span><small>Telegram</small><strong>@Muhammadyusuf_5538</strong></span>
-          </a>
-          <a class="contact-link" href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span>
-            <span><small>GitHub</small><strong>github.com/Mamaniyozov</strong></span>
-          </a>
-          <a class="contact-link" href="https://www.linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <span class="contact-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></span>
-            <span><small>LinkedIn</small><strong>Muhammadyusuf Mamaniyozov</strong></span>
-          </a>
-        </div>
+        </article>
 
-        <form class="card span-7 reveal contact-form" action="#" method="post" novalidate>
-          <div class="form-group">
-            <input type="text" id="contact-name" name="name" placeholder=" " required autocomplete="name">
-            <label for="contact-name" data-i18n="form.name">Ismingiz</label>
+        <!-- CONNECT / FOOTER -->
+        <article class="card card-connect">
+          <div class="connect-text">
+            <p class="card-eyebrow">// CONNECT</p>
+            <p class="card-text">Loyiha bo'yicha bog'lanish uchun yozing — 24 soat ichida javob beraman.</p>
           </div>
-          <div class="form-group">
-            <input type="email" id="contact-email" name="email" placeholder=" " required autocomplete="email">
-            <label for="contact-email" data-i18n="form.email">Email</label>
+          <div class="social-row">
+            <a class="social-icon social-github" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>
+            </a>
+            <a class="social-icon social-linkedin" href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9-1.8 0-2 1.4-2 2.8V21h-4V9Z"/></svg>
+            </a>
+            <a class="social-icon social-telegram" href="https://t.me/" target="_blank" rel="noopener" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.9.9l-5.2-3.8-2.5 2.4c-.3.3-.5.5-1 .5l.4-5.3L18 6.5c.4-.4-.1-.6-.6-.3L6.4 13.3l-5.1-1.6c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.4 1.3Z"/></svg>
+            </a>
           </div>
-          <div class="form-group">
-            <textarea id="contact-message" name="message" rows="5" placeholder=" " required></textarea>
-            <label for="contact-message" data-i18n="form.message">Xabar</label>
-          </div>
-          <button class="btn btn-primary" type="submit" data-i18n="form.submit">Xabar yuborish</button>
-          <p class="form-note" data-form-note aria-live="polite"></p>
-        </form>
+        </article>
+
       </div>
     </section>
   </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p data-i18n="footer.copy">© 2026 Muhammadyusuf Mamaniyozov. Barcha huquqlar himoyalangan.</p>
-      <div class="footer-links">
-        <a href="https://github.com/Mamaniyozov" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noreferrer">Telegram</a>
-        <a href="https://www.linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Contact Success Modal -->
-  <div class="modal" id="contact-success-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-backdrop" data-close-success-modal></div>
-    <div class="modal-content success-content">
-      <button class="modal-close" type="button" aria-label="Modalni yopish" data-close-success-modal>&times;</button>
-      <div class="success-check" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-      </div>
-      <h3 data-i18n="form.successTitle">Xabar tayyorlandi!</h3>
-      <p data-i18n="form.successText">Xabaringiz muvaffaqiyatli saqlandi. Tez orada aloqaga chiqamiz!</p>
-      <button class="btn btn-primary" type="button" data-close-success-modal>OK</button>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
