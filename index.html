@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
   <!-- Background layer: grid + ambient neon glows -->
@@ -31,6 +32,23 @@
     <div class="bg-grid"></div>
     <div class="glow glow-violet"></div>
     <div class="glow glow-indigo"></div>
+    <span class="float-dot fd-1"></span>
+    <span class="float-dot fd-2"></span>
+    <span class="float-dot fd-3"></span>
+    <span class="float-dot fd-4"></span>
+  </div>
+
+  <!-- ================= LANGUAGE SWITCHER ================= -->
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-current" id="langCurrentBtn" aria-haspopup="listbox" aria-expanded="false">
+      <span id="langCurrentLabel">UZ</span>
+      <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <ul class="lang-dropdown" id="langDropdown" role="listbox">
+      <li role="option" data-lang="uz" class="lang-option is-active">UZ <span class="lang-name">O'zbekcha</span></li>
+      <li role="option" data-lang="en" class="lang-option">EN <span class="lang-name">English</span></li>
+      <li role="option" data-lang="ru" class="lang-option">RU <span class="lang-name">Русский</span></li>
+    </ul>
   </div>
 
   <main class="page">
@@ -72,7 +90,7 @@
       <div class="col col-left">
 
         <!-- ABOUT ME -->
-        <article class="card card-about">
+        <article class="card card-about" data-aos="fade-up">
           <div class="avatar-frame">
             <img src="assets/avatar.png" alt="Muhammadyusuf Mamaniyozov" loading="lazy">
           </div>
@@ -80,7 +98,7 @@
             <p class="card-eyebrow">// ABOUT ME</p>
             <h2 class="card-title">Salom, men Muhammadyusufman</h2>
             <p class="card-text">Django va ASP.NET texnologiyalari asosida to'liq funksional web tizimlar quraman: REST API, ma'lumotlar bazasi arxitekturasi va production darajasidagi deployment. Har bir loyihada tozalik, tezlik va barqarorlikka e'tibor qarataman.</p>
-            <a class="btn btn-primary" href="assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download>
+            <a class="btn btn-primary" href="assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download="Muhammadyusuf_Mamaniyozov_CV.pdf">
               <span>CV yuklab olish</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             </a>
@@ -88,7 +106,7 @@
         </article>
 
         <!-- TECH STACK -->
-        <article class="card card-stack">
+        <article class="card card-stack" data-aos="fade-up" data-aos-delay="100">
           <p class="card-eyebrow">// TECH STACK</p>
           <div class="stack-grid">
             <div class="stack-tile" title="Django">
@@ -123,7 +141,7 @@
       <div class="col col-right">
 
         <!-- FEATURED PROJECT -->
-        <article class="card card-project">
+        <article class="card card-project" data-aos="fade-up" data-aos-delay="150">
           <p class="card-eyebrow">// FEATURED PROJECT</p>
           <div class="project-mockup" aria-hidden="true">
             <div class="mockup-bar">
@@ -149,7 +167,7 @@
         </article>
 
         <!-- EXPERIENCE -->
-        <article class="card card-experience">
+        <article class="card card-experience" data-aos="fade-up" data-aos-delay="200">
           <p class="card-eyebrow">// EXPERIENCE</p>
           <div class="stat-grid">
             <div class="stat">
@@ -172,7 +190,7 @@
         </article>
 
         <!-- CONNECT / FOOTER -->
-        <article class="card card-connect">
+        <article class="card card-connect" data-aos="fade-up" data-aos-delay="250">
           <div class="connect-text">
             <p class="card-eyebrow">// CONNECT</p>
             <p class="card-text">Loyiha bo'yicha bog'lanish uchun yozing — 24 soat ichida javob beraman.</p>
@@ -194,6 +212,7 @@
     </section>
   </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="script.js"></script>
 </body>
 </html>
