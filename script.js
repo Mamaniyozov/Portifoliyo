@@ -120,6 +120,60 @@ if (langSwitcher && langCurrentBtn && langDropdown) {
 }
 
 /* ============================================================
+   Project filters — Django/DRF, Flutter, Hammasi
+   ============================================================ */
+
+const filterPills = document.querySelectorAll(".filter-pill");
+const projectCards = document.querySelectorAll(".project-card");
+
+if (filterPills.length && projectCards.length) {
+  filterPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      filterPills.forEach((p) => {
+        p.classList.remove("is-active");
+        p.setAttribute("aria-selected", "false");
+      });
+      pill.classList.add("is-active");
+      pill.setAttribute("aria-selected", "true");
+
+      const filter = pill.dataset.filter;
+      projectCards.forEach((card) => {
+        const stacks = (card.dataset.stack || "").split(" ");
+        const show = filter === "all" || stacks.includes(filter);
+        card.classList.toggle("is-hidden", !show);
+      });
+    });
+  });
+}
+
+/* ============================================================
+   Antigravity background parallax
+   Background layer (glows, floating dots, code fragments) drifts
+   slower than scroll for a weightless depth effect.
+   ============================================================ */
+
+const bgLayer = document.querySelector(".bg-layer");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (bgLayer && !prefersReducedMotion) {
+  let parallaxTicking = false;
+  const updateParallax = () => {
+    bgLayer.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+    parallaxTicking = false;
+  };
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!parallaxTicking) {
+        requestAnimationFrame(updateParallax);
+        parallaxTicking = true;
+      }
+    },
+    { passive: true }
+  );
+}
+
+/* ============================================================
    Portfolio interactions — vanilla JS
    Subtle mouse-parallax on the antigravity hero centerpiece.
    ============================================================ */
