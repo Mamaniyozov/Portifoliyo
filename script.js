@@ -158,7 +158,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 if (bgLayer && !prefersReducedMotion) {
   let parallaxTicking = false;
   const updateParallax = () => {
-    bgLayer.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+    bgLayer.style.transform = `translateY(${window.scrollY * 0.28}px)`;
     parallaxTicking = false;
   };
   window.addEventListener(
