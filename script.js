@@ -77,15 +77,160 @@ if (navLinks.length && navSections.length && "IntersectionObserver" in window) {
 }
 
 /* ============================================================
-   Language Switcher
-   Ishonchli ishlashi uchun click orqali toggle qilinadi (barcha
-   qurilmalarda); desktop'da qo'shimcha hover bilan ham ochiladi.
+   Language Switcher — UZ / EN / RU
+   translations[lang][key] is applied to every [data-i18n] node's
+   textContent. Proper nouns (names, tech, endpoints) stay as-is
+   because they simply have no data-i18n attribute.
    ============================================================ */
+
+const translations = {
+  uz: {
+    "nav.home": "Bosh sahifa",
+    "nav.about": "Men haqimda",
+    "nav.skills": "Ko'nikmalar",
+    "nav.projects": "Loyihalar",
+    "nav.contact": "Bog'lanish",
+    "hero.status_sub": "(Ishga tayyor · Remote / Ofis)",
+    "hero.sub": "ANTIGRAVITY DEVELOPER",
+    "hero.desc": "Full-Stack Django & ASP.NET dasturchi — ishonchli backend arxitektura va sezilarli darajada silliq interfeyslar quraman.",
+    "hero.cta_projects": "Loyihalarni ko'rish",
+    "hero.cta_contact": "Bog'lanish",
+    "about.eyebrow": "// ABOUT ME",
+    "about.title": "Men haqimda",
+    "about.hello": "Salom, men Muhammadyusufman",
+    "about.text": "Django va ASP.NET texnologiyalari asosida to'liq funksional web tizimlar quraman: REST API, ma'lumotlar bazasi arxitekturasi va production darajasidagi deployment. Har bir loyihada tozalik, tezlik va barqarorlikka e'tibor qarataman.",
+    "about.cv_btn": "CV yuklab olish",
+    "about.exp_eyebrow": "// EXPERIENCE",
+    "about.stat_years": "Yillik tajriba",
+    "about.stat_projects": "Bajarilgan loyiha",
+    "about.stat_clients": "Mamnun mijoz",
+    "about.mini_text": "\"RIO vs RIATM\" tibbiyot muassasasida backend, ma'lumotlar bazasi va Telegram botlarni qo'llab-quvvatlash bo'yicha ishlayman. Xavfsiz autentifikatsiya (JWT, 2FA, OTP) va production'ga tayyor tizimlar — asosiy yo'nalishim.",
+    "about.contact_link": "Men bilan bog'laning",
+    "skills.eyebrow": "// TECH STACK",
+    "skills.title": "Ko'nikmalar",
+    "skills.security": "Xavfsizlik",
+    "projects.eyebrow": "// FEATURED PROJECTS",
+    "projects.title": "Loyihalarim",
+    "filter.all": "Hammasi",
+    "filter.django": "Django / DRF",
+    "filter.flutter": "Flutter",
+    "proj.hrmm.text": "Xodimlar bazasi, davomat, ta'til arizalari, hisobotlar va Telegram-bot xizmatlarini birlashtirgan to'liq funksional HR tizimi. JWT, 2FA/OTP autentifikatsiya va audit jurnali bilan.",
+    "proj.finance.text": "Django REST API backend va Flutter mobil klient asosida qurilgan shaxsiy moliyaviy kuzatuv tizimi: xarajatlar tahlili, oylik hisobotlar, maqsadlar va xavfsiz tranzaksiyalar.",
+    "proj.doctor.text": "Kasalxona xodimlari uchun rollarga asoslangan REST API: kasb navbatlari, real vaqt chat, PDF generatsiya va Swagger hujjatlashtirish.",
+    "proj.lady.text": "Kurslar, modullar, progress kuzatuvi, yangiliklar va PDF sertifikatlarni birlashtirgan ta'lim platformasi backend qismi. JWT blacklist logout bilan.",
+    "proj.view_project": "Loyihani ko'rish",
+    "proj.view_github": "GitHub'da ko'rish",
+    "contact.eyebrow": "// CONNECT",
+    "contact.title": "Bog'lanish",
+    "contact.text": "Loyiha bo'yicha bog'lanish uchun yozing — 24 soat ichida javob beraman.",
+  },
+  en: {
+    "nav.home": "Home",
+    "nav.about": "About",
+    "nav.skills": "Skills",
+    "nav.projects": "Projects",
+    "nav.contact": "Contact",
+    "hero.status_sub": "(Available · Remote / On-site)",
+    "hero.sub": "ANTIGRAVITY DEVELOPER",
+    "hero.desc": "Full-Stack Django & ASP.NET developer — I build reliable backend architecture and noticeably smooth interfaces.",
+    "hero.cta_projects": "View projects",
+    "hero.cta_contact": "Get in touch",
+    "about.eyebrow": "// ABOUT ME",
+    "about.title": "About Me",
+    "about.hello": "Hi, I'm Muhammadyusuf",
+    "about.text": "I build fully functional web systems on Django and ASP.NET: REST APIs, database architecture and production-grade deployment. I care about clean code, speed and reliability in every project.",
+    "about.cv_btn": "Download CV",
+    "about.exp_eyebrow": "// EXPERIENCE",
+    "about.stat_years": "Years of experience",
+    "about.stat_projects": "Completed projects",
+    "about.stat_clients": "Satisfied clients",
+    "about.mini_text": "I work on backend, database and Telegram bot support at the \"RIO vs RIATM\" medical facility. Secure authentication (JWT, 2FA, OTP) and production-ready systems are my main focus.",
+    "about.contact_link": "Get in touch with me",
+    "skills.eyebrow": "// TECH STACK",
+    "skills.title": "Skills",
+    "skills.security": "Security",
+    "projects.eyebrow": "// FEATURED PROJECTS",
+    "projects.title": "My Projects",
+    "filter.all": "All",
+    "filter.django": "Django / DRF",
+    "filter.flutter": "Flutter",
+    "proj.hrmm.text": "A fully functional HR system combining an employee database, attendance, leave requests, reports and Telegram bot services. Built with JWT, 2FA/OTP authentication and an audit log.",
+    "proj.finance.text": "A personal finance tracker built on a Django REST API backend and a Flutter mobile client: expense analytics, monthly reports, goals and secure transactions.",
+    "proj.doctor.text": "A role-based REST API for hospital staff: profession queues, real-time chat, PDF generation and Swagger documentation.",
+    "proj.lady.text": "The backend of a coding-education platform combining courses, modules, progress tracking, news and PDF certificates, with JWT blacklist logout.",
+    "proj.view_project": "View project",
+    "proj.view_github": "View on GitHub",
+    "contact.eyebrow": "// CONNECT",
+    "contact.title": "Get in Touch",
+    "contact.text": "Write to me about your project — I'll reply within 24 hours.",
+  },
+  ru: {
+    "nav.home": "Главная",
+    "nav.about": "Обо мне",
+    "nav.skills": "Навыки",
+    "nav.projects": "Проекты",
+    "nav.contact": "Контакты",
+    "hero.status_sub": "(Готов к работе · Удалённо / Офис)",
+    "hero.sub": "ANTIGRAVITY DEVELOPER",
+    "hero.desc": "Full-Stack разработчик на Django и ASP.NET — создаю надёжную backend-архитектуру и заметно плавные интерфейсы.",
+    "hero.cta_projects": "Смотреть проекты",
+    "hero.cta_contact": "Связаться",
+    "about.eyebrow": "// ОБО МНЕ",
+    "about.title": "Обо мне",
+    "about.hello": "Привет, я Мухаммадюсуф",
+    "about.text": "Создаю полнофункциональные веб-системы на Django и ASP.NET: REST API, архитектуру баз данных и деплой уровня production. В каждом проекте забочусь о чистоте кода, скорости и стабильности.",
+    "about.cv_btn": "Скачать резюме",
+    "about.exp_eyebrow": "// ОПЫТ",
+    "about.stat_years": "Лет опыта",
+    "about.stat_projects": "Завершённых проектов",
+    "about.stat_clients": "Довольных клиентов",
+    "about.mini_text": "Работаю над backend, базами данных и поддержкой Telegram-ботов в медицинском учреждении «RIO vs RIATM». Безопасная аутентификация (JWT, 2FA, OTP) и готовые к production системы — моё основное направление.",
+    "about.contact_link": "Связаться со мной",
+    "skills.eyebrow": "// ТЕХНОЛОГИИ",
+    "skills.title": "Навыки",
+    "skills.security": "Безопасность",
+    "projects.eyebrow": "// ИЗБРАННЫЕ ПРОЕКТЫ",
+    "projects.title": "Мои проекты",
+    "filter.all": "Все",
+    "filter.django": "Django / DRF",
+    "filter.flutter": "Flutter",
+    "proj.hrmm.text": "Полнофункциональная HR-система: база сотрудников, учёт посещаемости, заявки на отпуск, отчёты и сервисы Telegram-бота. С JWT, 2FA/OTP аутентификацией и журналом аудита.",
+    "proj.finance.text": "Система учёта личных финансов на базе Django REST API и мобильного клиента Flutter: анализ расходов, ежемесячные отчёты, цели и безопасные транзакции.",
+    "proj.doctor.text": "REST API для персонала больницы на основе ролей: очереди по специальностям, чат в реальном времени, генерация PDF и документация Swagger.",
+    "proj.lady.text": "Backend образовательной платформы по программированию: курсы, модули, отслеживание прогресса, новости и PDF-сертификаты, с выходом по JWT blacklist.",
+    "proj.view_project": "Смотреть проект",
+    "proj.view_github": "Смотреть на GitHub",
+    "contact.eyebrow": "// СВЯЗЬ",
+    "contact.title": "Связаться",
+    "contact.text": "Напишите мне о своём проекте — отвечу в течение 24 часов.",
+  },
+};
 
 const langSwitcher = document.getElementById("langSwitcher");
 const langCurrentBtn = document.getElementById("langCurrentBtn");
 const langDropdown = document.getElementById("langDropdown");
 const langCurrentLabel = document.getElementById("langCurrentLabel");
+const i18nNodes = document.querySelectorAll("[data-i18n]");
+
+function applyLanguage(lang) {
+  const dict = translations[lang] || translations.uz;
+  i18nNodes.forEach((node) => {
+    const key = node.dataset.i18n;
+    if (dict[key]) node.textContent = dict[key];
+  });
+  document.documentElement.lang = lang;
+  if (langCurrentLabel) langCurrentLabel.textContent = lang.toUpperCase();
+  if (langDropdown) {
+    langDropdown.querySelector(".is-active")?.classList.remove("is-active");
+    langDropdown.querySelector(`[data-lang="${lang}"]`)?.classList.add("is-active");
+  }
+  document.dispatchEvent(new CustomEvent("langchange", { detail: { lang } }));
+}
+
+const savedLang = localStorage.getItem("lang");
+if (savedLang && translations[savedLang]) {
+  applyLanguage(savedLang);
+}
 
 if (langSwitcher && langCurrentBtn && langDropdown) {
   langCurrentBtn.addEventListener("click", (event) => {
@@ -103,9 +248,9 @@ if (langSwitcher && langCurrentBtn && langDropdown) {
 
   langDropdown.querySelectorAll(".lang-option").forEach((option) => {
     option.addEventListener("click", () => {
-      langDropdown.querySelector(".is-active")?.classList.remove("is-active");
-      option.classList.add("is-active");
-      langCurrentLabel.textContent = option.dataset.lang.toUpperCase();
+      const lang = option.dataset.lang;
+      applyLanguage(lang);
+      localStorage.setItem("lang", lang);
       langSwitcher.classList.remove("is-open");
       langCurrentBtn.setAttribute("aria-expanded", "false");
     });

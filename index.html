@@ -7,6 +7,7 @@
   <meta name="keywords" content="Muhammadyusuf Mamaniyozov, Full-Stack Developer, Django, ASP.NET, Python, PostgreSQL, Docker, Portfolio">
   <meta name="author" content="Muhammadyusuf Mamaniyozov">
   <meta name="theme-color" content="#05070c">
+  <link rel="icon" type="image/png" href="assets/avatar.png">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Muhammadyusuf Mamaniyozov | Antigravity Developer">
@@ -56,11 +57,11 @@
       <a href="#home" class="navbar-logo">MM<span class="navbar-logo-dot">.</span></a>
 
       <nav class="navbar-links" id="navbarLinks" aria-label="Asosiy navigatsiya">
-        <a href="#home" class="nav-link" data-nav="home">Bosh sahifa</a>
-        <a href="#about" class="nav-link" data-nav="about">Men haqimda</a>
-        <a href="#skills" class="nav-link" data-nav="skills">Ko'nikmalar</a>
-        <a href="#projects" class="nav-link" data-nav="projects">Loyihalar</a>
-        <a href="#contact" class="nav-link" data-nav="contact">Bog'lanish</a>
+        <a href="#home" class="nav-link" data-nav="home" data-i18n="nav.home">Bosh sahifa</a>
+        <a href="#about" class="nav-link" data-nav="about" data-i18n="nav.about">Men haqimda</a>
+        <a href="#skills" class="nav-link" data-nav="skills" data-i18n="nav.skills">Ko'nikmalar</a>
+        <a href="#projects" class="nav-link" data-nav="projects" data-i18n="nav.projects">Loyihalar</a>
+        <a href="#contact" class="nav-link" data-nav="contact" data-i18n="nav.contact">Bog'lanish</a>
       </nav>
 
       <div class="navbar-right">
@@ -90,20 +91,20 @@
     <section class="hero section" id="home" aria-labelledby="hero-heading">
       <p class="status-badge">
         <span class="status-dot" aria-hidden="true"></span>
-        <span class="status-text">// SYSTEM STATUS: ACTIVE <span class="status-sub">(Ishga tayyor · Remote / Ofis)</span></span>
+        <span class="status-text">// SYSTEM STATUS: ACTIVE <span class="status-sub" data-i18n="hero.status_sub">(Ishga tayyor · Remote / Ofis)</span></span>
       </p>
 
       <h1 id="hero-heading" class="hero-name">Muhammadyusuf<br>Mamaniyozov</h1>
-      <p class="hero-sub">ANTIGRAVITY DEVELOPER</p>
-      <p class="hero-desc">Full-Stack Django &amp; ASP.NET dasturchi — ishonchli backend arxitektura va sezilarli darajada silliq interfeyslar quraman.</p>
+      <p class="hero-sub" data-i18n="hero.sub">ANTIGRAVITY DEVELOPER</p>
+      <p class="hero-desc" data-i18n="hero.desc">Full-Stack Django &amp; ASP.NET dasturchi — ishonchli backend arxitektura va sezilarli darajada silliq interfeyslar quraman.</p>
 
       <div class="hero-cta-row">
         <a class="btn btn-primary" href="#projects">
-          <span>Loyihalarni ko'rish</span>
+          <span data-i18n="hero.cta_projects">Loyihalarni ko'rish</span>
           <span aria-hidden="true">→</span>
         </a>
         <a class="btn btn-ghost" href="#contact">
-          <span>Bog'lanish</span>
+          <span data-i18n="hero.cta_contact">Bog'lanish</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
@@ -130,8 +131,8 @@
     <!-- ================= ABOUT ME ================= -->
     <section class="section about-section" id="about" aria-label="Men haqimda">
       <div class="section-head" data-aos="fade-up">
-        <p class="card-eyebrow">// ABOUT ME</p>
-        <h2 class="section-title">Men haqimda</h2>
+        <p class="card-eyebrow" data-i18n="about.eyebrow">// ABOUT ME</p>
+        <h2 class="section-title" data-i18n="about.title">Men haqimda</h2>
       </div>
 
       <div class="about-grid">
@@ -140,33 +141,33 @@
             <img src="assets/avatar.png" alt="Muhammadyusuf Mamaniyozov" loading="lazy">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Salom, men Muhammadyusufman</h3>
-            <p class="card-text">Django va ASP.NET texnologiyalari asosida to'liq funksional web tizimlar quraman: REST API, ma'lumotlar bazasi arxitekturasi va production darajasidagi deployment. Har bir loyihada tozalik, tezlik va barqarorlikka e'tibor qarataman.</p>
+            <h3 class="card-title" data-i18n="about.hello">Salom, men Muhammadyusufman</h3>
+            <p class="card-text" data-i18n="about.text">Django va ASP.NET texnologiyalari asosida to'liq funksional web tizimlar quraman: REST API, ma'lumotlar bazasi arxitekturasi va production darajasidagi deployment. Har bir loyihada tozalik, tezlik va barqarorlikka e'tibor qarataman.</p>
             <a class="btn btn-primary" href="assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download="Muhammadyusuf_Mamaniyozov_CV.pdf">
-              <span>CV yuklab olish</span>
+              <span data-i18n="about.cv_btn">CV yuklab olish</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             </a>
           </div>
         </article>
 
         <article class="card card-experience" data-aos="fade-up" data-aos-delay="100">
-          <p class="card-eyebrow">// EXPERIENCE</p>
+          <p class="card-eyebrow" data-i18n="about.exp_eyebrow">// EXPERIENCE</p>
           <div class="stat-grid">
             <div class="stat">
               <span class="stat-num">3.5+</span>
-              <span class="stat-label">Yillik tajriba</span>
+              <span class="stat-label" data-i18n="about.stat_years">Yillik tajriba</span>
             </div>
             <div class="stat">
               <span class="stat-num">20+</span>
-              <span class="stat-label">Bajarilgan loyiha</span>
+              <span class="stat-label" data-i18n="about.stat_projects">Bajarilgan loyiha</span>
             </div>
             <div class="stat">
               <span class="stat-num">10+</span>
-              <span class="stat-label">Mamnun mijoz</span>
+              <span class="stat-label" data-i18n="about.stat_clients">Mamnun mijoz</span>
             </div>
           </div>
-          <p class="card-text about-mini-text">"RIO vs RIATM" tibbiyot muassasasida backend, ma'lumotlar bazasi va Telegram botlarni qo'llab-quvvatlash bo'yicha ishlayman. Xavfsiz autentifikatsiya (JWT, 2FA, OTP) va production'ga tayyor tizimlar — asosiy yo'nalishim.</p>
-          <a class="link-arrow" href="#contact">Men bilan bog'laning <span aria-hidden="true">→</span></a>
+          <p class="card-text about-mini-text" data-i18n="about.mini_text">"RIO vs RIATM" tibbiyot muassasasida backend, ma'lumotlar bazasi va Telegram botlarni qo'llab-quvvatlash bo'yicha ishlayman. Xavfsiz autentifikatsiya (JWT, 2FA, OTP) va production'ga tayyor tizimlar — asosiy yo'nalishim.</p>
+          <a class="link-arrow" href="#contact"><span data-i18n="about.contact_link">Men bilan bog'laning</span> <span aria-hidden="true">→</span></a>
         </article>
       </div>
     </section>
@@ -174,8 +175,8 @@
     <!-- ================= SKILLS ================= -->
     <section class="section skills-section" id="skills" aria-label="Ko'nikmalar">
       <div class="section-head" data-aos="fade-up">
-        <p class="card-eyebrow">// TECH STACK</p>
-        <h2 class="section-title">Ko'nikmalar</h2>
+        <p class="card-eyebrow" data-i18n="skills.eyebrow">// TECH STACK</p>
+        <h2 class="section-title" data-i18n="skills.title">Ko'nikmalar</h2>
       </div>
 
       <div class="card card-stack-wide" data-aos="fade-up">
@@ -214,7 +215,7 @@
           </div>
           <div class="stack-tile stack-tile-badge" title="JWT / OTP / 2FA">
             <span class="badge-text">JWT</span>
-            <span>Xavfsizlik</span>
+            <span data-i18n="skills.security">Xavfsizlik</span>
           </div>
           <div class="stack-tile stack-tile-badge" title="Telegram Bot API">
             <span class="badge-text">Bot</span>
@@ -227,14 +228,14 @@
     <!-- ================= PROJECTS ================= -->
     <section class="section projects-section" id="projects" aria-label="Loyihalar">
       <div class="section-head" data-aos="fade-up">
-        <p class="card-eyebrow">// FEATURED PROJECTS</p>
-        <h2 class="section-title">Loyihalarim</h2>
+        <p class="card-eyebrow" data-i18n="projects.eyebrow">// FEATURED PROJECTS</p>
+        <h2 class="section-title" data-i18n="projects.title">Loyihalarim</h2>
       </div>
 
       <div class="project-filters" role="tablist" aria-label="Loyihalarni filtrlash" data-aos="fade-up">
-        <button class="filter-pill is-active" data-filter="all" role="tab" aria-selected="true">Hammasi</button>
-        <button class="filter-pill" data-filter="django" role="tab" aria-selected="false">Django / DRF</button>
-        <button class="filter-pill" data-filter="flutter" role="tab" aria-selected="false">Flutter</button>
+        <button class="filter-pill is-active" data-filter="all" role="tab" aria-selected="true" data-i18n="filter.all">Hammasi</button>
+        <button class="filter-pill" data-filter="django" role="tab" aria-selected="false" data-i18n="filter.django">Django / DRF</button>
+        <button class="filter-pill" data-filter="flutter" role="tab" aria-selected="false" data-i18n="filter.flutter">Flutter</button>
       </div>
 
       <div class="projects-list">
@@ -243,14 +244,14 @@
             <img src="assets/poster-hrmm.png" alt="HRMM — Human Resource Management System poster" loading="lazy">
           </div>
           <h3 class="card-title">HRMM — Human Resource Management System</h3>
-          <p class="card-text">Xodimlar bazasi, davomat, ta'til arizalari, hisobotlar va Telegram-bot xizmatlarini birlashtirgan to'liq funksional HR tizimi. JWT, 2FA/OTP autentifikatsiya va audit jurnali bilan.</p>
+          <p class="card-text" data-i18n="proj.hrmm.text">Xodimlar bazasi, davomat, ta'til arizalari, hisobotlar va Telegram-bot xizmatlarini birlashtirgan to'liq funksional HR tizimi. JWT, 2FA/OTP autentifikatsiya va audit jurnali bilan.</p>
           <div class="tag-row">
             <span class="tag">Django</span>
             <span class="tag">DRF</span>
             <span class="tag">PostgreSQL</span>
             <span class="tag">Telegram Bot</span>
           </div>
-          <a class="link-arrow" href="https://portifoliyo-production.up.railway.app/" target="_blank" rel="noopener">Loyihani ko'rish <span aria-hidden="true">→</span></a>
+          <a class="link-arrow" href="https://portifoliyo-production.up.railway.app/" target="_blank" rel="noopener"><span data-i18n="proj.view_project">Loyihani ko'rish</span> <span aria-hidden="true">→</span></a>
         </article>
 
         <article class="card project-card" data-stack="django flutter" data-aos="fade-up" data-aos-delay="100">
@@ -258,14 +259,44 @@
             <img src="assets/poster-finance-app.png" alt="Finance App poster" loading="lazy">
           </div>
           <h3 class="card-title">Finance App — Hamyon &amp; Analitika</h3>
-          <p class="card-text">Django REST API backend va Flutter mobil klient asosida qurilgan shaxsiy moliyaviy kuzatuv tizimi: xarajatlar tahlili, oylik hisobotlar, maqsadlar va xavfsiz tranzaksiyalar.</p>
+          <p class="card-text" data-i18n="proj.finance.text">Django REST API backend va Flutter mobil klient asosida qurilgan shaxsiy moliyaviy kuzatuv tizimi: xarajatlar tahlili, oylik hisobotlar, maqsadlar va xavfsiz tranzaksiyalar.</p>
           <div class="tag-row">
             <span class="tag">DRF</span>
             <span class="tag">SimpleJWT</span>
             <span class="tag">PostgreSQL 16</span>
             <span class="tag">Flutter</span>
           </div>
-          <a class="link-arrow" href="https://github.com/Mamaniyozov" target="_blank" rel="noopener">GitHub'da ko'rish <span aria-hidden="true">→</span></a>
+          <a class="link-arrow" href="https://github.com/Mamaniyozov" target="_blank" rel="noopener"><span data-i18n="proj.view_github">GitHub'da ko'rish</span> <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card project-card" data-stack="django" data-aos="fade-up">
+          <div class="project-banner">
+            <img src="assets/project_api.png" alt="Doctor-Direct poster" loading="lazy">
+          </div>
+          <h3 class="card-title">Doctor-Direct — Hospital Staff Management API</h3>
+          <p class="card-text" data-i18n="proj.doctor.text">Kasalxona xodimlari uchun rollarga asoslangan REST API: kasb navbatlari, real vaqt chat, PDF generatsiya va Swagger hujjatlashtirish.</p>
+          <div class="tag-row">
+            <span class="tag">Django</span>
+            <span class="tag">DRF</span>
+            <span class="tag">Realtime Chat</span>
+            <span class="tag">Swagger</span>
+          </div>
+          <a class="link-arrow" href="https://github.com/Mamaniyozov/Doctor-direct" target="_blank" rel="noopener"><span data-i18n="proj.view_github">GitHub'da ko'rish</span> <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card project-card" data-stack="django" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-banner">
+            <img src="assets/project_crm.png" alt="LadyCoders poster" loading="lazy">
+          </div>
+          <h3 class="card-title">LadyCoders — Coding Education Platform</h3>
+          <p class="card-text" data-i18n="proj.lady.text">Kurslar, modullar, progress kuzatuvi, yangiliklar va PDF sertifikatlarni birlashtirgan ta'lim platformasi backend qismi. JWT blacklist logout bilan.</p>
+          <div class="tag-row">
+            <span class="tag">Django</span>
+            <span class="tag">DRF</span>
+            <span class="tag">JWT</span>
+            <span class="tag">PDF</span>
+          </div>
+          <a class="link-arrow" href="https://github.com/Mamaniyozov/LadyCoders" target="_blank" rel="noopener"><span data-i18n="proj.view_github">GitHub'da ko'rish</span> <span aria-hidden="true">→</span></a>
         </article>
       </div>
     </section>
@@ -274,9 +305,9 @@
     <section class="section contact-section" id="contact" aria-label="Bog'lanish">
       <article class="card card-connect contact-panel" data-aos="fade-up">
         <div class="connect-text">
-          <p class="card-eyebrow">// CONNECT</p>
-          <h2 class="section-title">Bog'lanish</h2>
-          <p class="card-text">Loyiha bo'yicha bog'lanish uchun yozing — 24 soat ichida javob beraman.</p>
+          <p class="card-eyebrow" data-i18n="contact.eyebrow">// CONNECT</p>
+          <h2 class="section-title" data-i18n="contact.title">Bog'lanish</h2>
+          <p class="card-text" data-i18n="contact.text">Loyiha bo'yicha bog'lanish uchun yozing — 24 soat ichida javob beraman.</p>
         </div>
         <div class="social-row">
           <a class="social-icon social-telegram" href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noopener">
