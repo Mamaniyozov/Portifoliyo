@@ -376,24 +376,7 @@ if (bgLayer && !prefersReducedMotion) {
 
 /* ============================================================
    Portfolio interactions — vanilla JS
-   Subtle mouse-parallax on the antigravity hero centerpiece.
    ============================================================ */
-
-const heroGraphic = document.querySelector(".hero-graphic");
-const coreIcon = document.querySelector(".core-icon");
-
-if (heroGraphic && coreIcon && window.matchMedia("(pointer: fine)").matches) {
-  heroGraphic.addEventListener("mousemove", (event) => {
-    const rect = heroGraphic.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    coreIcon.style.transform = `rotateX(${y * -18}deg) rotateY(${x * 18}deg)`;
-  });
-
-  heroGraphic.addEventListener("mouseleave", () => {
-    coreIcon.style.transform = "rotateX(0deg) rotateY(0deg)";
-  });
-}
 
 const pointerFine = window.matchMedia("(pointer: fine)").matches;
 
@@ -693,90 +676,7 @@ if (ribbonCanvas && pointerFine && !prefersReducedMotion) {
 }
 
 /* ============================================================
-   Three.js hero object — particle sphere + wireframe icosahedron
-   Mouse parallax + scroll-driven rotation.
+   The three.js hero sphere was replaced by GeoShape — a lighter
+   Canvas2D + GSAP ScrollTrigger centerpiece (see
+   js/modules/geo-shape.js, wired in js/scroll-experience.js).
    ============================================================ */
-
-const heroCanvas = document.getElementById("heroCanvas");
-
-if (heroCanvas && window.THREE && !prefersReducedMotion) {
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-  camera.position.z = 5;
-
-  const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  const sphereGeometry = new THREE.BufferGeometry();
-  const SPHERE_POINTS = 2600;
-  const positions = new Float32Array(SPHERE_POINTS * 3);
-  for (let i = 0; i < SPHERE_POINTS; i++) {
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(Math.random() * 2 - 1);
-    const r = 1.6;
-    positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-    positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-    positions[i * 3 + 2] = r * Math.cos(phi);
-  }
-  sphereGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-  const sphereMaterial = new THREE.PointsMaterial({
-    color: 0x00f2fe,
-    size: 0.018,
-    transparent: true,
-    opacity: 0.85,
-  });
-  const sphere = new THREE.Points(sphereGeometry, sphereMaterial);
-  scene.add(sphere);
-
-  const icoGeometry = new THREE.IcosahedronGeometry(2.2, 0);
-  const icoMaterial = new THREE.MeshBasicMaterial({ color: 0x7c3aed, wireframe: true, transparent: true, opacity: 0.5 });
-  const ico = new THREE.Mesh(icoGeometry, icoMaterial);
-  scene.add(ico);
-
-  function resizeHero() {
-    const rect = heroCanvas.parentElement.getBoundingClientRect();
-    const w = Math.max(rect.width, 1);
-    const h = Math.max(rect.height, 1);
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-  resizeHero();
-  window.addEventListener("resize", resizeHero);
-
-  let heroMouseX = 0;
-  let heroMouseY = 0;
-  if (pointerFine && heroGraphic) {
-    heroGraphic.addEventListener("mousemove", (event) => {
-      const rect = heroGraphic.getBoundingClientRect();
-      heroMouseX = (event.clientX - rect.left) / rect.width - 0.5;
-      heroMouseY = (event.clientY - rect.top) / rect.height - 0.5;
-    });
-    heroGraphic.addEventListener("mouseleave", () => {
-      heroMouseX = 0;
-      heroMouseY = 0;
-    });
-  }
-
-  const clock = new THREE.Clock();
-
-  function renderHero() {
-    const elapsed = clock.getElapsedTime();
-    const breathe = 1 + Math.sin(elapsed * 0.6) * 0.06;
-    sphere.scale.setScalar(breathe);
-
-    sphere.rotation.y = elapsed * 0.08 + window.scrollY * 0.0006;
-    sphere.rotation.x = elapsed * 0.04;
-    ico.rotation.y = -elapsed * 0.12 + window.scrollY * 0.001;
-    ico.rotation.x = elapsed * 0.06;
-
-    camera.position.x += (heroMouseX * 1.2 - camera.position.x) * 0.05;
-    camera.position.y += (-heroMouseY * 1.2 - camera.position.y) * 0.05;
-    camera.lookAt(scene.position);
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(renderHero);
-  }
-  requestAnimationFrame(renderHero);
-}

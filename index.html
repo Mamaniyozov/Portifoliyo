@@ -50,6 +50,9 @@
   <!-- ================= RIBBON TRAIL ================= -->
   <canvas id="ribbonCanvas" class="ribbon-canvas" aria-hidden="true"></canvas>
 
+  <!-- ================= GEO SHAPE (Canvas + GSAP ScrollTrigger) ================= -->
+  <canvas id="geoShapeCanvas" class="geo-shape-canvas" aria-hidden="true"></canvas>
+
   <!-- Background layer: grid + ambient neon glows -->
   <div class="bg-layer" aria-hidden="true">
     <canvas id="particleCanvas" class="particle-canvas"></canvas>
@@ -136,24 +139,10 @@
         </a>
       </div>
 
-      <div class="hero-graphic" aria-hidden="true" data-parallax="0.36">
-        <canvas id="heroCanvas" class="hero-canvas"></canvas>
-        <div class="core-shape">
-          <span class="ring ring-1"></span>
-          <span class="ring ring-2"></span>
-          <span class="ring ring-3"></span>
-          <span class="core-glow"></span>
-          <svg class="core-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z"/>
-            <path d="M12 2 L12 22 M4 7 L20 17 M20 7 L4 17"/>
-            <circle cx="12" cy="12" r="2.6"/>
-          </svg>
-        </div>
-        <span class="particle p1"></span>
-        <span class="particle p2"></span>
-        <span class="particle p3"></span>
-        <span class="particle p4"></span>
-      </div>
+      <!-- GeoShape (Canvas + GSAP ScrollTrigger) renders in the fixed
+           #geoShapeCanvas layer below; this stays as a layout spacer
+           so the hero's vertical rhythm is unchanged. -->
+      <div class="hero-graphic" aria-hidden="true"></div>
     </section>
 
     <!-- ================= ABOUT ME ================= -->
@@ -488,7 +477,8 @@
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="script.js"></script>
   <script type="module" src="js/scroll-experience.js"></script>
 </body>
