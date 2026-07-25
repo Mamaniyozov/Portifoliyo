@@ -54,8 +54,8 @@
   <div class="bg-layer" aria-hidden="true">
     <canvas id="particleCanvas" class="particle-canvas"></canvas>
     <div class="bg-grid"></div>
-    <div class="glow glow-violet"></div>
-    <div class="glow glow-indigo"></div>
+    <div class="glow-scroll glow-scroll-violet"><div class="glow glow-violet"></div></div>
+    <div class="glow-scroll glow-scroll-indigo"><div class="glow glow-indigo"></div></div>
     <span class="float-dot fd-1"></span>
     <span class="float-dot fd-2"></span>
     <span class="float-dot fd-3"></span>
@@ -118,14 +118,14 @@
         <span class="status-text">// SYSTEM STATUS: ACTIVE <span class="status-sub" data-i18n="hero.status_sub">(Ishga tayyor · Remote / Ofis)</span></span>
       </p>
 
-      <h1 id="hero-heading" class="hero-name">
+      <h1 id="hero-heading" class="hero-name" data-parallax="0.28">
         <span class="scramble-text" data-scramble="Muhammadyusuf">Muhammadyusuf</span><br>
         <span class="scramble-text" data-scramble="Mamaniyozov">Mamaniyozov</span>
       </h1>
-      <p class="hero-sub is-decoding" data-i18n="hero.sub" data-decode="ANTIGRAVITY DEVELOPER">ANTIGRAVITY DEVELOPER</p>
-      <p class="hero-desc" data-i18n="hero.desc">Full-Stack Django &amp; ASP.NET dasturchi — ishonchli backend arxitektura va sezilarli darajada silliq interfeyslar quraman.</p>
+      <p class="hero-sub is-decoding" data-i18n="hero.sub" data-decode="ANTIGRAVITY DEVELOPER" data-parallax="0.18">ANTIGRAVITY DEVELOPER</p>
+      <p class="hero-desc" data-i18n="hero.desc" data-parallax="0.14">Full-Stack Django &amp; ASP.NET dasturchi — ishonchli backend arxitektura va sezilarli darajada silliq interfeyslar quraman.</p>
 
-      <div class="hero-cta-row">
+      <div class="hero-cta-row" data-parallax="0.1">
         <a class="btn btn-primary" href="#projects">
           <span data-i18n="hero.cta_projects">Loyihalarni ko'rish</span>
           <span aria-hidden="true">→</span>
@@ -136,7 +136,7 @@
         </a>
       </div>
 
-      <div class="hero-graphic" aria-hidden="true">
+      <div class="hero-graphic" aria-hidden="true" data-parallax="0.36">
         <canvas id="heroCanvas" class="hero-canvas"></canvas>
         <div class="core-shape">
           <span class="ring ring-1"></span>
@@ -324,8 +324,9 @@
         <button class="filter-pill" data-filter="backend" role="tab" aria-selected="false" data-i18n="filter.backend">Backend API</button>
       </div>
 
-      <div class="projects-list">
-        <article class="card project-card" data-stack="django" data-aos="fade-up">
+      <div class="projects-story" id="projectsStory">
+      <div class="projects-story-track">
+        <article class="card project-card" data-stack="django" data-story-accent="cyan" data-aos="fade-up">
           <div class="project-banner">
             <img src="assets/poster-hrmm.png" alt="HRMM — Human Resource Management System poster" loading="lazy">
           </div>
@@ -340,7 +341,7 @@
           <a class="link-arrow" href="https://portifoliyo-production.up.railway.app/" target="_blank" rel="noopener"><span data-i18n="proj.view_project">Loyihani ko'rish</span> <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="card project-card" data-stack="django flutter" data-aos="fade-up" data-aos-delay="100">
+        <article class="card project-card" data-stack="django flutter" data-story-accent="violet" data-aos="fade-up" data-aos-delay="100">
           <div class="project-banner">
             <img src="assets/poster-finance-app.png" alt="Finance App poster" loading="lazy">
           </div>
@@ -355,7 +356,7 @@
           <a class="link-arrow" href="https://github.com/Mamaniyozov" target="_blank" rel="noopener"><span data-i18n="proj.view_github">GitHub'da ko'rish</span> <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="card project-card" data-stack="django backend" data-aos="fade-up">
+        <article class="card project-card" data-stack="django backend" data-story-accent="green" data-aos="fade-up">
           <div class="terminal-panel" aria-hidden="true">
             <div class="terminal-head">
               <span class="terminal-dot terminal-dot-red"></span>
@@ -383,7 +384,7 @@
           <a class="link-arrow" href="https://github.com/Mamaniyozov/Doctor-direct" target="_blank" rel="noopener"><span data-i18n="proj.view_github">GitHub'da ko'rish</span> <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="card project-card" data-stack="django backend" data-aos="fade-up" data-aos-delay="100">
+        <article class="card project-card" data-stack="django backend" data-story-accent="indigo" data-aos="fade-up" data-aos-delay="100">
           <div class="terminal-panel" aria-hidden="true">
             <div class="terminal-head">
               <span class="terminal-dot terminal-dot-red"></span>
@@ -410,6 +411,20 @@
           </div>
           <a class="link-arrow" href="https://github.com/Mamaniyozov/LadyCoders" target="_blank" rel="noopener"><span data-i18n="proj.view_github">GitHub'da ko'rish</span> <span aria-hidden="true">→</span></a>
         </article>
+      </div>
+
+      <aside class="projects-story-visual" aria-hidden="true">
+        <div class="projects-story-frame">
+          <div class="projects-story-head">
+            <span class="projects-story-count" id="projectsStoryCount">01</span>
+            <span class="projects-story-total">/ 04</span>
+          </div>
+          <div class="projects-story-media" id="projectsStoryMedia"></div>
+          <h3 class="projects-story-title" id="projectsStoryTitle"></h3>
+          <p class="projects-story-tag" id="projectsStoryTag"></p>
+          <div class="projects-story-dots" id="projectsStoryDots"></div>
+        </div>
+      </aside>
       </div>
     </section>
 
@@ -475,5 +490,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="script.js"></script>
+  <script type="module" src="js/scroll-experience.js"></script>
 </body>
 </html>

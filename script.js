@@ -456,6 +456,7 @@ if (loader && loaderCount) {
   if (prefersReducedMotion) {
     loader.classList.add("is-done");
     decodeHeroSub();
+    document.dispatchEvent(new CustomEvent("loaderdone"));
   } else {
     const total = 30;
     const durationMs = 1700;
@@ -472,6 +473,7 @@ if (loader && loaderCount) {
         setTimeout(() => {
           loader.classList.add("is-done");
           decodeHeroSub();
+          document.dispatchEvent(new CustomEvent("loaderdone"));
         }, 260);
       }
     };
@@ -479,6 +481,7 @@ if (loader && loaderCount) {
   }
 } else {
   decodeHeroSub();
+  document.dispatchEvent(new CustomEvent("loaderdone"));
 }
 
 /* ============================================================
@@ -533,59 +536,11 @@ if (pointerFine) {
 }
 
 /* ============================================================
-   Scroll progress bar — cyan -> violet fill
+   Scroll progress bar + [data-reveal] IntersectionObserver are
+   now owned by the ScrollProgress / ScrollReveal modules
+   (js/modules/scroll-progress.js, js/modules/scroll-reveal.js).
+   See js/scroll-experience.js for wiring.
    ============================================================ */
-
-const scrollProgressBar = document.getElementById("scrollProgressBar");
-
-if (scrollProgressBar) {
-  let progressTicking = false;
-  const updateProgress = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-    scrollProgressBar.style.width = `${Math.min(Math.max(pct, 0), 100)}%`;
-    progressTicking = false;
-  };
-  updateProgress();
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!progressTicking) {
-        requestAnimationFrame(updateProgress);
-        progressTicking = true;
-      }
-    },
-    { passive: true }
-  );
-  window.addEventListener("resize", updateProgress);
-}
-
-/* ============================================================
-   Spiral-in reveal — IntersectionObserver over [data-reveal]
-   ============================================================ */
-
-const revealNodes = document.querySelectorAll("[data-reveal]");
-
-if (revealNodes.length && "IntersectionObserver" in window) {
-  if (prefersReducedMotion) {
-    revealNodes.forEach((node) => node.classList.add("is-revealed"));
-  } else {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
-    revealNodes.forEach((node) => revealObserver.observe(node));
-  }
-} else {
-  revealNodes.forEach((node) => node.classList.add("is-revealed"));
-}
 
 /* ============================================================
    Count-up utility — [data-count-to] (+ optional data-suffix)
@@ -656,99 +611,11 @@ if (countNodes.length && "IntersectionObserver" in window) {
 }
 
 /* ============================================================
-   Particle constellation canvas — background layer
-   ~90 points, connect lines under 120px, repel from mouse.
+   Particle constellation / spiral canvas is now driven by the
+   SpiralParticles module (js/modules/spiral-particles.js), which
+   blends this ambient field with scroll-progress-based spiral
+   motion. See js/scroll-experience.js for wiring.
    ============================================================ */
-
-const particleCanvas = document.getElementById("particleCanvas");
-
-if (particleCanvas && !prefersReducedMotion) {
-  const ctx = particleCanvas.getContext("2d");
-  let width, height;
-  let points = [];
-  const POINT_COUNT = 90;
-  const LINK_DIST = 120;
-  const mouse = { x: -9999, y: -9999 };
-
-  function resizeParticles() {
-    width = particleCanvas.width = particleCanvas.offsetWidth;
-    height = particleCanvas.height = particleCanvas.offsetHeight;
-  }
-
-  function initPoints() {
-    points = Array.from({ length: POINT_COUNT }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-    }));
-  }
-
-  function stepParticles() {
-    ctx.clearRect(0, 0, width, height);
-
-    points.forEach((p) => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-
-      const dx = p.x - mouse.x;
-      const dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100) {
-        const force = (100 - dist) / 100;
-        p.x += (dx / dist) * force * 1.6;
-        p.y += (dy / dist) * force * 1.6;
-      }
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(0, 242, 254, 0.55)";
-      ctx.fill();
-    });
-
-    for (let i = 0; i < points.length; i++) {
-      for (let j = i + 1; j < points.length; j++) {
-        const dx = points[i].x - points[j].x;
-        const dy = points[i].y - points[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < LINK_DIST) {
-          ctx.beginPath();
-          ctx.moveTo(points[i].x, points[i].y);
-          ctx.lineTo(points[j].x, points[j].y);
-          ctx.strokeStyle = `rgba(0, 242, 254, ${0.12 * (1 - dist / LINK_DIST)})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(stepParticles);
-  }
-
-  resizeParticles();
-  initPoints();
-  requestAnimationFrame(stepParticles);
-
-  window.addEventListener("resize", () => {
-    resizeParticles();
-  });
-  window.addEventListener(
-    "mousemove",
-    (event) => {
-      const parallaxY = bgLayer ? parseFloat(bgLayer.style.transform.replace(/[^0-9.-]/g, "")) || 0 : 0;
-      mouse.x = event.clientX;
-      mouse.y = event.clientY - parallaxY;
-    },
-    { passive: true }
-  );
-  window.addEventListener("mouseleave", () => {
-    mouse.x = -9999;
-    mouse.y = -9999;
-  });
-}
 
 /* ============================================================
    Ribbon mouse-trail — flowing streamers along movement
