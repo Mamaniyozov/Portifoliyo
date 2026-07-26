@@ -85,9 +85,11 @@ export function initGeoShape({ canvas, reducedMotion } = {}) {
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
-    const fadeIn = gsap.utils.clamp(0, 1, state.yProgress / 0.08);
+    // Visible from the first frame (hero centerpiece) — no fade-in
+    // ramp. Only a gentle fade-out over the last stretch so the
+    // shape exits cleanly at the bottom instead of clipping.
     const fadeOut = gsap.utils.clamp(0, 1, (1 - state.yProgress) / 0.16);
-    const opacity = reducedMotion ? 1 : Math.min(fadeIn, fadeOut);
+    const opacity = reducedMotion ? 1 : fadeOut;
     if (opacity <= 0.01) return;
 
     const y = travelStart + (travelEnd - travelStart) * state.yProgress;

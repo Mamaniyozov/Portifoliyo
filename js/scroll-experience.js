@@ -15,18 +15,24 @@ import { initParallaxLayer } from "./modules/parallax-layer.js";
 import { initHeroCinematic } from "./modules/hero-cinematic.js";
 import { initScrollReveal } from "./modules/scroll-reveal.js";
 import { initProjectsStory } from "./modules/projects-story.js";
+import { initGeoShape } from "./modules/geo-shape.js";
 
 function boot() {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const bgLayer = document.querySelector(".bg-layer");
 
-  // Always on: progress bar, reveal, hero entrance and projects
-  // storytelling all degrade gracefully (instant/static) under
-  // reduced motion instead of being skipped outright.
+  // Always on: progress bar, reveal, hero entrance, projects
+  // storytelling and the GeoShape centerpiece all degrade
+  // gracefully (instant/static) under reduced motion instead of
+  // being skipped outright.
   initScrollProgress();
   initScrollReveal({ reducedMotion });
   initHeroCinematic({ reducedMotion });
   initProjectsStory({ reducedMotion });
+  initGeoShape({
+    canvas: document.getElementById("geoShapeCanvas"),
+    reducedMotion,
+  });
 
   // Continuous/ambient motion: fully skipped under reduced motion.
   initSpiralParticles({
