@@ -1,17 +1,15 @@
 {
   "name": "muhammadyusuf-portfolio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Professional portfolio website built with vanilla HTML, CSS, and JavaScript.",
+  "description": "Portfolio website of Muhammadyusuf Mamaniyozov — Backend / Full-Stack Developer. Vanilla HTML, CSS and JavaScript, no build step.",
+  "author": "Muhammadyusuf Mamaniyozov <mamaniyozovmuhammadyusuf5@gmail.com>",
+  "license": "UNLICENSED",
   "scripts": {
-    "start": "serve -s . -l tcp://0.0.0.0:$PORT"
+    "start": "serve -s . -l tcp://0.0.0.0:$PORT",
+    "dev": "serve -s . -l 3000"
   },
   "dependencies": {
-    "@claude-flow/aidefence": "^3.0.3",
-    "agentic-flow": "^2.1.0",
     "serve": "^14.2.4"
-  },
-  "devDependencies": {
-    "typescript": "^7.0.2"
   }
 }

@@ -44,7 +44,7 @@ Men **Django** va **ASP.NET** ekotizimida yuqori yuklamali, ishonchli hamda keng
 > Xodimlar bazasi, davomat, hisobotlar va Telegram-bot xizmatlarini birlashtirgan to'liq funksional tizim.
 
 <p align="center">
-  <img src="assets/poster-hrmm.png" alt="HRMM poster" width="100%" />
+  <img src="assets/poster-hrmm.jpg" alt="HRMM poster" width="100%" />
 </p>
 
 * **Texnologiyalar:** Django, Django REST Framework (DRF), PostgreSQL, Telegram Bot API
@@ -54,7 +54,7 @@ Men **Django** va **ASP.NET** ekotizimida yuqori yuklamali, ishonchli hamda keng
 > Shaxsiy moliyaviy oqimlar va tahlillarni kuzatuvchi mustahkam backend (REST API) tizimi.
 
 <p align="center">
-  <img src="assets/poster-finance-app.png" alt="Finance App poster" width="100%" />
+  <img src="assets/poster-finance-app.jpg" alt="Finance App poster" width="100%" />
 </p>
 
 * **Texnologiyalar:** Django REST Framework, SimpleJWT, PostgreSQL 16, Pytest

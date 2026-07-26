@@ -1,0 +1,11 @@
+# Normalise line endings so the repo never picks up a whole-file
+# CRLF/LF diff again when it's edited from a different OS.
+* text=auto eol=lf
+
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.db    binary
