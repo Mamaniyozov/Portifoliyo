@@ -1143,6 +1143,21 @@ function setupTopologyInteractions() {
     row.addEventListener("pointerenter", handleHighlight);
     row.addEventListener("click", handleHighlight);
   });
+
+  // 3. Click Shockwave Ring & WebGL Burst
+  window.addEventListener("pointerdown", (event) => {
+    if (window.__topologyGraph && typeof window.__topologyGraph.triggerShockwave === "function") {
+      window.__topologyGraph.triggerShockwave(1.2);
+    }
+
+    const ring = document.createElement("div");
+    ring.className = "click-shockwave";
+    ring.style.left = `${event.clientX}px`;
+    ring.style.top = `${event.clientY}px`;
+    document.body.appendChild(ring);
+
+    setTimeout(() => ring.remove(), 550);
+  });
 }
 
 if (document.readyState === "loading") {

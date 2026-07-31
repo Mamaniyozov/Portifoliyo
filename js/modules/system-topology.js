@@ -38,6 +38,7 @@ import {
   createPulses,
   updatePulses,
   triggerClusterHighlight,
+  triggerShockwave,
   WORLD_DEPTH,
 } from "./topology/graph.js";
 import {
@@ -145,10 +146,20 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
     pointer.z = state.cameraZ + FOCUS_DIST;
   }
 
+  let lastPointerX = 0;
+  let lastPointerY = 0;
+
   function onPointerMove(event) {
+    const vx = event.clientX - lastPointerX;
+    const vy = -(event.clientY - lastPointerY);
+    lastPointerX = event.clientX;
+    lastPointerY = event.clientY;
+
     pointer.screenX = event.clientX;
     pointer.screenY = event.clientY;
     pointer.active = true;
+    pointer.vx = vx;
+    pointer.vy = vy;
     updatePointerWorld();
   }
 
@@ -377,8 +388,10 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
   document.addEventListener("visibilitychange", onVisibility);
 
   const highlightClusters = (tags) => triggerClusterHighlight(graph, pulses, tags);
+  const shockwave = (strength = 1.0) => triggerShockwave(pointer.x, pointer.y, pointer.z, strength);
 
   published.highlightClusters = highlightClusters;
+  published.triggerShockwave = shockwave;
   window.__topologyGraph = published;
 
   start();

@@ -237,10 +237,34 @@ const POINTER_PULL = 165;
  * backgrounded tab that resumes after 5 seconds does not detonate
  * the integrator with a single enormous step.
  */
+const activeShockwaves = [];
+
+export function triggerShockwave(x = 0, y = 0, z = 0, strength = 1.0) {
+  if (activeShockwaves.length > 8) activeShockwaves.shift();
+  activeShockwaves.push({
+    x,
+    y,
+    z,
+    radius: 20,
+    maxRadius: 1300,
+    strength,
+    speed: 38,
+  });
+}
+
 export function simulate(graph, { time, dt, pointer, energy = 0 }) {
   const { position, velocity, home, nodeCount } = graph;
   const step = Math.min(dt, 2.5);
   const flow = FLOW_STRENGTH * (1 + energy * 2.2);
+
+  // Advance active shockwave radii
+  for (let s = activeShockwaves.length - 1; s >= 0; s--) {
+    const sw = activeShockwaves[s];
+    sw.radius += sw.speed * step * 60;
+    if (sw.radius > sw.maxRadius) {
+      activeShockwaves.splice(s, 1);
+    }
+  }
 
   for (let i = 0; i < nodeCount; i++) {
     const p = i * 3;
@@ -280,6 +304,35 @@ export function simulate(graph, { time, dt, pointer, energy = 0 }) {
         vx += dx * pull * 0.02;
         vy += dy * pull * 0.02;
         vz += dz * pull * 0.006;
+      }
+
+      // Liquid wave velocity transfer from fast cursor movement
+      if (pointer.vx || pointer.vy) {
+        if (distSq < 360000) {
+          const liquidFalloff = (1 - distSq / 360000);
+          vx += (pointer.vx || 0) * liquidFalloff * 0.035 * step;
+          vy += (pointer.vy || 0) * liquidFalloff * 0.035 * step;
+        }
+      }
+    }
+
+    // Active Shockwaves ring impulse
+    if (activeShockwaves.length > 0) {
+      for (let s = 0; s < activeShockwaves.length; s++) {
+        const sw = activeShockwaves[s];
+        const dx = x - sw.x;
+        const dy = y - sw.y;
+        const dz = z - sw.z;
+        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
+        const diff = Math.abs(dist - sw.radius);
+        const ringWidth = 240;
+        if (diff < ringWidth) {
+          const ringFalloff = (1 - diff / ringWidth) * (1 - sw.radius / sw.maxRadius) * sw.strength;
+          const force = ringFalloff * 28.0 * step;
+          vx += (dx / dist) * force;
+          vy += (dy / dist) * force;
+          vz += (dz / dist) * force * 0.5;
+        }
       }
     }
 

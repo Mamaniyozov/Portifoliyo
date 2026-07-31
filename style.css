@@ -1199,6 +1199,33 @@ body.has-custom-cursor .cursor-dot {
   opacity: 1;
 }
 
+/* ================= CLICK SHOCKWAVE ================= */
+.click-shockwave {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 24px rgba(0, 242, 254, 0.85), inset 0 0 12px rgba(0, 242, 254, 0.4);
+  pointer-events: none;
+  z-index: 205;
+  transform: translate(-50%, -50%) scale(0.2);
+  animation: shockwavePulse 0.52s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes shockwavePulse {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8.5);
+  }
+}
+
 .cursor-ring.is-hover::after {
   --cursor-scale: 1.65;
   border-color: var(--violet);
