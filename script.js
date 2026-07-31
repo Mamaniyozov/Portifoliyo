@@ -194,6 +194,11 @@ const translations = {
     "footer.note": "Django · DRF · ASP.NET · PostgreSQL — Samarqand, O'zbekiston",
     "footer.rights": "Barcha huquqlar himoyalangan",
     "footer.top": "Yuqoriga",
+    "hud.title": "TELEMETRY HUD",
+    "hud.nodes": "FAOL TUGUNLAR:",
+    "hud.depth": "KAMERA CHUQURLIGI:",
+    "hud.audio": "OVOZ SYNTH:",
+    "hud.spectrum": "SPEKTR:",
   },
   en: {
     "a11y.skip": "Skip to main content",
@@ -311,6 +316,11 @@ const translations = {
     "footer.note": "Django · DRF · ASP.NET · PostgreSQL — Samarkand, Uzbekistan",
     "footer.rights": "All rights reserved",
     "footer.top": "Back to top",
+    "hud.title": "TELEMETRY HUD",
+    "hud.nodes": "ACTIVE NODES:",
+    "hud.depth": "CAMERA DEPTH:",
+    "hud.audio": "AUDIO SYNTH:",
+    "hud.spectrum": "SPECTRUM:",
   },
   ru: {
     "a11y.skip": "Перейти к основному содержанию",
@@ -428,6 +438,11 @@ const translations = {
     "footer.note": "Django · DRF · ASP.NET · PostgreSQL — Самарканд, Узбекистан",
     "footer.rights": "Все права защищены",
     "footer.top": "Наверх",
+    "hud.title": "ТЕЛЕМЕТРИЯ HUD",
+    "hud.nodes": "АКТИВНЫЕ УЗЛЫ:",
+    "hud.depth": "ГЛУБИНА КАМЕРЫ:",
+    "hud.audio": "АУДИО СИНТЕЗ:",
+    "hud.spectrum": "СПЕКТР:",
   },
 };
 
@@ -1374,7 +1389,7 @@ function setupTopologyInteractions() {
 
   setInterval(updateTelemetry, 250);
 
-  // 9. Particle Dust Matrix Canvas Emitter
+  // 9. Particle Dust Rocket Spark Matrix Canvas Emitter
   const dustCanvas = document.getElementById("dustCanvas");
   if (dustCanvas && !prefersReducedMotion) {
     const ctx = dustCanvas.getContext("2d");
@@ -1382,6 +1397,8 @@ function setupTopologyInteractions() {
     let width = (dustCanvas.width = window.innerWidth * dpr);
     let height = (dustCanvas.height = window.innerHeight * dpr);
     const particles = [];
+    let prevX = 0;
+    let prevY = 0;
 
     window.addEventListener("resize", () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1389,50 +1406,64 @@ function setupTopologyInteractions() {
       height = dustCanvas.height = window.innerHeight * dpr;
     });
 
-    const spawnParticles = (x, y) => {
-      for (let i = 0; i < 3; i++) {
+    const spawnParticles = (x, y, dirX, dirY) => {
+      for (let i = 0; i < 2; i++) {
         particles.push({
           x: x * dpr,
           y: y * dpr,
-          vx: (Math.random() - 0.5) * 1.8 * dpr,
-          vy: (Math.random() - 0.5) * 1.8 * dpr,
-          size: (Math.random() * 2 + 1) * dpr,
-          alpha: 1,
-          color: Math.random() > 0.4 ? "0, 242, 254" : "124, 58, 237",
+          vx: (-dirX * 0.12 + (Math.random() - 0.5) * 1.2) * dpr,
+          vy: (-dirY * 0.12 + (Math.random() - 0.5) * 1.2) * dpr,
+          size: (Math.random() * 2.5 + 1.2) * dpr,
+          life: 1.0,
+          decay: 0.0033, // 5-second lifetime decay (300 frames)
         });
       }
     };
 
     window.addEventListener("pointermove", (e) => {
-      if (Math.random() > 0.3) spawnParticles(e.clientX, e.clientY);
+      const dirX = e.clientX - prevX;
+      const dirY = e.clientY - prevY;
+      prevX = e.clientX;
+      prevY = e.clientY;
+
+      if (Math.hypot(dirX, dirY) > 2) {
+        spawnParticles(e.clientX, e.clientY, dirX, dirY);
+      }
     });
 
-    const renderDust = () => {
+    const renderDust = (timestamp) => {
       ctx.clearRect(0, 0, width, height);
+
+      // Color shift cycle over 4 seconds (4000ms)
+      const currentHue = ((timestamp || performance.now()) / 4000 * 360) % 360;
+
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
-        p.alpha -= 0.025;
+        p.life -= p.decay;
 
-        if (p.alpha <= 0) {
+        if (p.life <= 0) {
           particles.splice(i, 1);
           continue;
         }
 
+        const alpha = Math.max(0, p.life);
+        const radius = p.size * (0.4 + 0.6 * p.life);
+
         ctx.save();
-        ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
-        ctx.shadowColor = `rgba(${p.color}, ${p.alpha * 0.8})`;
-        ctx.shadowBlur = 8 * dpr;
+        ctx.fillStyle = `hsla(${currentHue}, 100%, 65%, ${alpha})`;
+        ctx.shadowColor = `hsla(${currentHue}, 100%, 65%, ${alpha * 0.8})`;
+        ctx.shadowBlur = 10 * dpr;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
       requestAnimationFrame(renderDust);
     };
 
-    renderDust();
+    requestAnimationFrame(renderDust);
   }
 
   // 10. Cybernetic Copy Toast Feedback
