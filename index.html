@@ -15,6 +15,7 @@
   <link rel="alternate" hreflang="x-default" href="https://portifoliyo-production.up.railway.app/">
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
 
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Muhammadyusuf Mamaniyozov">
@@ -128,6 +129,7 @@
        and drifting code fragments — five ambient systems competing
        for the same attention, now one that means something. -->
   <canvas id="topologyCanvas" class="topology-canvas" aria-hidden="true"></canvas>
+  <canvas id="dustCanvas" class="dust-canvas" aria-hidden="true"></canvas>
 
   <!-- Background layer: grid + ambient neon glows -->
   <div class="bg-layer" aria-hidden="true">
@@ -759,6 +761,12 @@
       <div class="telemetry-row"><span>AUDIO SYNTH:</span><strong id="hudAudio">READY</strong></div>
     </div>
   </aside>
+
+  <!-- ================= CYBERNETIC TOAST NOTIFICATION ================= -->
+  <div class="cyber-toast" id="cyberToast" aria-live="polite" aria-hidden="true">
+    <span class="toast-icon">📋</span>
+    <span class="toast-message" id="toastMessage">Text copied to clipboard</span>
+  </div>
 
   <!-- ================= FOOTER ================= -->
   <footer class="site-footer">

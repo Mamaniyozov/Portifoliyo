@@ -1369,6 +1369,93 @@ function setupTopologyInteractions() {
   };
 
   setInterval(updateTelemetry, 250);
+
+  // 9. Particle Dust Matrix Canvas Emitter
+  const dustCanvas = document.getElementById("dustCanvas");
+  if (dustCanvas && !prefersReducedMotion) {
+    const ctx = dustCanvas.getContext("2d");
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = (dustCanvas.width = window.innerWidth * dpr);
+    let height = (dustCanvas.height = window.innerHeight * dpr);
+    const particles = [];
+
+    window.addEventListener("resize", () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = dustCanvas.width = window.innerWidth * dpr;
+      height = dustCanvas.height = window.innerHeight * dpr;
+    });
+
+    const spawnParticles = (x, y) => {
+      for (let i = 0; i < 3; i++) {
+        particles.push({
+          x: x * dpr,
+          y: y * dpr,
+          vx: (Math.random() - 0.5) * 1.8 * dpr,
+          vy: (Math.random() - 0.5) * 1.8 * dpr,
+          size: (Math.random() * 2 + 1) * dpr,
+          alpha: 1,
+          color: Math.random() > 0.4 ? "0, 242, 254" : "124, 58, 237",
+        });
+      }
+    };
+
+    window.addEventListener("pointermove", (e) => {
+      if (Math.random() > 0.3) spawnParticles(e.clientX, e.clientY);
+    });
+
+    const renderDust = () => {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= 0.025;
+
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
+        ctx.shadowColor = `rgba(${p.color}, ${p.alpha * 0.8})`;
+        ctx.shadowBlur = 8 * dpr;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+      requestAnimationFrame(renderDust);
+    };
+
+    renderDust();
+  }
+
+  // 10. Cybernetic Copy Toast Feedback
+  const toast = document.getElementById("cyberToast");
+  const toastMsg = document.getElementById("toastMessage");
+  let toastTimer = null;
+
+  const showToast = (text) => {
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = text;
+    toast.classList.add("is-show");
+    toast.setAttribute("aria-hidden", "false");
+    if (window.__audioSynth) window.__audioSynth.playPulse();
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("is-show");
+      toast.setAttribute("aria-hidden", "true");
+    }, 2800);
+  };
+
+  document.querySelectorAll(".connect-row").forEach((el) => {
+    el.addEventListener("click", () => {
+      const label = el.querySelector(".connect-label")?.textContent || "";
+      if (label) showToast(`COPIED: ${label.trim()}`);
+    });
+  });
 }
 
 if (document.readyState === "loading") {
