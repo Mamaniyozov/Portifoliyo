@@ -1304,6 +1304,10 @@ function setupTopologyInteractions() {
       document.body.dataset.theme = next;
       return `Theme switched to: ${next.toUpperCase()}`;
     },
+    matrix: () => {
+      triggerMatrixMode();
+      return "Matrix mode engaged.";
+    },
   };
 
   if (cliForm) {
@@ -1455,6 +1459,73 @@ function setupTopologyInteractions() {
       const label = el.querySelector(".connect-label")?.textContent || "";
       if (label) showToast(`COPIED: ${label.trim()}`);
     });
+  });
+
+  // 11. Matrix Mode Trigger
+  const triggerMatrixMode = () => {
+    showToast("🟢 MATRIX DIGITAL RAIN ACTIVATED");
+    if (window.__audioSynth) window.__audioSynth.playPulse();
+    if (dustCanvas) {
+      const ctx = dustCanvas.getContext("2d");
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let width = dustCanvas.width;
+      let height = dustCanvas.height;
+      const columns = Math.floor(width / (16 * dpr));
+      const drops = Array(columns).fill(1);
+      const chars = "0101010101XYZDJANGOPOSTGRESQLASPNETPYTHON";
+
+      let frames = 0;
+      const interval = setInterval(() => {
+        frames++;
+        ctx.fillStyle = "rgba(5, 7, 12, 0.15)";
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = "#00f2fe";
+        ctx.font = `${14 * dpr}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(text, i * 16 * dpr, drops[i] * 16 * dpr);
+          if (drops[i] * 16 * dpr > height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+
+        if (frames > 120) {
+          clearInterval(interval);
+          ctx.clearRect(0, 0, width, height);
+        }
+      }, 33);
+    }
+  };
+
+  // 12. Keyboard Number-Key Section Navigation (1 - 5) & M Key Matrix Shortcut
+  const SECTION_MAP = {
+    "1": "#home",
+    "2": "#about",
+    "3": "#skills",
+    "4": "#projects",
+    "5": "#contact",
+  };
+
+  document.addEventListener("keydown", (e) => {
+    const isEditing = ["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName);
+    const modalOpen = document.body.classList.contains("modal-open");
+    if (isEditing || modalOpen) return;
+
+    if (SECTION_MAP[e.key]) {
+      const targetSec = document.querySelector(SECTION_MAP[e.key]);
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: "smooth" });
+        if (window.__audioSynth) window.__audioSynth.playClick();
+        showToast(`NAVIGATED TO: ${SECTION_MAP[e.key].toUpperCase()}`);
+      }
+    }
+
+    if (e.key.toLowerCase() === "m") {
+      triggerMatrixMode();
+    }
   });
 }
 
