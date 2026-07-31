@@ -109,7 +109,7 @@
       <span class="loader-slash">/</span>
       <span class="loader-total">30</span>
     </div>
-    <p class="loader-label">SYSTEM INITIALIZING</p>
+    <p class="loader-label">SYSTEM INITIALIZING…</p>
   </div>
 
   <!-- ================= CUSTOM CURSOR ================= -->
@@ -119,34 +119,20 @@
   <!-- ================= SCROLL PROGRESS ================= -->
   <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
 
-  <!-- ================= RIBBON TRAIL ================= -->
-  <canvas id="ribbonCanvas" class="ribbon-canvas" aria-hidden="true"></canvas>
-
-  <!-- ================= GEO SHAPE (Canvas + GSAP ScrollTrigger) ================= -->
-  <canvas id="geoShapeCanvas" class="geo-shape-canvas" aria-hidden="true"></canvas>
+  <!-- ================= SIGNATURE: LIVE SERVICE TOPOLOGY (WebGL2) =================
+       One clustered node graph per technology in the Skills list.
+       Scroll flies the camera through the stack; pointer bends the
+       links; request pulses fire along the backbone. Replaces the
+       previous ribbon trail, GeoShape, particle field, float dots
+       and drifting code fragments — five ambient systems competing
+       for the same attention, now one that means something. -->
+  <canvas id="topologyCanvas" class="topology-canvas" aria-hidden="true"></canvas>
 
   <!-- Background layer: grid + ambient neon glows -->
   <div class="bg-layer" aria-hidden="true">
-    <canvas id="particleCanvas" class="particle-canvas"></canvas>
     <div class="bg-grid"></div>
     <div class="glow-scroll glow-scroll-violet"><div class="glow glow-violet"></div></div>
     <div class="glow-scroll glow-scroll-indigo"><div class="glow glow-indigo"></div></div>
-    <span class="float-dot fd-1"></span>
-    <span class="float-dot fd-2"></span>
-    <span class="float-dot fd-3"></span>
-    <span class="float-dot fd-4"></span>
-    <span class="float-dot fd-5"></span>
-    <span class="float-dot fd-6"></span>
-
-    <span class="bg-code" style="top:12%; left:8%; animation-duration:22s; animation-delay:-3s;">django</span>
-    <span class="bg-code bg-code-alt" style="top:28%; left:82%; animation-duration:26s; animation-delay:-9s;">async/await</span>
-    <span class="bg-code" style="top:48%; left:18%; animation-duration:19s; animation-delay:-6s;">{ }</span>
-    <span class="bg-code bg-code-alt" style="top:62%; left:70%; animation-duration:24s; animation-delay:-12s;">ASP.NET</span>
-    <span class="bg-code" style="top:75%; left:35%; animation-duration:21s; animation-delay:-4s;">import</span>
-    <span class="bg-code bg-code-alt" style="top:15%; left:55%; animation-duration:23s; animation-delay:-15s;">REST API</span>
-    <span class="bg-code" style="top:85%; left:60%; animation-duration:20s; animation-delay:-8s;">JWT</span>
-    <span class="bg-code bg-code-alt" style="top:38%; left:5%; animation-duration:27s; animation-delay:-1s;">git commit</span>
-    <span class="bg-code" style="top:5%; left:35%; animation-duration:25s; animation-delay:-11s;">docker run</span>
   </div>
 
   <!-- ================= NAVBAR ================= -->
@@ -211,9 +197,10 @@
         </a>
       </div>
 
-      <!-- GeoShape (Canvas + GSAP ScrollTrigger) renders in the fixed
-           #geoShapeCanvas layer below; this stays as a layout spacer
-           so the hero's vertical rhythm is unchanged. -->
+      <!-- The topology canvas renders in its own fixed layer behind
+           all content; this stays as a layout spacer so the hero's
+           vertical rhythm is unchanged and the first cluster has
+           empty space to occupy. -->
       <div class="hero-graphic" aria-hidden="true"></div>
     </section>
 
@@ -427,6 +414,7 @@
         <button type="button" class="filter-pill" data-filter="backend" aria-pressed="false" data-i18n="filter.backend">Backend API</button>
       </div>
       <p class="filter-status visually-hidden" role="status" aria-live="polite" id="filterStatus"></p>
+      <p class="projects-empty" id="projectsEmpty" data-i18n="projects.empty" hidden>Bu filtr bo'yicha loyiha topilmadi. Boshqa filtrni tanlang.</p>
 
       <div class="projects-story" id="projectsStory">
       <div class="projects-story-track">
@@ -458,7 +446,6 @@
             <span class="tag">JWT · 2FA</span>
           </div>
           <div class="project-links">
-            <!-- TODO: HRMM repozitoriysi havolasini shu yerga qo'ying -->
             <a class="link-arrow" href="https://github.com/Mamaniyozov" target="_blank" rel="noopener noreferrer"><span data-i18n="proj.view_github">GitHub'da ko'rish</span> <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -623,22 +610,25 @@
             <input type="hidden" name="from_name" value="Portfolio">
             <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
 
+            <!-- aria-describedby links each input to its error text, so a
+                 screen reader reads the reason on focus. aria-invalid alone
+                 (set by script.js) only announces *that* a field is wrong. -->
             <div class="form-field">
               <label for="formName" data-i18n="form.name">Ismingiz</label>
-              <input type="text" id="formName" name="name" required autocomplete="name" placeholder="Ism Familiya" data-i18n-placeholder="form.ph_name">
-              <p class="form-error" data-error-for="formName" data-i18n="form.err_name">Ismingizni kiriting.</p>
+              <input type="text" id="formName" name="name" required autocomplete="name" aria-describedby="formNameError" placeholder="Ism Familiya" data-i18n-placeholder="form.ph_name">
+              <p class="form-error" id="formNameError" data-error-for="formName" data-i18n="form.err_name">Ismingizni kiriting.</p>
             </div>
 
             <div class="form-field">
               <label for="formEmail" data-i18n="form.email">Email</label>
-              <input type="email" id="formEmail" name="email" required autocomplete="email" placeholder="siz@example.com" data-i18n-placeholder="form.ph_email">
-              <p class="form-error" data-error-for="formEmail" data-i18n="form.err_email">To'g'ri email manzil kiriting.</p>
+              <input type="email" id="formEmail" name="email" required autocomplete="email" inputmode="email" spellcheck="false" autocapitalize="off" aria-describedby="formEmailError" placeholder="siz@example.com" data-i18n-placeholder="form.ph_email">
+              <p class="form-error" id="formEmailError" data-error-for="formEmail" data-i18n="form.err_email">To'g'ri email manzil kiriting.</p>
             </div>
 
             <div class="form-field">
               <label for="formMessage" data-i18n="form.message">Xabar</label>
-              <textarea id="formMessage" name="message" rows="5" required placeholder="Loyiha yoki vakansiya haqida qisqacha..." data-i18n-placeholder="form.ph_message"></textarea>
-              <p class="form-error" data-error-for="formMessage" data-i18n="form.err_message">Xabar matnini yozing (kamida 10 belgi).</p>
+              <textarea id="formMessage" name="message" rows="5" required aria-describedby="formMessageError" placeholder="Loyiha yoki vakansiya haqida qisqacha…" data-i18n-placeholder="form.ph_message"></textarea>
+              <p class="form-error" id="formMessageError" data-error-for="formMessage" data-i18n="form.err_message">Xabar matnini yozing (kamida 10 belgi).</p>
             </div>
 
             <button type="submit" class="btn btn-primary form-submit">
