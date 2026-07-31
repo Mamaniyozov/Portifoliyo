@@ -21,8 +21,24 @@ import { initHeroCinematic } from "./modules/hero-cinematic.js";
 import { initScrollReveal } from "./modules/scroll-reveal.js";
 import { initProjectsStory } from "./modules/projects-story.js";
 import { initSystemTopology } from "./modules/system-topology.js";
+import {
+  initAudioState,
+  toggleAudio,
+  playHoverSound,
+  playClickSound,
+  playPulseSound,
+} from "./modules/audio-synth.js";
+
+window.__audioSynth = {
+  init: initAudioState,
+  toggle: toggleAudio,
+  playHover: playHoverSound,
+  playClick: playClickSound,
+  playPulse: playPulseSound,
+};
 
 function boot() {
+  initAudioState();
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Scroll progress must initialise first: SystemTopology and

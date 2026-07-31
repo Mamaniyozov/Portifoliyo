@@ -1149,6 +1149,9 @@ function setupTopologyInteractions() {
     if (window.__topologyGraph && typeof window.__topologyGraph.triggerShockwave === "function") {
       window.__topologyGraph.triggerShockwave(1.2);
     }
+    if (window.__audioSynth) {
+      window.__audioSynth.playPulse();
+    }
 
     const ring = document.createElement("div");
     ring.className = "click-shockwave";
@@ -1157,6 +1160,37 @@ function setupTopologyInteractions() {
     document.body.appendChild(ring);
 
     setTimeout(() => ring.remove(), 550);
+  });
+
+  // 4. Audio Toggle Button & UI Sound Triggers
+  const audioBtn = document.getElementById("audioToggleBtn");
+  const audioStatus = document.getElementById("audioStatusText");
+
+  const syncAudioUI = (enabled) => {
+    if (audioBtn) audioBtn.classList.toggle("is-enabled", enabled);
+    if (audioStatus) audioStatus.textContent = enabled ? "SND ON" : "SND OFF";
+  };
+
+  if (audioBtn) {
+    const isSavedOn = localStorage.getItem("audio_enabled") === "true";
+    syncAudioUI(isSavedOn);
+
+    audioBtn.addEventListener("click", () => {
+      if (window.__audioSynth) {
+        const enabled = window.__audioSynth.toggle();
+        syncAudioUI(enabled);
+      }
+    });
+  }
+
+  // Hover & click sound feedback
+  document.querySelectorAll("button, a, .filter-pill, .skill-row, .project-card").forEach((el) => {
+    el.addEventListener("pointerenter", () => {
+      if (window.__audioSynth) window.__audioSynth.playHover();
+    });
+    el.addEventListener("click", () => {
+      if (window.__audioSynth) window.__audioSynth.playClick();
+    });
   });
 }
 
