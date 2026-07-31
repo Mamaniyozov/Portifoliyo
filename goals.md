@@ -1,6 +1,6 @@
 # Keyingi qadamlar
 
-Holat: `feat/topology-background` branch, **commit qilinmagan**.
+Holat: `main` branch, **barcha vazifalar bajarildi va commit qilindi (68d3fae)**.
 Oxirgi yangilanish: 2026-07-31
 
 ---
