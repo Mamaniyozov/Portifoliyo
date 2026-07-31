@@ -74,15 +74,15 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
   if (!gl) return null;
 
   const nodeProgram = createProgram(gl, NODE_VS, NODE_FS, {
-    uniforms: ["uResolution", "uCameraZ", "uDpr", "uCore", "uWarm", "uIntensity", "uTime"],
+    uniforms: ["uResolution", "uCameraZ", "uDpr", "uCore", "uWarm", "uIntensity", "uTime", "uCameraSway", "uScrollVelocity"],
     attributes: ["aPosition", "aSize", "aTone"],
   });
   const edgeProgram = createProgram(gl, EDGE_VS, EDGE_FS, {
-    uniforms: ["uResolution", "uCameraZ", "uDpr", "uColor", "uOpacity", "uIntensity"],
+    uniforms: ["uResolution", "uCameraZ", "uDpr", "uColor", "uOpacity", "uIntensity", "uCameraSway", "uScrollVelocity"],
     attributes: ["aPosition"],
   });
   const pulseProgram = createProgram(gl, PULSE_VS, PULSE_FS, {
-    uniforms: ["uResolution", "uCameraZ", "uDpr", "uOk", "uWarn", "uIntensity", "uTime"],
+    uniforms: ["uResolution", "uCameraZ", "uDpr", "uOk", "uWarn", "uIntensity", "uTime", "uCameraSway", "uScrollVelocity"],
     attributes: ["aPosition", "aTone"],
   });
 
@@ -125,6 +125,10 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
   const pointer = { x: 0, y: 0, z: 0, active: false, screenX: 0, screenY: 0 };
   const state = {
     cameraZ: -FOCUS_DIST,
+    targetCameraZ: -FOCUS_DIST,
+    cameraSwayX: 0,
+    cameraSwayY: 0,
+    scrollVelocitySmoothed: 0,
     dpr: 1,
     running: false,
     lost: false,
@@ -214,6 +218,12 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
     gl.uniform1f(prog.uniforms.uCameraZ, state.cameraZ);
     gl.uniform1f(prog.uniforms.uDpr, state.dpr);
     gl.uniform1f(prog.uniforms.uIntensity, state.intensity);
+    if (prog.uniforms.uCameraSway) {
+      gl.uniform2f(prog.uniforms.uCameraSway, state.cameraSwayX, state.cameraSwayY);
+    }
+    if (prog.uniforms.uScrollVelocity) {
+      gl.uniform1f(prog.uniforms.uScrollVelocity, state.scrollVelocitySmoothed);
+    }
     if (prog.uniforms.uTime) gl.uniform1f(prog.uniforms.uTime, elapsed);
   }
 
@@ -320,7 +330,23 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
     syncSize();
 
     const energy = scrollState.velocity;
-    state.cameraZ = scrollState.progress * WORLD_DEPTH - FOCUS_DIST;
+    state.targetCameraZ = scrollState.progress * WORLD_DEPTH - FOCUS_DIST;
+
+    // Senior non-linear lerp for drone-camera spatial inertia
+    state.cameraZ += (state.targetCameraZ - state.cameraZ) * Math.min(0.08 * dt, 1);
+
+    // Smooth scroll velocity filter
+    state.scrollVelocitySmoothed += (scrollState.velocity - state.scrollVelocitySmoothed) * Math.min(0.12 * dt, 1);
+
+    // Organic 3D camera sway & tilt
+    const swayBaseX = Math.sin(elapsed * 1.4) * 18;
+    const swayBaseY = Math.cos(elapsed * 1.1) * 14;
+    const pointerOffsetX = pointer.active ? pointer.x * 0.05 : 0;
+    const pointerOffsetY = pointer.active ? pointer.y * 0.05 : 0;
+
+    state.cameraSwayX += (swayBaseX + pointerOffsetX - state.cameraSwayX) * Math.min(0.06 * dt, 1);
+    state.cameraSwayY += (swayBaseY + pointerOffsetY - state.cameraSwayY) * Math.min(0.06 * dt, 1);
+
     state.intensity = intensityFor(scrollState.progress);
     if (pointer.active) updatePointerWorld();
 

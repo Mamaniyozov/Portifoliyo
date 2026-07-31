@@ -24,14 +24,21 @@ const PROJECT_GLSL = /* glsl */ `
   uniform vec2  uResolution;
   uniform float uCameraZ;
   uniform float uDpr;
+  uniform vec2  uCameraSway;
+  uniform float uScrollVelocity;
 
-  // Perspective divide by hand. The camera only ever dollies along
-  // Z, so a full mvp matrix would be ceremony with no payoff.
+  // Senior WebGL perspective divide with Z-warp tunnel and 3D camera sway
   vec4 project(vec3 world, out float depth, out float persp, out float blur) {
-    depth = max(world.z - uCameraZ, 40.0);
+    vec3 warpedWorld = world;
+    // Spatial hyper-warp along Z depth on fast scroll
+    warpedWorld.z += (world.z - uCameraZ) * uScrollVelocity * 0.22;
+    // Dynamic 3D camera sway & pitch
+    warpedWorld.xy += uCameraSway * (1.0 - clamp(abs(world.z - uCameraZ) / 3800.0, 0.0, 0.75));
+
+    depth = max(warpedWorld.z - uCameraZ, 40.0);
     persp = ${FOCAL}.0 / depth;
     blur  = clamp(abs(depth - ${FOCUS_DIST}.0) / ${FOCUS_RANGE}.0, 0.0, 1.0);
-    vec2 screen = world.xy * persp;
+    vec2 screen = warpedWorld.xy * persp;
     return vec4(screen / (uResolution * 0.5), 0.0, 1.0);
   }
 
