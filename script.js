@@ -1192,6 +1192,47 @@ function setupTopologyInteractions() {
       if (window.__audioSynth) window.__audioSynth.playClick();
     });
   });
+
+  // 5. Fullscreen Case Study Overlay Modal
+  const modal = document.getElementById("projectModal");
+  const modalBody = document.getElementById("modalBody");
+  const modalCloseBtn = document.getElementById("modalCloseBtn");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+
+  const openProjectModal = (card) => {
+    if (!modal || !modalBody || !card) return;
+    modalBody.innerHTML = "";
+    const clone = card.cloneNode(true);
+    modalBody.appendChild(clone);
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    if (window.__audioSynth) window.__audioSynth.playPulse();
+  };
+
+  const closeProjectModal = () => {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (window.__audioSynth) window.__audioSynth.playClick();
+  };
+
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      openProjectModal(card);
+    });
+  });
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeProjectModal);
+  if (modalBackdrop) modalBackdrop.addEventListener("click", closeProjectModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("is-open")) {
+      closeProjectModal();
+    }
+  });
 }
 
 if (document.readyState === "loading") {

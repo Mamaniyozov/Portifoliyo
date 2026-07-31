@@ -2217,3 +2217,99 @@ body.has-custom-cursor *:focus-visible {
 /* The former "reduced motion — new components" block lived here.
    It is gone because the denylist above already covers every
    element on the page, including ones not yet written. */
+
+/* ================= FULLSCREEN CASE STUDY MODAL ================= */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  pointer-events: none;
+}
+
+.project-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 7, 12, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.project-modal-dialog {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 940px;
+  max-height: 88vh;
+  background: var(--surface-card);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 254, 0.15);
+  border-radius: 16px;
+  overflow-y: auto;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 32px;
+}
+
+.project-modal.is-open .project-modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 15;
+}
+
+.project-modal-close:hover {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--cyan);
+  color: var(--cyan);
+  transform: rotate(90deg);
+}
+
+.project-modal-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.project-modal-body .project-banner {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+
+.project-modal-body .project-banner img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
