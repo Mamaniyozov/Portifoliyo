@@ -78,18 +78,24 @@ export const NODE_FS = /* glsl */ `#version 300 es
   uniform vec3  uCore;
   uniform vec3  uWarm;
   uniform float uIntensity;
+  uniform float uTime;
   out vec4 fragColor;
 
   void main() {
     vec2 uv = gl_PointCoord * 2.0 - 1.0;
     float r = dot(uv, uv);
     if (r > 1.0) discard;
-    // Tight core when sharp, flat disc when blurred.
-    float falloff = pow(1.0 - r, mix(3.2, 1.05, vBlur));
+
+    // Liquid chromatic shift
+    float shift = sin(uv.x * 4.0 + uTime * 3.5) * 0.07;
+    float falloffR = pow(clamp(1.0 - (r + shift), 0.0, 1.0), mix(3.2, 1.05, vBlur));
+    float falloffG = pow(clamp(1.0 - r, 0.0, 1.0), mix(3.2, 1.05, vBlur));
+    float falloffB = pow(clamp(1.0 - (r - shift), 0.0, 1.0), mix(3.2, 1.05, vBlur));
+
     vec3 color = mix(uWarm, uCore, vTone);
-    // Intensity scales alpha only, not rgb — under additive blending
-    // scaling both would square the falloff and crush it too fast.
-    fragColor = vec4(color * falloff, falloff * vAlpha * uIntensity);
+    vec3 chromColor = vec3(color.r * falloffR * 1.12, color.g * falloffG, color.b * falloffB * 1.12);
+
+    fragColor = vec4(chromColor, falloffG * vAlpha * uIntensity);
   }
 `;
 
@@ -141,17 +147,22 @@ export const PULSE_FS = /* glsl */ `#version 300 es
   uniform vec3  uOk;
   uniform vec3  uWarn;
   uniform float uIntensity;
+  uniform float uTime;
   out vec4 fragColor;
 
   void main() {
     vec2 uv = gl_PointCoord * 2.0 - 1.0;
     float r = dot(uv, uv);
     if (r > 1.0) discard;
-    float falloff = pow(1.0 - r, 2.2);
+
+    float shift = sin(uv.y * 5.0 + uTime * 4.2) * 0.08;
+    float falloffR = pow(clamp(1.0 - (r + shift), 0.0, 1.0), 2.2);
+    float falloffG = pow(clamp(1.0 - r, 0.0, 1.0), 2.2);
+    float falloffB = pow(clamp(1.0 - (r - shift), 0.0, 1.0), 2.2);
+
     vec3 color = mix(uWarn, uOk, vTone);
-    // Pulses keep more of their presence than nodes or edges: they
-    // are the part that reads as "live", and losing them entirely
-    // deeper in the page would make the network look switched off.
-    fragColor = vec4(color * falloff, falloff * vAlpha * mix(0.55, 1.0, uIntensity));
+    vec3 chromColor = vec3(color.r * falloffR * 1.15, color.g * falloffG, color.b * falloffB * 1.15);
+
+    fragColor = vec4(chromColor, falloffG * vAlpha * mix(0.55, 1.0, uIntensity));
   }
 `;

@@ -74,7 +74,7 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
   if (!gl) return null;
 
   const nodeProgram = createProgram(gl, NODE_VS, NODE_FS, {
-    uniforms: ["uResolution", "uCameraZ", "uDpr", "uCore", "uWarm", "uIntensity"],
+    uniforms: ["uResolution", "uCameraZ", "uDpr", "uCore", "uWarm", "uIntensity", "uTime"],
     attributes: ["aPosition", "aSize", "aTone"],
   });
   const edgeProgram = createProgram(gl, EDGE_VS, EDGE_FS, {
@@ -82,7 +82,7 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
     attributes: ["aPosition"],
   });
   const pulseProgram = createProgram(gl, PULSE_VS, PULSE_FS, {
-    uniforms: ["uResolution", "uCameraZ", "uDpr", "uOk", "uWarn", "uIntensity"],
+    uniforms: ["uResolution", "uCameraZ", "uDpr", "uOk", "uWarn", "uIntensity", "uTime"],
     attributes: ["aPosition", "aTone"],
   });
 
@@ -214,6 +214,7 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
     gl.uniform1f(prog.uniforms.uCameraZ, state.cameraZ);
     gl.uniform1f(prog.uniforms.uDpr, state.dpr);
     gl.uniform1f(prog.uniforms.uIntensity, state.intensity);
+    if (prog.uniforms.uTime) gl.uniform1f(prog.uniforms.uTime, elapsed);
   }
 
   /**
