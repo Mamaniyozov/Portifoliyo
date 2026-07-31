@@ -5,41 +5,53 @@
    self-contained, reusable and independently testable.
    Everything here is additive to script.js — it never redefines
    globals script.js already owns (navbar, i18n, filters, cursor,
-   ribbon trail, three.js hero, loader).
+   loader).
+
+   Ambient effects were consolidated: the ribbon trail, GeoShape,
+   spiral particle field, float dots and drifting code fragments
+   were all removed in favour of a single signature background
+   (SystemTopology). Five competing ambient systems meant nothing
+   read as *the* centrepiece; one that encodes the real stack does.
    ============================================================ */
 
 import { initScrollProgress } from "./modules/scroll-progress.js";
-import { initSpiralParticles } from "./modules/spiral-particles.js";
 import { initBackgroundGlow } from "./modules/background-glow.js";
 import { initParallaxLayer } from "./modules/parallax-layer.js";
 import { initHeroCinematic } from "./modules/hero-cinematic.js";
 import { initScrollReveal } from "./modules/scroll-reveal.js";
 import { initProjectsStory } from "./modules/projects-story.js";
-import { initGeoShape } from "./modules/geo-shape.js";
+import { initSystemTopology } from "./modules/system-topology.js";
 
 function boot() {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const bgLayer = document.querySelector(".bg-layer");
 
-  // Always on: progress bar, reveal, hero entrance, projects
-  // storytelling and the GeoShape centerpiece all degrade
-  // gracefully (instant/static) under reduced motion instead of
-  // being skipped outright.
+  // Scroll progress must initialise first: SystemTopology and
+  // BackgroundGlow both read scrollState inside their render loops
+  // rather than attaching scroll listeners of their own.
   initScrollProgress();
+
   initScrollReveal({ reducedMotion });
   initHeroCinematic({ reducedMotion });
   initProjectsStory({ reducedMotion });
-  initGeoShape({
-    canvas: document.getElementById("geoShapeCanvas"),
+
+  const topology = initSystemTopology({
+    canvas: document.getElementById("topologyCanvas"),
     reducedMotion,
   });
 
-  // Continuous/ambient motion: fully skipped under reduced motion.
-  initSpiralParticles({
-    canvas: document.getElementById("particleCanvas"),
-    reducedMotion,
-    bgLayer,
-  });
+  // Drives the canvas fade-in (style.css .topology-canvas). Only set
+  // when a context actually exists, so a browser without WebGL2 keeps
+  // the layer fully transparent rather than fading in an empty canvas.
+  if (topology) document.body.classList.add("topology-ready");
+
+  // Signals to script.js that the background is live, so the loader
+  // can gate on real readiness instead of a fixed timer. Dispatched
+  // even when WebGL is unavailable (topology === null) — the loader
+  // must never be able to strand the page behind a missing feature.
+  document.dispatchEvent(
+    new CustomEvent("topologyready", { detail: { available: Boolean(topology) } })
+  );
+
   initBackgroundGlow({ reducedMotion });
   initParallaxLayer({ reducedMotion });
 }

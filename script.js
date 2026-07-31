@@ -101,7 +101,7 @@ const translations = {
     "about.stat_years": "Yillik tijorat tajribasi",
     "about.stat_projects": "Ochiq kodli loyiha",
     "about.stat_response": "Javob berish vaqti",
-    "about.mini_text": "Hozir \"RIO vs RIATM\" onkologiya markazida Karmed tibbiy tizimini qo'llab-quvvatlayman: backend xatoliklari, PostgreSQL ma'lumotlari, FastReport hujjatlari va Telegram botlar. Bu ish menga real foydalanuvchilar har kuni ishlatadigan tizimda xatoning narxi qanchaligini o'rgatdi.",
+    "about.mini_text": "Hozir “RIO vs RIATM” onkologiya markazida Karmed tibbiy tizimini qo'llab-quvvatlayman: backend xatoliklari, PostgreSQL ma'lumotlari, FastReport hujjatlari va Telegram botlar. Bu ish menga real foydalanuvchilar har kuni ishlatadigan tizimda xatoning narxi qanchaligini o'rgatdi.",
     "about.fact_loc_k": "Joylashuv",
     "about.fact_loc_v": "Samarqand, O'zbekiston · UTC+5",
     "about.fact_lang_k": "Tillar",
@@ -145,6 +145,8 @@ const translations = {
     "filter.django": "Django / DRF",
     "filter.flutter": "Flutter",
     "filter.backend": "Backend API",
+    "filter.status": "{filter} — {total} tadan {n} ta loyiha ko'rsatilmoqda",
+    "projects.empty": "Bu filtr bo'yicha loyiha topilmadi. Boshqa filtrni tanlang.",
     "case.problem": "Muammo",
     "case.solution": "Yechim",
     "case.result": "Natija",
@@ -153,7 +155,7 @@ const translations = {
     "proj.hrmm.solution": "Django + DRF asosida yagona tizim qurdim: xodimlar bazasi, davomat, ta'til arizalari oqimi va avtomatik hisobotlar. Telegram bot xodimlarga bildirishnoma yuboradi, JWT + 2FA/OTP kirishni himoyalaydi, audit jurnali esa har bir o'zgarishni kim va qachon qilganini yozib boradi.",
     "proj.hrmm.result": "HR jarayonlari bitta tizimga ko'chdi: hisobot qo'lda yig'ilmaydi, ta'til arizasi Telegram orqali keladi va ketadi, har bir yozuv o'zgarishi kuzatiladi.",
     "proj.finance.kind": "API + MOBIL",
-    "proj.finance.problem": "Shaxsiy xarajatlar bir necha ilova va daftarga bo'lingan edi. Oy oxirida \"pul qayerga ketdi\" degan savolga javob topish uchun hamma narsani qo'lda yig'ish kerak bo'lardi.",
+    "proj.finance.problem": "Shaxsiy xarajatlar bir necha ilova va daftarga bo'lingan edi. Oy oxirida “pul qayerga ketdi” degan savolga javob topish uchun hamma narsani qo'lda yig'ish kerak bo'lardi.",
     "proj.finance.solution": "Django REST Framework backend va Flutter mobil klientdan iborat tizim. Kategoriyalar bo'yicha xarajat tahlili, oylik hisobotlar va jamg'arma maqsadlari. Tranzaksiya API'si SimpleJWT bilan himoyalangan, asosiy oqimlar Pytest bilan qoplangan.",
     "proj.finance.result": "Xarajat kiritish telefondan bir necha soniyada bajariladi, oylik ko'rinish esa qo'lda hisoblashsiz avtomatik shakllanadi.",
     "proj.doctor.kind": "TIBBIY API",
@@ -179,10 +181,10 @@ const translations = {
     "form.email": "Email",
     "form.message": "Xabar",
     "form.submit": "Xabarni yuborish",
-    "form.sending": "Yuborilmoqda...",
+    "form.sending": "Yuborilmoqda…",
     "form.ph_name": "Ism Familiya",
     "form.ph_email": "siz@example.com",
-    "form.ph_message": "Loyiha yoki vakansiya haqida qisqacha...",
+    "form.ph_message": "Loyiha yoki vakansiya haqida qisqacha…",
     "form.err_name": "Ismingizni kiriting.",
     "form.err_email": "To'g'ri email manzil kiriting.",
     "form.err_message": "Xabar matnini yozing (kamida 10 belgi).",
@@ -216,7 +218,7 @@ const translations = {
     "about.stat_years": "Years of commercial experience",
     "about.stat_projects": "Open-source projects",
     "about.stat_response": "Response time",
-    "about.mini_text": "I currently support the Karmed medical system at the \"RIO vs RIATM\" oncology centre: backend bugs, PostgreSQL data, FastReport documents and Telegram bots. Working on a system clinic staff use daily taught me exactly what a bug costs.",
+    "about.mini_text": "I currently support the Karmed medical system at the “RIO vs RIATM” oncology centre: backend bugs, PostgreSQL data, FastReport documents and Telegram bots. Working on a system clinic staff use daily taught me exactly what a bug costs.",
     "about.fact_loc_k": "Location",
     "about.fact_loc_v": "Samarkand, Uzbekistan · UTC+5",
     "about.fact_lang_k": "Languages",
@@ -260,6 +262,8 @@ const translations = {
     "filter.django": "Django / DRF",
     "filter.flutter": "Flutter",
     "filter.backend": "Backend API",
+    "filter.status": "{filter} — showing {n} of {total} projects",
+    "projects.empty": "No projects match this filter. Try another one.",
     "case.problem": "Problem",
     "case.solution": "Solution",
     "case.result": "Result",
@@ -268,7 +272,7 @@ const translations = {
     "proj.hrmm.solution": "I built a single system on Django + DRF: employee database, attendance, a leave-request workflow and automated reports. A Telegram bot pushes notifications to staff, JWT + 2FA/OTP protects sign-in, and an audit log records who changed what and when.",
     "proj.hrmm.result": "HR processes moved into one system: reports are no longer assembled by hand, leave requests flow through Telegram, and every record change is traceable.",
     "proj.finance.kind": "API + MOBILE",
-    "proj.finance.problem": "Personal spending was split across several apps and notebooks. Answering \"where did the money go\" at month end meant collecting everything manually.",
+    "proj.finance.problem": "Personal spending was split across several apps and notebooks. Answering “where did the money go” at month end meant collecting everything manually.",
     "proj.finance.solution": "A Django REST Framework backend paired with a Flutter mobile client. Category-level expense analytics, monthly reports and savings goals. The transaction API is protected with SimpleJWT and the core flows are covered by Pytest.",
     "proj.finance.result": "Logging an expense takes seconds from the phone, and the monthly view builds itself with no manual arithmetic.",
     "proj.doctor.kind": "HEALTHCARE API",
@@ -294,10 +298,10 @@ const translations = {
     "form.email": "Email",
     "form.message": "Message",
     "form.submit": "Send message",
-    "form.sending": "Sending...",
+    "form.sending": "Sending…",
     "form.ph_name": "First and last name",
     "form.ph_email": "you@example.com",
-    "form.ph_message": "A few lines about the project or role...",
+    "form.ph_message": "A few lines about the project or role…",
     "form.err_name": "Please enter your name.",
     "form.err_email": "Please enter a valid email address.",
     "form.err_message": "Please write a message (at least 10 characters).",
@@ -375,6 +379,8 @@ const translations = {
     "filter.django": "Django / DRF",
     "filter.flutter": "Flutter",
     "filter.backend": "Backend API",
+    "filter.status": "{filter} — показано {n} из {total} проектов",
+    "projects.empty": "По этому фильтру проектов нет. Выберите другой.",
     "case.problem": "Проблема",
     "case.solution": "Решение",
     "case.result": "Результат",
@@ -409,10 +415,10 @@ const translations = {
     "form.email": "Email",
     "form.message": "Сообщение",
     "form.submit": "Отправить сообщение",
-    "form.sending": "Отправка...",
+    "form.sending": "Отправка…",
     "form.ph_name": "Имя и фамилия",
     "form.ph_email": "you@example.com",
-    "form.ph_message": "Несколько строк о проекте или вакансии...",
+    "form.ph_message": "Несколько строк о проекте или вакансии…",
     "form.err_name": "Пожалуйста, введите имя.",
     "form.err_email": "Введите корректный email-адрес.",
     "form.err_message": "Напишите сообщение (минимум 10 символов).",
@@ -470,10 +476,46 @@ function applyLanguage(lang) {
   document.dispatchEvent(new CustomEvent("langchange", { detail: { lang: currentLang } }));
 }
 
-const savedLang = localStorage.getItem("lang");
-if (savedLang && translations[savedLang]) {
-  applyLanguage(savedLang);
+/* ---- Initial language resolution ----
+   Order: explicit ?lang= in the URL → a previously saved choice →
+   the browser's own language list → Uzbek.
+
+   The browser step is the one that matters: the site ships full EN
+   and RU translations, and availability is stated as "Remote /
+   On-site", so a recruiter arriving from outside Uzbekistan used to
+   land on Uzbek and have to find the switcher in the navbar. A
+   saved preference always wins, so anyone who picks a language
+   keeps it.
+
+   To go back to Uzbek-always, delete the detectLanguage() branch. */
+
+function normaliseLang(tag) {
+  if (!tag) return null;
+  const base = String(tag).toLowerCase().split("-")[0];
+  return translations[base] ? base : null;
 }
+
+function detectLanguage() {
+  const list = navigator.languages && navigator.languages.length
+    ? navigator.languages
+    : [navigator.language];
+  for (const tag of list) {
+    const match = normaliseLang(tag);
+    if (match) return match;
+  }
+  return null;
+}
+
+const urlLang = normaliseLang(new URLSearchParams(window.location.search).get("lang"));
+const savedLang = normaliseLang(localStorage.getItem("lang"));
+const initialLang = urlLang || savedLang || detectLanguage() || "uz";
+
+if (initialLang !== "uz") applyLanguage(initialLang);
+else document.documentElement.lang = "uz";
+
+// An explicit ?lang= is a deliberate choice — remember it so the
+// hreflang alternates in <head> resolve to a stable experience.
+if (urlLang) localStorage.setItem("lang", urlLang);
 
 if (langSwitcher && langCurrentBtn && langDropdown) {
   const options = Array.from(langDropdown.querySelectorAll(".lang-option"));
@@ -553,29 +595,74 @@ const filterPills = document.querySelectorAll(".filter-pill");
 const projectCards = document.querySelectorAll(".project-card");
 const filterStatus = document.getElementById("filterStatus");
 
+const projectsEmpty = document.getElementById("projectsEmpty");
+
 if (filterPills.length && projectCards.length) {
-  filterPills.forEach((pill) => {
-    pill.addEventListener("click", () => {
-      filterPills.forEach((p) => {
-        p.classList.remove("is-active");
-        p.setAttribute("aria-pressed", "false");
-      });
-      pill.classList.add("is-active");
-      pill.setAttribute("aria-pressed", "true");
-
-      const filter = pill.dataset.filter;
-      let shown = 0;
-      projectCards.forEach((card) => {
-        const stacks = (card.dataset.stack || "").split(" ");
-        const show = filter === "all" || stacks.includes(filter);
-        if (show) shown += 1;
-        card.classList.toggle("is-hidden", !show);
-      });
-
-      if (filterStatus) {
-        filterStatus.textContent = `${shown} / ${projectCards.length}`;
-      }
+  /**
+   * @param {string} filter
+   * @param {boolean} pushUrl  false while restoring from the URL, so
+   *   replaying history does not append another entry.
+   */
+  function applyFilter(filter, pushUrl = true) {
+    let matched = null;
+    filterPills.forEach((p) => {
+      const isActive = p.dataset.filter === filter;
+      p.classList.toggle("is-active", isActive);
+      p.setAttribute("aria-pressed", String(isActive));
+      if (isActive) matched = p;
     });
+    if (!matched) return applyFilter("all", pushUrl);
+
+    let shown = 0;
+    projectCards.forEach((card) => {
+      const stacks = (card.dataset.stack || "").split(" ");
+      const show = filter === "all" || stacks.includes(filter);
+      if (show) shown += 1;
+      card.classList.toggle("is-hidden", !show);
+    });
+
+    // Empty state. No current filter produces zero results, but a
+    // filter added later could, and a silently blank section reads
+    // as a broken page rather than an empty one.
+    if (projectsEmpty) projectsEmpty.hidden = shown > 0;
+
+    if (filterStatus) {
+      // Words, not "2 / 4" — a live region announcing "two slash
+      // four" tells a screen-reader user nothing about what changed.
+      const label = matched.textContent.trim();
+      filterStatus.textContent = t("filter.status")
+        .replace("{n}", String(shown))
+        .replace("{total}", String(projectCards.length))
+        .replace("{filter}", label);
+    }
+
+    // URL reflects state, so a filtered view is linkable and the
+    // back button behaves the way the browser chrome promises.
+    if (pushUrl) {
+      const url = new URL(window.location.href);
+      if (filter === "all") url.searchParams.delete("stack");
+      else url.searchParams.set("stack", filter);
+      history.pushState({ stack: filter }, "", url);
+    }
+  }
+
+  filterPills.forEach((pill) => {
+    pill.addEventListener("click", () => applyFilter(pill.dataset.filter));
+  });
+
+  window.addEventListener("popstate", () => {
+    const stack = new URLSearchParams(window.location.search).get("stack") || "all";
+    applyFilter(stack, false);
+  });
+
+  const initialFilter =
+    new URLSearchParams(window.location.search).get("stack") || "all";
+  if (initialFilter !== "all") applyFilter(initialFilter, false);
+
+  // Keep the announcement in the visitor's language.
+  document.addEventListener("langchange", () => {
+    const active = document.querySelector(".filter-pill.is-active");
+    if (active) applyFilter(active.dataset.filter, false);
   });
 }
 
@@ -769,37 +856,86 @@ function decodeHeroSub() {
   runScramble(heroSub);
 }
 
-if (loader && loaderCount) {
-  if (prefersReducedMotion) {
+/* The counter is a real progress gate, not theatre on a timer.
+   It advances toward 30 but holds just short until the things the
+   first frame actually depends on have landed — fonts (which
+   otherwise reflow the hero right after reveal) and the WebGL
+   background. On a fast connection the wait is imperceptible; on a
+   slow one the visitor stops seeing the page reflow under them.
+
+   Every gate is failsafe. A hard 4s ceiling releases the loader
+   regardless, so no missing font file or absent WebGL context can
+   strand a visitor behind a black screen — the page always
+   arrives, the counter just stops claiming to measure anything. */
+
+function runLoader() {
+  if (!loader || !loaderCount) {
+    decodeHeroSub();
+    document.dispatchEvent(new CustomEvent("loaderdone"));
+    return;
+  }
+
+  const finish = () => {
+    if (loader.classList.contains("is-done")) return;
+    loaderCount.textContent = "30";
     loader.classList.add("is-done");
     decodeHeroSub();
     document.dispatchEvent(new CustomEvent("loaderdone"));
-  } else {
-    const total = 30;
-    const durationMs = 1700;
-    const start = performance.now();
+  };
 
-    const tick = (now) => {
-      const progress = Math.min((now - start) / durationMs, 1);
-      const value = Math.floor(progress * total);
-      loaderCount.textContent = String(value).padStart(2, "0");
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        loaderCount.textContent = String(total).padStart(2, "0");
-        setTimeout(() => {
-          loader.classList.add("is-done");
-          decodeHeroSub();
-          document.dispatchEvent(new CustomEvent("loaderdone"));
-        }, 260);
-      }
-    };
-    requestAnimationFrame(tick);
+  if (prefersReducedMotion) {
+    finish();
+    return;
   }
-} else {
-  decodeHeroSub();
-  document.dispatchEvent(new CustomEvent("loaderdone"));
+
+  let ready = false;
+  const readySignals = [];
+
+  readySignals.push(
+    document.fonts && document.fonts.ready
+      ? document.fonts.ready.catch(() => {})
+      : Promise.resolve()
+  );
+
+  readySignals.push(
+    new Promise((resolve) => {
+      // scroll-experience.js fires this whether or not WebGL is
+      // available, so this never hangs on an unsupported browser.
+      document.addEventListener("topologyready", resolve, { once: true });
+      setTimeout(resolve, 2600);
+    })
+  );
+
+  Promise.all(readySignals).then(() => {
+    ready = true;
+  });
+
+  const total = 30;
+  const minMs = 900;
+  const ceilingMs = 4000;
+  const start = performance.now();
+
+  const tick = (now) => {
+    const elapsed = now - start;
+
+    // Ease toward 27 on time alone; the last three tick over only
+    // once the real work is done. A bar that sits at 99% is a lie
+    // people recognise, so it never parks at the top.
+    const timed = Math.min(elapsed / minMs, 1) * 27;
+    const value = ready ? Math.min(27 + (elapsed - minMs) / 40, total) : timed;
+    loaderCount.textContent = String(Math.floor(Math.min(value, total))).padStart(2, "0");
+
+    if ((ready && value >= total && elapsed >= minMs) || elapsed >= ceilingMs) {
+      setTimeout(finish, 180);
+      return;
+    }
+    requestAnimationFrame(tick);
+  };
+
+  requestAnimationFrame(tick);
 }
+
+runLoader();
 
 /* ============================================================
    Custom neon cursor — outer ring (inertia) + inner dot
@@ -818,20 +954,60 @@ if (pointerFine) {
     let ringX = mouseX;
     let ringY = mouseY;
 
+    // The -50% centring now lives on the ::after pseudo-element, so
+    // these writes carry position only. Keeping the two on separate
+    // elements means the idle-position transform and the hover
+    // scale never overwrite each other.
     window.addEventListener(
       "mousemove",
       (event) => {
         mouseX = event.clientX;
         mouseY = event.clientY;
-        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+        cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
       },
       { passive: true }
     );
 
+    /* ---- Proximity to the topology field ----
+       The ring reacts when it passes near a live node, so the cursor
+       reads as part of the same system rather than an overlay on top
+       of it. Sampled on a timer rather than per frame: the graph
+       drifts slowly and 10Hz is indistinguishable from 60Hz here,
+       at a sixth of the cost. */
+    let topologyGraph = null;
+    let nearField = false;
+
+    document.addEventListener("topologyready", () => {
+      // The module hands its graph to window for exactly this.
+      topologyGraph = window.__topologyGraph || null;
+    });
+
+    const PROXIMITY_PX = 90;
+
+    function sampleProximity() {
+      if (!topologyGraph || !topologyGraph.screen) return;
+      const { screen, screenCount } = topologyGraph;
+      let near = false;
+      for (let i = 0; i < screenCount; i++) {
+        const dx = screen[i * 2] - mouseX;
+        const dy = screen[i * 2 + 1] - mouseY;
+        if (dx * dx + dy * dy < PROXIMITY_PX * PROXIMITY_PX) {
+          near = true;
+          break;
+        }
+      }
+      if (near !== nearField) {
+        nearField = near;
+        cursorRing.classList.toggle("is-near", near);
+      }
+    }
+
+    setInterval(sampleProximity, 100);
+
     const renderRing = () => {
       ringX += (mouseX - ringX) * 0.18;
       ringY += (mouseY - ringY) * 0.18;
-      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+      cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
       requestAnimationFrame(renderRing);
     };
     requestAnimationFrame(renderRing);
@@ -928,89 +1104,11 @@ if (countNodes.length && "IntersectionObserver" in window) {
 }
 
 /* ============================================================
-   Particle constellation / spiral canvas is now driven by the
-   SpiralParticles module (js/modules/spiral-particles.js), which
-   blends this ambient field with scroll-progress-based spiral
-   motion. See js/scroll-experience.js for wiring.
-   ============================================================ */
-
-/* ============================================================
-   Ribbon mouse-trail — flowing streamers along movement
-   direction; stroke color cycles through the palette every 10s.
-   ============================================================ */
-
-const ribbonCanvas = document.getElementById("ribbonCanvas");
-
-if (ribbonCanvas && pointerFine && !prefersReducedMotion) {
-  const rctx = ribbonCanvas.getContext("2d");
-  const ribbonColors = ["#00f2fe", "#7c3aed", "#4f46e5"];
-  let colorIndex = 0;
-  let lastColorSwap = performance.now();
-
-  function resizeRibbon() {
-    ribbonCanvas.width = window.innerWidth;
-    ribbonCanvas.height = window.innerHeight;
-  }
-  resizeRibbon();
-  window.addEventListener("resize", resizeRibbon);
-
-  let trail = [];
-  let lastPoint = null;
-
-  window.addEventListener(
-    "mousemove",
-    (event) => {
-      const point = { x: event.clientX, y: event.clientY, life: 1 };
-      if (lastPoint) {
-        const dx = point.x - lastPoint.x;
-        const dy = point.y - lastPoint.y;
-        const speed = Math.sqrt(dx * dx + dy * dy);
-        if (speed > 2) {
-          trail.push(point);
-        }
-      } else {
-        trail.push(point);
-      }
-      lastPoint = point;
-      if (trail.length > 40) trail.shift();
-    },
-    { passive: true }
-  );
-
-  function stepRibbon(now) {
-    rctx.clearRect(0, 0, ribbonCanvas.width, ribbonCanvas.height);
-
-    if (now - lastColorSwap > 10000) {
-      colorIndex = (colorIndex + 1) % ribbonColors.length;
-      lastColorSwap = now;
-    }
-
-    trail.forEach((p) => (p.life -= 0.035));
-    trail = trail.filter((p) => p.life > 0);
-
-    if (trail.length > 1) {
-      for (let i = 1; i < trail.length; i++) {
-        const a = trail[i - 1];
-        const b = trail[i];
-        rctx.beginPath();
-        rctx.moveTo(a.x, a.y);
-        rctx.lineTo(b.x, b.y);
-        rctx.strokeStyle = ribbonColors[colorIndex];
-        rctx.globalAlpha = Math.max(b.life, 0) * 0.5;
-        rctx.lineWidth = Math.max(b.life * 6, 0.5);
-        rctx.lineCap = "round";
-        rctx.stroke();
-      }
-      rctx.globalAlpha = 1;
-    }
-
-    requestAnimationFrame(stepRibbon);
-  }
-  requestAnimationFrame(stepRibbon);
-}
-
-/* ============================================================
-   The three.js hero sphere was replaced by GeoShape — a lighter
-   Canvas2D + GSAP ScrollTrigger centerpiece (see
-   js/modules/geo-shape.js, wired in js/scroll-experience.js).
+   Ambient background is owned entirely by the SystemTopology
+   module (js/modules/system-topology.js, wired in
+   js/scroll-experience.js). The ribbon mouse-trail, spiral
+   particle field and GeoShape centrepiece that used to live here
+   were removed rather than ported: they were three separate
+   ambient systems competing with each other, and the ribbon in
+   particular duplicated the custom cursor's job.
    ============================================================ */

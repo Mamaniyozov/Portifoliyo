@@ -35,6 +35,11 @@
 }
 
 html {
+  /* Tells the UA to render native scrollbars, form controls, text
+     selection and the canvas backdrop in dark mode. Without it
+     Windows draws light scrollbars and light dropdowns against a
+     near-black page. */
+  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
@@ -45,6 +50,15 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   min-height: 100vh;
+
+  /* Drops the 300ms double-tap-zoom delay on touch devices without
+     disabling pinch zoom — user-scalable=no would also remove the
+     delay, but at the cost of an accessibility failure. */
+  touch-action: manipulation;
+  /* The default is a translucent black flash that reads as a
+     rendering bug on a dark theme; hover/active states below
+     already provide the feedback. */
+  -webkit-tap-highlight-color: transparent;
 }
 
 img {
@@ -232,77 +246,17 @@ a {
   font-size: 1rem;
 }
 
-/* ---- Hero centerpiece: floating antigravity core ---- */
+/* ---- Hero centrepiece ----
+   Empty on purpose: the topology canvas renders the centrepiece in
+   its own fixed layer. This element only reserves the vertical
+   space so the hero's rhythm is unchanged and the first cluster of
+   the graph has room to breathe behind the CTAs. */
 
 .hero-graphic {
   position: relative;
   height: 260px;
   margin-top: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
-.core-shape {
-  position: relative;
-  width: 132px;
-  height: 132px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: floatAntigravity 6s ease-in-out infinite;
-}
-
-@keyframes floatAntigravity {
-  0%   { transform: translateY(0) rotate(0deg); }
-  25%  { transform: translateY(-16px) rotate(3deg); }
-  50%  { transform: translateY(4px) rotate(-2deg); }
-  75%  { transform: translateY(-10px) rotate(2deg); }
-  100% { transform: translateY(0) rotate(0deg); }
-}
-
-.core-glow {
-  position: absolute;
-  inset: -30px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.45) 0%, transparent 70%);
-  filter: blur(20px);
-  z-index: -1;
-}
-
-.core-icon {
-  width: 56px;
-  height: 56px;
-  color: var(--electric-blue);
-  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8));
-  position: relative;
-  z-index: 2;
-}
-
-.ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(124, 58, 237, 0.35);
-}
-
-.ring-1 { inset: 0; }
-.ring-2 { inset: -22px; border-color: rgba(59, 130, 246, 0.22); }
-.ring-3 { inset: -46px; border-color: rgba(124, 58, 237, 0.14); }
-
-.particle {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--electric-blue);
-  box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.8);
-  animation: floatAntigravity 5s ease-in-out infinite;
-}
-
-.p1 { top: 20%; left: 22%; animation-duration: 5.5s; animation-delay: -1s; }
-.p2 { top: 70%; left: 78%; animation-duration: 6.5s; animation-delay: -3s; background: var(--violet); box-shadow: 0 0 10px 2px rgba(124, 58, 237, 0.8); }
-.p3 { top: 15%; left: 76%; animation-duration: 7s; animation-delay: -2s; }
-.p4 { top: 78%; left: 20%; animation-duration: 6s; animation-delay: -4.5s; background: var(--violet); box-shadow: 0 0 10px 2px rgba(124, 58, 237, 0.8); }
 
 /* ---- Shared card styling (Dribbble hover effect) ---- */
 
@@ -438,53 +392,6 @@ a {
   transform: translateX(4px);
 }
 
-/* ---- TECH STACK ---- */
-
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.stack-tile {
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-}
-
-.stack-tile svg {
-  width: 28px;
-  height: 28px;
-  color: #64748b;
-  filter: grayscale(1) brightness(1.3);
-  transition: color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
-}
-
-.stack-tile span {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-family: var(--font-accent);
-}
-
-.stack-tile:hover {
-  transform: translateY(-4px);
-  border-color: rgba(59, 130, 246, 0.4);
-  background: rgba(59, 130, 246, 0.06);
-}
-
-.stack-tile:hover svg {
-  color: var(--electric-blue);
-  filter: none;
-  transform: scale(1.08);
-}
-
 .tag-row {
   display: flex;
   flex-wrap: wrap;
@@ -511,12 +418,21 @@ a {
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--electric-blue);
-  transition: gap 0.25s ease, color 0.25s ease;
+  transition: color 0.25s ease;
+}
+
+/* Animating `gap` reflows the flex container every frame. Moving the
+   arrow itself gets the identical result on the compositor. */
+.link-arrow > span:last-child {
+  transition: transform 0.25s ease;
 }
 
 .link-arrow:hover {
-  gap: 10px;
   color: #93c5fd;
+}
+
+.link-arrow:hover > span:last-child {
+  transform: translateX(4px);
 }
 
 /* ---- EXPERIENCE ---- */
@@ -540,81 +456,14 @@ a {
   font-size: clamp(1.6rem, 3vw, 2.1rem);
   color: #ffffff;
   text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+  /* These count up from 0 on scroll. Proportional digits change
+     width mid-animation and make the number visibly jitter. */
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-label {
   font-size: 0.78rem;
   color: var(--text-muted);
-}
-
-/* ---- CONNECT / FOOTER ---- */
-
-.card-connect {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 22px 28px;
-}
-
-.connect-text .card-eyebrow {
-  margin-bottom: 8px;
-}
-
-.connect-text .card-text {
-  max-width: 320px;
-}
-
-.social-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.social-icon {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.02);
-  color: #64748b;
-  font-family: var(--font-accent);
-  font-size: 13px;
-  font-weight: 600;
-  transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-}
-
-.social-icon svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-.social-icon:hover {
-  transform: translateY(-4px);
-}
-
-.social-github:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 8px 20px -8px rgba(255, 255, 255, 0.3);
-}
-
-.social-linkedin:hover {
-  color: #0a66c2;
-  border-color: rgba(10, 102, 194, 0.5);
-  background: rgba(10, 102, 194, 0.1);
-  box-shadow: 0 8px 20px -8px rgba(10, 102, 194, 0.6);
-}
-
-.social-telegram:hover {
-  color: #29a9eb;
-  border-color: rgba(41, 169, 235, 0.5);
-  background: rgba(41, 169, 235, 0.1);
-  box-shadow: 0 8px 20px -8px rgba(41, 169, 235, 0.6);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -632,11 +481,6 @@ a {
     letter-spacing: 0.28em;
   }
 
-  .stack-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
   .stat-grid {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
@@ -645,105 +489,12 @@ a {
   .card {
     padding: 22px;
   }
-
-  .card-connect {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media (max-width: 420px) {
   .stat-grid {
     grid-template-columns: 1fr;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .core-shape,
-  .particle,
-  .status-dot,
-  .glow,
-  .float-dot,
-  .bg-code,
-  .avatar-frame,
-  .project-banner {
-    animation: none !important;
-  }
-}
-
-/* ================= FLOATING BACKGROUND ================= */
-
-.float-dot {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.5;
-  animation: floatAnimation 14s ease-in-out infinite;
-}
-
-.fd-1 {
-  top: 18%;
-  left: 12%;
-  width: 6px;
-  height: 6px;
-  background: var(--electric-blue);
-  box-shadow: 0 0 14px 3px rgba(59, 130, 246, 0.6);
-  animation-duration: 12s;
-}
-
-.fd-2 {
-  top: 65%;
-  left: 85%;
-  width: 8px;
-  height: 8px;
-  background: var(--violet);
-  box-shadow: 0 0 16px 4px rgba(124, 58, 237, 0.55);
-  animation-duration: 16s;
-  animation-delay: -3s;
-}
-
-.fd-3 {
-  top: 40%;
-  left: 70%;
-  width: 5px;
-  height: 5px;
-  background: var(--electric-blue);
-  box-shadow: 0 0 12px 3px rgba(59, 130, 246, 0.5);
-  animation-duration: 18s;
-  animation-delay: -7s;
-}
-
-.fd-4 {
-  top: 82%;
-  left: 25%;
-  width: 7px;
-  height: 7px;
-  background: var(--violet);
-  box-shadow: 0 0 14px 3px rgba(124, 58, 237, 0.5);
-  animation-duration: 15s;
-  animation-delay: -5s;
-}
-
-.fd-5 {
-  top: 8%;
-  left: 55%;
-  width: 4px;
-  height: 4px;
-  background: var(--electric-blue);
-  box-shadow: 0 0 10px 3px rgba(59, 130, 246, 0.5);
-  animation-duration: 20s;
-  animation-delay: -9s;
-}
-
-.fd-6 {
-  top: 55%;
-  left: 8%;
-  width: 6px;
-  height: 6px;
-  background: var(--violet);
-  box-shadow: 0 0 12px 3px rgba(124, 58, 237, 0.5);
-  animation-duration: 10s;
-  animation-delay: -2s;
 }
 
 @keyframes floatAnimation {
@@ -763,13 +514,17 @@ a {
   left: 0;
   right: 0;
   z-index: 60;
-  padding: 20px 24px;
+  /* Safe-area insets keep the logo and language switcher clear of
+     the notch and rounded corners in landscape on modern phones. */
+  padding: 20px calc(24px + env(safe-area-inset-right)) 20px
+    calc(24px + env(safe-area-inset-left));
   transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   border-bottom: 1px solid transparent;
 }
 
 .navbar.is-scrolled {
-  padding: 12px 24px;
+  padding: 12px calc(24px + env(safe-area-inset-right)) 12px
+    calc(24px + env(safe-area-inset-left));
   background: rgba(5, 7, 12, 0.78);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -935,7 +690,6 @@ a {
   transition: transform 0.25s ease;
 }
 
-.lang-switcher:hover .lang-caret,
 .lang-switcher.is-open .lang-caret {
   transform: rotate(180deg);
 }
@@ -960,7 +714,10 @@ a {
   z-index: 5;
 }
 
-.lang-switcher:hover .lang-dropdown,
+/* Opens on click only. The old rule also opened it on :hover, which
+   left aria-expanded reporting "false" while the menu was visibly
+   open, and on touch devices the sticky :hover state kept it open
+   with no way to dismiss it. */
 .lang-switcher.is-open .lang-dropdown {
   opacity: 1;
   visibility: visible;
@@ -1020,6 +777,24 @@ a {
   font-weight: 700;
   font-size: clamp(1.5rem, 3.2vw, 2.1rem);
   color: var(--text-primary);
+  text-wrap: balance;
+}
+
+/* Headings and short lede copy: balance evens the line lengths and
+   stops a single trailing word (a widow) on a line of its own —
+   most visible in Russian, where words run long. */
+.hero-name,
+.connect-headline,
+.card-title,
+.timeline-role,
+.projects-story-title {
+  text-wrap: balance;
+}
+
+.section-lede,
+.hero-desc,
+.connect-lede {
+  text-wrap: pretty;
 }
 
 .hero-cta-row {
@@ -1054,41 +829,6 @@ a {
 
 .card-experience .link-arrow {
   margin-top: auto;
-}
-
-/* ---- SKILLS ---- */
-
-.card-stack-wide {
-  padding: 32px;
-}
-
-.stack-grid-wide {
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.stack-tile-badge .badge-text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  color: #64748b;
-  transition: color 0.3s ease;
-}
-
-.stack-tile-badge:hover .badge-text {
-  color: var(--electric-blue);
-}
-
-@media (max-width: 900px) {
-  .stack-grid-wide {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .stack-grid-wide {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* ---- PROJECTS: sticky/pinned storytelling ---- */
@@ -1257,23 +997,6 @@ a {
   }
 }
 
-/* ---- CONTACT ---- */
-
-.contact-panel {
-  padding: 40px;
-}
-
-.contact-panel .section-title {
-  margin: 8px 0 10px;
-}
-
-.social-instagram:hover {
-  color: #e4405f;
-  border-color: rgba(228, 64, 95, 0.5);
-  background: rgba(228, 64, 95, 0.1);
-  box-shadow: 0 8px 20px -8px rgba(228, 64, 95, 0.6);
-}
-
 @media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
@@ -1288,35 +1011,6 @@ a {
   .section {
     padding: 48px 0;
   }
-
-  .contact-panel {
-    padding: 28px;
-  }
-}
-/* ================= FLOATING CODE FRAGMENTS (Antigravity) ================= */
-
-.bg-code {
-  position: absolute;
-  font-family: var(--font-accent), monospace;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--electric-blue);
-  opacity: 0.12;
-  white-space: nowrap;
-  animation: codeDrift 22s ease-in-out infinite;
-}
-
-.bg-code-alt {
-  color: var(--violet);
-}
-
-@keyframes codeDrift {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(3vw, -3vh); }
-  50%  { transform: translate(-2vw, 4vh); }
-  75%  { transform: translate(2.5vw, 1.5vh); }
-  100% { transform: translate(0, 0); }
 }
 
 /* ================= ANTIGRAVITY IDLE FLOAT ================= */
@@ -1375,6 +1069,19 @@ a {
   display: none;
 }
 
+.projects-empty {
+  margin-bottom: 24px;
+  padding: 18px 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.projects-empty[hidden] {
+  display: none;
+}
+
 /* ================= LOADING SCREEN ================= */
 
 .loader {
@@ -1414,6 +1121,9 @@ a {
   color: var(--cyan);
   text-shadow: 0 0 24px rgba(0, 242, 254, 0.6);
   letter-spacing: 0.02em;
+  /* The counter runs 00→30; without tabular figures the slashes
+     either side visibly twitch on every digit change. */
+  font-variant-numeric: tabular-nums;
 }
 
 .loader-slash {
@@ -1441,27 +1151,43 @@ a {
 
 /* ================= CUSTOM CURSOR ================= */
 
+/* Position is written to the outer element by JS; the inner element
+   owns the hover scale. Splitting them means the two never fight
+   over `transform`, and the size change animates on the compositor
+   instead of re-laying-out via width/height. */
 .cursor-ring,
 .cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  border-radius: 50%;
   pointer-events: none;
   z-index: 210;
-  transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  transition: opacity 0.3s ease;
+  will-change: transform;
 }
 
-.cursor-ring {
+.cursor-ring::after,
+.cursor-dot::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(var(--cursor-scale, 1));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cursor-ring::after {
   width: 34px;
   height: 34px;
+  margin: 0;
   border: 1.5px solid var(--cyan);
   box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
 }
 
-.cursor-dot {
+.cursor-dot::after {
   width: 6px;
   height: 6px;
   background: var(--cyan);
@@ -1473,16 +1199,24 @@ body.has-custom-cursor .cursor-dot {
   opacity: 1;
 }
 
-.cursor-ring.is-hover {
-  width: 56px;
-  height: 56px;
+.cursor-ring.is-hover::after {
+  --cursor-scale: 1.65;
   border-color: var(--violet);
   box-shadow: 0 0 24px rgba(124, 58, 237, 0.5);
 }
 
-.cursor-dot.is-hover {
+.cursor-dot.is-hover::after {
   background: var(--violet);
   box-shadow: 0 0 14px rgba(124, 58, 237, 0.8);
+}
+
+/* Proximity to the topology field, written by script.js. The ring
+   swells slightly as it passes near a live node — the cursor reads
+   as part of the same system rather than pasted on top of it. */
+.cursor-ring.is-near::after {
+  --cursor-scale: 1.28;
+  border-color: var(--neon-green);
+  box-shadow: 0 0 22px rgba(34, 255, 158, 0.45);
 }
 
 @media (pointer: fine) {
@@ -1514,54 +1248,73 @@ body.has-custom-cursor .cursor-dot {
   transition: width 0.08s linear;
 }
 
-/* ================= PARTICLE + RIBBON CANVASES ================= */
+/* ================= SIGNATURE TOPOLOGY CANVAS =================
+   Fixed full-viewport layer. Sits above the ambient backdrop
+   (.bg-layer, z-index:-2) yet behind every in-flow element, so the
+   network reads as the page's centrepiece without ever competing
+   with text for legibility.
 
-.particle-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  filter: blur(calc(var(--spiral-blur, 0) * 1px)) saturate(var(--spiral-saturate, 1));
-  transition: filter 0.2s ease-out;
-}
+   Sized in device pixels by the module itself, so no width/height
+   attributes here — only the CSS box it measures against.
 
-.ribbon-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  pointer-events: none;
-}
-
-/* GeoShape centerpiece: fixed full-viewport layer. Sits above the
-   ambient background stack (grid, particles, glows, ribbon — all
-   z-index:-2) yet behind every in-flow content element, so it reads
-   as the central highlight without ever obscuring text. Sized in
-   device pixels by the module itself; kept out of the reduced-motion
-   display:none rule on purpose — it renders a single static frame
-   there instead of vanishing. */
-.geo-shape-canvas {
+   Deliberately NOT display:none under reduced motion: the module
+   renders one static frame instead. The image is information about
+   the subject; only the movement is the accessibility concern. */
+.topology-canvas {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
   pointer-events: none;
+
+  /* Centre-dimming mask. This is what lets the network be genuinely
+     bright at the edges — where it reads as environment — while
+     staying quiet in the middle third where the headline, lede and
+     CTAs live. Without it the choice was a dim background nobody
+     notices or a busy one that fights the copy; the mask buys both.
+     Text legibility is a hard constraint, not a preference. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 62% 54% at 50% 44%,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.62) 45%,
+    #000 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 62% 54% at 50% 44%,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.62) 45%,
+    #000 78%
+  );
+
+  /* Fades in once the first frame is on screen, so a slow WebGL
+     init never shows a hard pop. */
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ================= HERO THREE.JS CANVAS ================= */
-
-.hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+body.topology-ready .topology-canvas {
+  opacity: 1;
 }
 
-.hero-graphic .core-shape {
-  z-index: 2;
+/* On a narrow column the text block occupies proportionally far
+   more of the frame, so the clear zone has to be wider and flatter
+   than the desktop ellipse to protect the same copy. */
+@media (max-width: 640px) {
+  .topology-canvas {
+    -webkit-mask-image: radial-gradient(
+      ellipse 94% 42% at 50% 40%,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.48) 52%,
+      #000 84%
+    );
+    mask-image: radial-gradient(
+      ellipse 94% 42% at 50% 40%,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.48) 52%,
+      #000 84%
+    );
+  }
 }
 
 /* ================= SCRAMBLE TEXT ================= */
@@ -1896,12 +1649,14 @@ body.has-custom-cursor .cursor-dot {
   gap: 16px;
   padding: 18px 12px;
   border-bottom: 1px solid var(--border);
-  transition: background 0.3s ease, padding-left 0.3s ease;
+  /* Was `padding-left`, which forces a layout pass on every hover
+     frame. translateX is the same 8px nudge on the compositor. */
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .connect-row:hover {
   background: rgba(0, 242, 254, 0.04);
-  padding-left: 20px;
+  transform: translateX(8px);
 }
 
 .connect-row-index {
@@ -1953,55 +1708,56 @@ body.has-custom-cursor .cursor-dot {
   }
 }
 
-/* ================= REDUCED MOTION — additive coverage ================= */
+/* ================= REDUCED MOTION =================
+   Denylist, not allowlist. The previous version named ~20 specific
+   selectors, which meant every new animated component silently
+   opted itself back IN to motion until someone remembered to add
+   it here. Killing everything by default and then restoring the
+   few things that must still move is the version that stays
+   correct as the page grows.
+
+   0.01ms rather than 0s: animation/transition end events still
+   fire, so JS that waits on them (the hero entrance, the loader
+   handoff) completes instead of hanging forever. */
 
 @media (prefers-reduced-motion: reduce) {
-  .loader,
-  .loader-label,
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Reveal-on-scroll must land in its final state, not its hidden
+     one — with transitions disabled these would otherwise stay
+     invisible forever. */
   [data-reveal],
   [data-scroll-reveal],
-  .skills-marquee-track,
-  .cursor-ring,
-  .cursor-dot,
-  .skill-bar-fill,
-  .connect-row,
-  .connect-row-arrow,
-  .glow-scroll,
-  .projects-story-media,
   .hero.is-cinematic-ready .status-badge,
   .hero.is-cinematic-ready .hero-name,
   .hero.is-cinematic-ready .hero-sub,
   .hero.is-cinematic-ready .hero-desc,
   .hero.is-cinematic-ready .hero-cta-row,
   .hero.is-cinematic-ready .hero-graphic {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  [data-reveal],
-  [data-scroll-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-
-  .hero.is-cinematic-ready .status-badge,
-  .hero.is-cinematic-ready .hero-name,
-  .hero.is-cinematic-ready .hero-sub,
-  .hero.is-cinematic-ready .hero-desc,
-  .hero.is-cinematic-ready .hero-cta-row,
-  .hero.is-cinematic-ready .hero-graphic {
-    opacity: 1;
-    transform: none;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   [data-parallax] {
     transform: none !important;
   }
 
-  .particle-canvas,
-  .ribbon-canvas,
-  .hero-canvas {
-    display: none;
+  /* The marquee is pure decoration and reads as relentless motion
+     even at reduced speed, so it stops entirely and sits at rest. */
+  .skills-marquee-track {
+    animation: none !important;
+    transform: none !important;
   }
 }
 
@@ -2267,12 +2023,24 @@ body.has-custom-cursor *:focus-visible {
   border-color: rgba(255, 255, 255, 0.16);
 }
 
+/* Mouse focus keeps the soft ring; keyboard focus gets the real
+   outline. The previous rule used :focus with outline:none and a
+   12%-alpha shadow, which tied with the has-custom-cursor rule on
+   specificity and won on source order — so keyboard users got the
+   weakest indicator on the page. */
 .form-field input:focus,
 .form-field textarea:focus {
   outline: none;
   border-color: rgba(0, 242, 254, 0.55);
   background: rgba(0, 242, 254, 0.04);
-  box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.22);
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 242, 254, 0.16);
 }
 
 .form-error {
@@ -2332,7 +2100,8 @@ body.has-custom-cursor *:focus-visible {
 .site-footer-inner {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 32px calc(24px + env(safe-area-inset-right))
+    calc(32px + env(safe-area-inset-bottom)) calc(24px + env(safe-area-inset-left));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -2377,13 +2146,6 @@ body.has-custom-cursor *:focus-visible {
   }
 }
 
-/* ================= REDUCED MOTION — new components ================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .skip-link,
-  .form-field input,
-  .form-field textarea,
-  .skill-row {
-    transition: none !important;
-  }
-}
+/* The former "reduced motion — new components" block lived here.
+   It is gone because the denylist above already covers every
+   element on the page, including ones not yet written. */
