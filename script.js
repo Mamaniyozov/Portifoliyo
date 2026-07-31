@@ -1305,7 +1305,7 @@ function setupTopologyInteractions() {
   };
 
   const COMMANDS = {
-    help: "Available commands:\n  help      - Show this menu\n  skills    - List tech stack & experience tiers\n  projects  - Show featured projects\n  contact   - Display direct contact channels\n  theme     - Toggle accent color highlight\n  clear     - Clear terminal screen",
+    help: "Available commands:\n  help      - Show this menu\n  skills    - List tech stack & experience tiers\n  projects  - Show featured projects\n  contact   - Display direct contact channels\n  theme     - Toggle accent color highlight\n  sound     - Set audio synth preset (cyber/retro/soft)\n  clear     - Clear terminal screen",
     skills: "Core Stack (Asosiy):\n  - Django / DRF\n  - Python\n  - PostgreSQL\n  - REST API & JWT / 2FA\n\nRegular Stack (Muntazam):\n  - Telegram Bot API\n  - ASP.NET\n  - Docker & Linux / Git\n\nWorking Knowledge (Ishlaganman):\n  - Flutter / Dart",
     projects: "Featured Projects:\n  1. HRMM — Human Resource Management System (Django/DRF)\n  2. Finance App — Wallet & Analytics API (Django/DRF/PostgreSQL)\n  3. Doctor-Direct — Telemedicine Platform (ASP.NET/Django)\n  4. LadyCoders — Educational Portal",
     contact: "Direct Channels:\n  Email: mamaniyozovmuhammadyusuf5@gmail.com\n  Phone: +998 93 006 55 38\n  Telegram: @Muhammadyusuf_5538\n  LinkedIn: linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/",
@@ -1322,6 +1322,14 @@ function setupTopologyInteractions() {
     matrix: () => {
       triggerMatrixMode();
       return "Matrix mode engaged.";
+    },
+    sound: (arg) => {
+      const preset = (arg || "").trim().toLowerCase();
+      if (window.__audioSynth && window.__audioSynth.setPreset) {
+        const active = window.__audioSynth.setPreset(preset || "cyber");
+        return `Audio Synth Preset set to: ${active.toUpperCase()}`;
+      }
+      return "Audio Synth unavailable.";
     },
   };
 
@@ -1557,6 +1565,50 @@ function setupTopologyInteractions() {
     if (e.key.toLowerCase() === "m") {
       triggerMatrixMode();
     }
+  });
+
+  // 13. 3D Spatial Tilt for Experience Timeline & About Cards
+  document.querySelectorAll(".timeline-item, .about-fact-card").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      card.style.transform = `perspective(1000px) rotateX(${-y * 0.05}deg) rotateY(${x * 0.05}deg) translateZ(18px)`;
+    });
+
+    card.addEventListener("pointerleave", () => {
+      card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
+    });
+  });
+
+  // 14. Interactive Text Glitch & Character Decoding on Hover
+  const GLITCH_CHARS = "ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+  document.querySelectorAll(".scramble-text, .section-title").forEach((title) => {
+    let original = title.dataset.originalText || title.textContent.trim();
+    title.dataset.originalText = original;
+
+    title.addEventListener("pointerenter", () => {
+      if (window.__audioSynth) window.__audioSynth.playHover();
+      let iteration = 0;
+      clearInterval(title._scrambleTimer);
+
+      title._scrambleTimer = setInterval(() => {
+        title.textContent = original
+          .split("")
+          .map((char, index) => {
+            if (char === " " || char === "\n") return char;
+            if (index < iteration) return original[index];
+            return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+          })
+          .join("");
+
+        if (iteration >= original.length) {
+          clearInterval(title._scrambleTimer);
+          title.textContent = original;
+        }
+        iteration += 1 / 2;
+      }, 30);
+    });
   });
 }
 

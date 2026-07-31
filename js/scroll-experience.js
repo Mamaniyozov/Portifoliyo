@@ -27,6 +27,8 @@ import {
   playHoverSound,
   playClickSound,
   playPulseSound,
+  setSoundPreset,
+  getSoundPreset,
 } from "./modules/audio-synth.js";
 
 window.__audioSynth = {
@@ -35,6 +37,8 @@ window.__audioSynth = {
   playHover: playHoverSound,
   playClick: playClickSound,
   playPulse: playPulseSound,
+  setPreset: setSoundPreset,
+  getPreset: getSoundPreset,
 };
 
 function boot() {

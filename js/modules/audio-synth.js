@@ -7,6 +7,7 @@
 
 let audioCtx = null;
 let isMuted = true;
+let activePreset = localStorage.getItem("sound_preset") || "cyber"; // cyber, retro, soft
 
 function getAudioContext() {
   if (!audioCtx) {
@@ -19,6 +20,20 @@ function getAudioContext() {
   return audioCtx;
 }
 
+export function setSoundPreset(preset) {
+  if (["cyber", "retro", "soft"].includes(preset)) {
+    activePreset = preset;
+    localStorage.setItem("sound_preset", preset);
+    if (!isMuted) playPulseSound();
+    return activePreset;
+  }
+  return activePreset;
+}
+
+export function getSoundPreset() {
+  return activePreset;
+}
+
 export function playHoverSound() {
   if (isMuted) return;
   const ctx = getAudioContext();
@@ -28,11 +43,12 @@ export function playHoverSound() {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(880, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(1440, ctx.currentTime + 0.04);
+    osc.type = activePreset === "retro" ? "square" : activePreset === "soft" ? "sine" : "sine";
+    const baseFreq = activePreset === "soft" ? 440 : 880;
+    osc.frequency.setValueAtTime(baseFreq, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.6, ctx.currentTime + 0.04);
 
-    gain.gain.setValueAtTime(0.015, ctx.currentTime);
+    gain.gain.setValueAtTime(activePreset === "soft" ? 0.01 : 0.015, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
 
     osc.connect(gain);
@@ -52,11 +68,12 @@ export function playClickSound() {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc.type = "triangle";
-    osc.frequency.setValueAtTime(320, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.08);
+    osc.type = activePreset === "retro" ? "square" : activePreset === "soft" ? "sine" : "triangle";
+    const baseFreq = activePreset === "soft" ? 220 : 320;
+    osc.frequency.setValueAtTime(baseFreq, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.4, ctx.currentTime + 0.08);
 
-    gain.gain.setValueAtTime(0.04, ctx.currentTime);
+    gain.gain.setValueAtTime(0.035, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
 
     osc.connect(gain);
@@ -76,9 +93,10 @@ export function playPulseSound() {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(520, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.12);
+    osc.type = activePreset === "retro" ? "square" : "sine";
+    const baseFreq = activePreset === "soft" ? 350 : 520;
+    osc.frequency.setValueAtTime(baseFreq, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(baseFreq * 2.3, ctx.currentTime + 0.12);
 
     gain.gain.setValueAtTime(0.03, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
