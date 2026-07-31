@@ -1411,8 +1411,8 @@ function setupTopologyInteractions() {
         particles.push({
           x: x * dpr,
           y: y * dpr,
-          vx: (-dirX * 0.12 + (Math.random() - 0.5) * 1.2) * dpr,
-          vy: (-dirY * 0.12 + (Math.random() - 0.5) * 1.2) * dpr,
+          vx: (dirX * 0.18 + (Math.random() - 0.5) * 1.2) * dpr,
+          vy: (dirY * 0.18 + (Math.random() - 0.5) * 1.2) * dpr,
           size: (Math.random() * 2.5 + 1.2) * dpr,
           life: 1.0,
           decay: 0.0033, // 5-second lifetime decay (300 frames)
