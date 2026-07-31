@@ -1233,6 +1233,142 @@ function setupTopologyInteractions() {
       closeProjectModal();
     }
   });
+
+  // 6. Developer CLI Command Terminal (Ctrl + K)
+  const cliTerminal = document.getElementById("cliTerminal");
+  const cliForm = document.getElementById("cliForm");
+  const cliInput = document.getElementById("cliInput");
+  const cliOutput = document.getElementById("cliOutput");
+  const cliCloseBtn = document.getElementById("cliCloseBtn");
+  const cliBackdrop = document.getElementById("cliBackdrop");
+  const statusBadge = document.querySelector(".status-badge");
+
+  const openCli = () => {
+    if (!cliTerminal) return;
+    cliTerminal.classList.add("is-open");
+    cliTerminal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    if (cliInput) setTimeout(() => cliInput.focus(), 60);
+    if (window.__audioSynth) window.__audioSynth.playPulse();
+  };
+
+  const closeCli = () => {
+    if (!cliTerminal) return;
+    cliTerminal.classList.remove("is-open");
+    cliTerminal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (window.__audioSynth) window.__audioSynth.playClick();
+  };
+
+  if (statusBadge) {
+    statusBadge.style.cursor = "pointer";
+    statusBadge.title = "Click or press Ctrl+K to open Terminal";
+    statusBadge.addEventListener("click", openCli);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      if (cliTerminal && cliTerminal.classList.contains("is-open")) closeCli();
+      else openCli();
+    }
+    if (e.key === "Escape" && cliTerminal && cliTerminal.classList.contains("is-open")) {
+      closeCli();
+    }
+  });
+
+  if (cliCloseBtn) cliCloseBtn.addEventListener("click", closeCli);
+  if (cliBackdrop) cliBackdrop.addEventListener("click", closeCli);
+
+  const printLine = (text, className = "cmd-out") => {
+    if (!cliOutput) return;
+    const p = document.createElement("p");
+    p.className = `cli-line ${className}`;
+    p.textContent = text;
+    cliOutput.appendChild(p);
+    cliOutput.scrollTop = cliOutput.scrollHeight;
+  };
+
+  const COMMANDS = {
+    help: "Available commands:\n  help      - Show this menu\n  skills    - List tech stack & experience tiers\n  projects  - Show featured projects\n  contact   - Display direct contact channels\n  theme     - Toggle accent color highlight\n  clear     - Clear terminal screen",
+    skills: "Core Stack (Asosiy):\n  - Django / DRF\n  - Python\n  - PostgreSQL\n  - REST API & JWT / 2FA\n\nRegular Stack (Muntazam):\n  - Telegram Bot API\n  - ASP.NET\n  - Docker & Linux / Git\n\nWorking Knowledge (Ishlaganman):\n  - Flutter / Dart",
+    projects: "Featured Projects:\n  1. HRMM — Human Resource Management System (Django/DRF)\n  2. Finance App — Wallet & Analytics API (Django/DRF/PostgreSQL)\n  3. Doctor-Direct — Telemedicine Platform (ASP.NET/Django)\n  4. LadyCoders — Educational Portal",
+    contact: "Direct Channels:\n  Email: mamaniyozovmuhammadyusuf5@gmail.com\n  Phone: +998 93 006 55 38\n  Telegram: @Muhammadyusuf_5538\n  LinkedIn: linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/",
+    clear: () => {
+      if (cliOutput) cliOutput.innerHTML = "";
+    },
+    theme: () => {
+      const themes = ["cyan", "violet", "green"];
+      const current = document.body.dataset.theme || "cyan";
+      const next = themes[(themes.indexOf(current) + 1) % themes.length];
+      document.body.dataset.theme = next;
+      return `Theme switched to: ${next.toUpperCase()}`;
+    },
+  };
+
+  if (cliForm) {
+    cliForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const cmd = (cliInput.value || "").trim().toLowerCase();
+      if (!cmd) return;
+      printLine(`root@mamaniyozov:~# ${cmd}`, "cmd-user");
+      cliInput.value = "";
+
+      if (COMMANDS[cmd]) {
+        if (typeof COMMANDS[cmd] === "function") {
+          const res = COMMANDS[cmd]();
+          if (res) printLine(res, "cmd-out");
+        } else {
+          printLine(COMMANDS[cmd], "cmd-out");
+        }
+      } else {
+        printLine(`Command not found: '${cmd}'. Type 'help' for available commands.`, "cmd-out");
+      }
+      if (window.__audioSynth) window.__audioSynth.playClick();
+    });
+  }
+
+  // 7. Magnetic Cursor Attraction & 3D Tilt Physics
+  document.querySelectorAll(".btn, .nav-link, .filter-pill, .connect-row").forEach((el) => {
+    el.addEventListener("pointermove", (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate3d(${x * 0.22}px, ${y * 0.22}px, 0) rotateX(${-y * 0.05}deg) rotateY(${x * 0.05}deg)`;
+    });
+
+    el.addEventListener("pointerleave", () => {
+      el.style.transform = "translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)";
+    });
+  });
+
+  // 8. Cybernetic Telemetry HUD Updates
+  const telemetryHud = document.getElementById("systemTelemetry");
+  const telemetryToggleBtn = document.getElementById("telemetryToggleBtn");
+  const hudNodes = document.getElementById("hudNodes");
+  const hudDepth = document.getElementById("hudDepth");
+  const hudAudio = document.getElementById("hudAudio");
+
+  if (telemetryToggleBtn && telemetryHud) {
+    telemetryToggleBtn.addEventListener("click", () => {
+      const collapsed = telemetryHud.classList.toggle("is-collapsed");
+      telemetryToggleBtn.textContent = collapsed ? "+" : "—";
+      if (window.__audioSynth) window.__audioSynth.playClick();
+    });
+  }
+
+  const updateTelemetry = () => {
+    if (!telemetryHud || telemetryHud.classList.contains("is-collapsed")) return;
+    if (window.__topologyGraph && window.__topologyGraph.state) {
+      const z = Math.round(window.__topologyGraph.state.cameraZ);
+      if (hudDepth) hudDepth.textContent = `${z}u`;
+    }
+    if (hudAudio && window.__audioSynth) {
+      hudAudio.textContent = window.__audioSynth.isAudioEnabled() ? "ACTIVE (ON)" : "MUTED (OFF)";
+    }
+  };
+
+  setInterval(updateTelemetry, 250);
 }
 
 if (document.readyState === "loading") {

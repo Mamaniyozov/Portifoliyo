@@ -699,6 +699,43 @@
     </div>
   </div>
 
+  <!-- ================= DEVELOPER CLI TERMINAL ================= -->
+  <div class="cli-modal" id="cliTerminal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Developer Command Palette">
+    <div class="cli-backdrop" id="cliBackdrop"></div>
+    <div class="cli-dialog">
+      <div class="cli-header">
+        <div class="cli-dots">
+          <span class="cli-dot red"></span>
+          <span class="cli-dot yellow"></span>
+          <span class="cli-dot green"></span>
+        </div>
+        <span class="cli-title">mamaniyozov@antigravity:~ (Ctrl+K)</span>
+        <button type="button" class="cli-close" id="cliCloseBtn" aria-label="Yopish (Esc)">×</button>
+      </div>
+      <div class="cli-body" id="cliOutput">
+        <p class="cli-welcome">System Terminal v2.4 initialized. Type <span class="cli-cmd-highlight">help</span> to list commands.</p>
+      </div>
+      <form class="cli-input-form" id="cliForm">
+        <span class="cli-prompt">root@mamaniyozov:~#</span>
+        <input type="text" class="cli-input" id="cliInput" autocomplete="off" spellcheck="false" placeholder="Type a command...">
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= CYBERNETIC SYSTEM TELEMETRY HUD ================= -->
+  <aside class="telemetry-hud" id="systemTelemetry" aria-label="System Telemetry">
+    <div class="telemetry-header" id="telemetryHeader">
+      <span class="telemetry-dot"></span>
+      <span class="telemetry-title">TELEMETRY HUD</span>
+      <button type="button" class="telemetry-toggle" id="telemetryToggleBtn" aria-label="HUD yig'ish/ochish">—</button>
+    </div>
+    <div class="telemetry-content" id="telemetryContent">
+      <div class="telemetry-row"><span>NODES ACTIVE:</span><strong id="hudNodes">273</strong></div>
+      <div class="telemetry-row"><span>DEPTH CAMERA:</span><strong id="hudDepth">-1250u</strong></div>
+      <div class="telemetry-row"><span>AUDIO SYNTH:</span><strong id="hudAudio">READY</strong></div>
+    </div>
+  </aside>
+
   <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
     <div class="site-footer-inner">
