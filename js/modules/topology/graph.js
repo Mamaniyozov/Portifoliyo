@@ -44,7 +44,14 @@ export const WORLD_DEPTH = 4600;
 /** Golden angle — spreads clusters without a visible repeat. */
 const GOLDEN_ANGLE = 2.399963229728653;
 
-const NODES_PER_WEIGHT = 9;
+function getNodesPerWeight() {
+  if (typeof window === "undefined") return 7;
+  const isMobile = window.innerWidth < 640;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  const lowMem = navigator.deviceMemory && navigator.deviceMemory < 4;
+  if (isMobile || saveData || lowMem) return 5;
+  return 7;
+}
 
 /* ---------- world scale ----------
    Tuned against the rendered result, not guessed. The first pass
@@ -101,7 +108,8 @@ export function buildGraph(seed = 20260730) {
 
   STACK.forEach((entry, index) => {
     const weight = TIER_WEIGHT[entry.tier] || 2;
-    const count = weight * NODES_PER_WEIGHT;
+    const nodesPerWeight = getNodesPerWeight();
+    const count = weight * nodesPerWeight;
 
     const angle = index * GOLDEN_ANGLE;
     const orbit = ORBIT_BASE + (index % 3) * ORBIT_STEP;

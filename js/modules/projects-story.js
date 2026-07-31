@@ -111,4 +111,11 @@ export function initProjectsStory({ reducedMotion } = {}) {
 
   connect();
   mq.addEventListener("change", () => (mq.matches ? connect() : disconnect()));
+
+  document.addEventListener("projectsfiltered", () => {
+    const firstVisibleIndex = cards.findIndex((card) => !card.classList.contains("is-hidden"));
+    if (firstVisibleIndex !== -1) {
+      setActive(firstVisibleIndex);
+    }
+  });
 }

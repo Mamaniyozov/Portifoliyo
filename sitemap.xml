@@ -6,9 +6,9 @@
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="uz" href="https://portifoliyo-production.up.railway.app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://portifoliyo-production.up.railway.app/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://portifoliyo-production.up.railway.app/"/>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://portifoliyo-production.up.railway.app/?lang=uz"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifoliyo-production.up.railway.app/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://portifoliyo-production.up.railway.app/?lang=ru"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://portifoliyo-production.up.railway.app/"/>
   </url>
 </urlset>

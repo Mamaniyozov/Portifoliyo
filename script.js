@@ -644,6 +644,8 @@ if (filterPills.length && projectCards.length) {
       else url.searchParams.set("stack", filter);
       history.pushState({ stack: filter }, "", url);
     }
+
+    document.dispatchEvent(new CustomEvent("projectsfiltered", { detail: { filter, shown } }));
   }
 
   filterPills.forEach((pill) => {
@@ -748,6 +750,7 @@ if (contactForm) {
     submitBtn.disabled = true;
     if (submitLabel) submitLabel.textContent = t("form.sending");
 
+    contactForm.dataset.submitting = "true";
     try {
       const response = await fetch(contactForm.action, {
         method: "POST",
@@ -762,8 +765,17 @@ if (contactForm) {
     } catch (error) {
       setStatus("form.fail", "error");
     } finally {
+      contactForm.dataset.submitting = "";
       submitBtn.disabled = false;
       if (submitLabel) submitLabel.textContent = t("form.submit");
+    }
+  });
+
+  window.addEventListener("beforeunload", (event) => {
+    const hasInput = fields.some((f) => f.el.value.trim().length > 0);
+    if (hasInput && !contactForm.dataset.submitting) {
+      event.preventDefault();
+      event.returnValue = "";
     }
   });
 }
@@ -877,7 +889,7 @@ function runLoader() {
 
   const finish = () => {
     if (loader.classList.contains("is-done")) return;
-    loaderCount.textContent = "30";
+    loaderCount.textContent = "10";
     loader.classList.add("is-done");
     decodeHeroSub();
     document.dispatchEvent(new CustomEvent("loaderdone"));
@@ -910,7 +922,7 @@ function runLoader() {
     ready = true;
   });
 
-  const total = 30;
+  const total = 10;
   const minMs = 900;
   const ceilingMs = 4000;
   const start = performance.now();
@@ -918,11 +930,11 @@ function runLoader() {
   const tick = (now) => {
     const elapsed = now - start;
 
-    // Ease toward 27 on time alone; the last three tick over only
+    // Ease toward 9 on time alone; the last one ticks over only
     // once the real work is done. A bar that sits at 99% is a lie
     // people recognise, so it never parks at the top.
-    const timed = Math.min(elapsed / minMs, 1) * 27;
-    const value = ready ? Math.min(27 + (elapsed - minMs) / 40, total) : timed;
+    const timed = Math.min(elapsed / minMs, 1) * 9;
+    const value = ready ? Math.min(9 + (elapsed - minMs) / 40, total) : timed;
     loaderCount.textContent = String(Math.floor(Math.min(value, total))).padStart(2, "0");
 
     if ((ready && value >= total && elapsed >= minMs) || elapsed >= ceilingMs) {
