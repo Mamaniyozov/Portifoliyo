@@ -1116,11 +1116,37 @@ if (countNodes.length && "IntersectionObserver" in window) {
 }
 
 /* ============================================================
-   Ambient background is owned entirely by the SystemTopology
-   module (js/modules/system-topology.js, wired in
-   js/scroll-experience.js). The ribbon mouse-trail, spiral
-   particle field and GeoShape centrepiece that used to live here
-   were removed rather than ported: they were three separate
-   ambient systems competing with each other, and the ribbon in
-   particular duplicated the custom cursor's job.
+   Interactive WebGL Cluster Highlighting
+   Links DOM elements (.project-card, .skill-row) to the 3D topology
    ============================================================ */
+
+function setupTopologyInteractions() {
+  const triggerHighlight = (tags) => {
+    if (window.__topologyGraph && typeof window.__topologyGraph.highlightClusters === "function") {
+      window.__topologyGraph.highlightClusters(tags);
+    }
+  };
+
+  // 1. Project Cards
+  document.querySelectorAll(".project-card").forEach((card) => {
+    const stack = (card.dataset.stack || "").split(" ").filter(Boolean);
+    if (!stack.length) return;
+    card.addEventListener("pointerenter", () => triggerHighlight(stack));
+  });
+
+  // 2. Skill Rows
+  document.querySelectorAll(".skill-row").forEach((row) => {
+    const nameEl = row.querySelector(".skill-name");
+    if (!nameEl) return;
+    const name = nameEl.textContent.trim().toLowerCase();
+    const handleHighlight = () => triggerHighlight(name);
+    row.addEventListener("pointerenter", handleHighlight);
+    row.addEventListener("click", handleHighlight);
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupTopologyInteractions);
+} else {
+  setupTopologyInteractions();
+}

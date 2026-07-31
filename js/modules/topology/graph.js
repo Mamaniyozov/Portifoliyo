@@ -343,3 +343,56 @@ export function updatePulses(pulses, graph, { dt, energy, random = Math.random }
     pulses.tone[i] = random() < 0.82 ? 1 : 0;
   }
 }
+
+/**
+ * Highlighting function: pushes cluster nodes and spawns pulses
+ * for specific technology stacks when hovered/clicked in DOM.
+ */
+export function triggerClusterHighlight(graph, pulses, stackTags) {
+  if (!graph || !graph.clusters) return;
+  const tags = Array.isArray(stackTags) ? stackTags : [stackTags];
+
+  const matchingClusters = graph.clusters.filter((c) => {
+    return tags.some((tag) => {
+      const t = String(tag).toLowerCase().trim();
+      return c.id.toLowerCase().includes(t) || t.includes(c.id.toLowerCase());
+    });
+  });
+
+  if (!matchingClusters.length) return;
+
+  const { velocity } = graph;
+
+  matchingClusters.forEach((cluster) => {
+    const { first, count } = cluster;
+    for (let i = 0; i < count; i++) {
+      const p = (first + i) * 3;
+      velocity[p] += (Math.random() - 0.5) * 8.0;
+      velocity[p + 1] += (Math.random() - 0.5) * 8.0;
+      velocity[p + 2] += (Math.random() - 0.5) * 12.0;
+    }
+  });
+
+  if (pulses && graph.edges && graph.edges.backbone) {
+    const backbone = graph.edges.backbone;
+    const indices = graph.edges.indices;
+    matchingClusters.forEach((cluster) => {
+      const { first, count } = cluster;
+      const last = first + count;
+      for (let b = 0; b < backbone.length; b++) {
+        const edgeIdx = backbone[b];
+        const a = indices[edgeIdx * 2];
+        const bNode = indices[edgeIdx * 2 + 1];
+        if ((a >= first && a < last) || (bNode >= first && bNode < last)) {
+          if (pulses.active < pulses.max) {
+            const pi = pulses.active++;
+            pulses.edge[pi] = edgeIdx;
+            pulses.t[pi] = 0;
+            pulses.speed[pi] = 0.015 + Math.random() * 0.015;
+            pulses.tone[pi] = 1;
+          }
+        }
+      }
+    });
+  }
+}

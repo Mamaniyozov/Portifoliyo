@@ -37,6 +37,7 @@ import {
   simulate,
   createPulses,
   updatePulses,
+  triggerClusterHighlight,
   WORLD_DEPTH,
 } from "./topology/graph.js";
 import {
@@ -375,18 +376,19 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
   document.addEventListener("pointerleave", onPointerLeave);
   document.addEventListener("visibilitychange", onVisibility);
 
-  // script.js owns the custom cursor and is a classic script, not a
-  // module, so it cannot import this. A single namespaced global is
-  // the honest seam between the two worlds.
+  const highlightClusters = (tags) => triggerClusterHighlight(graph, pulses, tags);
+
+  published.highlightClusters = highlightClusters;
   window.__topologyGraph = published;
 
   start();
 
   return {
-    /** Exposed so the cursor can react to the field. */
+    /** Exposed so the cursor and interactive cards can react to the field. */
     graph,
     screen: published,
     state,
+    highlightClusters,
     destroy() {
       stop();
       window.removeEventListener("resize", syncSize);
