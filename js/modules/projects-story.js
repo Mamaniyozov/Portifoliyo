@@ -118,4 +118,39 @@ export function initProjectsStory({ reducedMotion } = {}) {
       setActive(firstVisibleIndex);
     }
   });
+
+  // 3D Card Hover Tilt & Multi-layer Poster Parallax
+  if (!reducedMotion) {
+    cards.forEach((card) => {
+      const bannerImg = card.querySelector(".project-banner img");
+      card.addEventListener("pointermove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rx = -y * 0.06;
+        const ry = x * 0.06;
+
+        card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(28px)`;
+        if (bannerImg) {
+          bannerImg.style.transform = `scale(1.06) translate3d(${x * 0.03}px, ${y * 0.03}px, 20px)`;
+        }
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+        if (bannerImg) bannerImg.style.transform = "";
+      });
+    });
+  }
+
+  // 3D Stage View Toggle
+  const toggleBtn = document.getElementById("stageViewToggle");
+  const storyContainer = document.querySelector(".projects-story");
+  if (toggleBtn && storyContainer) {
+    toggleBtn.addEventListener("click", () => {
+      const isStage = storyContainer.classList.toggle("is-3d-stage");
+      toggleBtn.classList.toggle("is-active", isStage);
+      if (window.__audioSynth) window.__audioSynth.playClick();
+    });
+  }
 }
