@@ -929,6 +929,39 @@ a {
   margin: 18px 0 16px;
 }
 
+/* ---- About quote block (enhanced bio) ----
+   A secondary voice sits below the main paragraph — same card,
+   visually separate. The left border doubles as an accent mark
+   that ties it to the cyan design system. */
+.about-quote {
+  position: relative;
+  margin: 16px 0 18px;
+  padding: 14px 16px 14px 18px;
+  border-left: 2px solid var(--cyan);
+  background: rgba(0, 242, 254, 0.04);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-style: normal;
+  text-wrap: pretty;
+}
+
+/* Tiny "AI" pill label — clarifies which block is which */
+.about-quote::before {
+  content: "✦ Taqdimot versiyasi";
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-accent), monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.7;
+}
+
+
 .card-experience {
   display: flex;
   flex-direction: column;
