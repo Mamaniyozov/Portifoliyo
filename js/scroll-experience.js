@@ -21,6 +21,7 @@ import { initHeroCinematic } from "./modules/hero-cinematic.js";
 import { initScrollReveal } from "./modules/scroll-reveal.js";
 import { initProjectsStory } from "./modules/projects-story.js";
 import { initSystemTopology } from "./modules/system-topology.js";
+import { initCardSpotlight } from "./modules/card-spotlight.js";
 import {
   initAudioState,
   toggleAudio,
@@ -53,6 +54,7 @@ function boot() {
   initScrollReveal({ reducedMotion });
   initHeroCinematic({ reducedMotion });
   initProjectsStory({ reducedMotion });
+  initCardSpotlight({ reducedMotion });
 
   const topology = initSystemTopology({
     canvas: document.getElementById("topologyCanvas"),
