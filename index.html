@@ -41,7 +41,13 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Preload LCP candidate: browser fetches the avatar during HTML
+       parse, before it would normally discover it via layout.
+       WebP is declared first; browsers that support it use imagesrcset. -->
+  <link rel="preload" as="image" href="assets/avatar.webp"
+        imagesrcset="assets/avatar.webp" type="image/webp">
   <link rel="stylesheet" href="style.css">
+
 
   <script type="application/ld+json">
   {
@@ -226,7 +232,12 @@
           <div class="avatar-frame">
             <picture>
               <source srcset="assets/avatar.webp" type="image/webp">
-              <img src="assets/avatar.jpg" alt="Muhammadyusuf Mamaniyozov" width="256" height="256" loading="lazy" decoding="async">
+              <!-- LCP candidate: fetchpriority=high tells the browser
+                   to preload this before layout discovers the <img>.
+                   loading=eager overrides any lazy-loading heuristics.
+                   decoding=sync keeps paint atomic for this element. -->
+              <img src="assets/avatar.jpg" alt="Muhammadyusuf Mamaniyozov" width="256" height="256"
+                   loading="eager" decoding="sync" fetchpriority="high">
             </picture>
           </div>
           <div class="card-body">

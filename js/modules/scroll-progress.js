@@ -3,9 +3,13 @@
    Single source of truth for scroll state. Computes progress
    (0..1), velocity and direction once per scroll-triggered frame,
    writes them to CSS vars (--scroll-progress / --scroll-velocity)
-   and to the #scrollProgressBar width. Other modules import
-   `scrollState` and read it inside their own render loop instead
-   of re-computing scroll math or adding their own scroll listener.
+   and to the #scrollProgressBar width.
+
+   Feature detection: if the browser supports CSS scroll-driven
+   animations (animation-timeline: scroll()), the progress bar
+   width is owned by CSS — skipping the JS DOM write avoids a
+   style conflict where JS and CSS fight over the same property.
+   Other modules still read scrollState for their own logic.
    ============================================================ */
 
 export const scrollState = {
@@ -19,6 +23,9 @@ let progressBarEl = null;
 let lastProgress = 0;
 let lastTime = typeof performance !== "undefined" ? performance.now() : Date.now();
 let ticking = false;
+
+/* True when CSS owns the progress bar via animation-timeline: scroll() */
+const CSS_SCROLL_DRIVEN = CSS.supports("animation-timeline", "scroll()");
 
 function computeProgress() {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -45,7 +52,8 @@ function update() {
   root.style.setProperty("--scroll-progress", progress.toFixed(4));
   root.style.setProperty("--scroll-velocity", scrollState.velocity.toFixed(4));
 
-  if (progressBarEl) {
+  /* Let CSS own the bar when scroll-driven animations are supported. */
+  if (progressBarEl && !CSS_SCROLL_DRIVEN) {
     progressBarEl.style.width = `${(progress * 100).toFixed(2)}%`;
   }
 }

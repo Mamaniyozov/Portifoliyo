@@ -34,6 +34,34 @@
   padding: 0;
 }
 
+/* ================= CUSTOM SCROLLBAR =================
+   Modern standard (scrollbar-color) + WebKit fallback.
+   Baseline Newly Available 2025 — progressive enhancement. */
+
+:root {
+  --scrollbar-thumb: rgba(0, 242, 254, 0.35);
+  --scrollbar-track: rgba(5, 7, 12, 0.6);
+}
+
+html {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+}
+
 html {
   /* Tells the UA to render native scrollbars, form controls, text
      selection and the canvas backdrop in dark mode. Without it
@@ -815,6 +843,17 @@ a {
   scroll-margin-top: 96px;
 }
 
+/* Off-screen sections skip paint/layout until near viewport.
+   contain-intrinsic-size avoids scrollbar jump on first reveal.
+   Baseline: Widely Available (Chrome 85+, Firefox 125+, Safari 17+) */
+#skills,
+#experience,
+#projects,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
 .hero.section {
   padding-top: 132px;
   padding-bottom: 56px;
@@ -838,18 +877,30 @@ a {
 
 /* Headings and short lede copy: balance evens the line lengths and
    stops a single trailing word (a widow) on a line of its own —
-   most visible in Russian, where words run long. */
+   most visible in Russian, where words run long.
+   Baseline Newly Available (2024). Gracefully degrades to `wrap`. */
 .hero-name,
 .connect-headline,
 .card-title,
+.card-eyebrow,
 .timeline-role,
+.timeline-date,
+.section-title,
+.loader-label,
 .projects-story-title {
   text-wrap: balance;
 }
 
+/* `pretty` prevents orphaned single words at paragraph end.
+   Avoid global application — computationally expensive. */
 .section-lede,
 .hero-desc,
-.connect-lede {
+.connect-lede,
+.card-text,
+.about-mini-text,
+.skill-context,
+.timeline-org,
+.case-study dd {
   text-wrap: pretty;
 }
 
@@ -1108,7 +1159,10 @@ a {
   }
 }
 
-/* ================= ANTIGRAVITY IDLE FLOAT ================= */
+/* ================= ANTIGRAVITY IDLE FLOAT =================
+   Respects prefers-reduced-motion — the @media block below
+   (denylist) kills all animations, so these conditionally run
+   only when the user allows motion. No need to repeat here. */
 
 .avatar-frame {
   animation: gentleFloat 6s ease-in-out infinite;
@@ -1124,7 +1178,7 @@ a {
 
 @keyframes gentleFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50%       { transform: translateY(-8px); }
 }
 
 /* ================= PROJECT FILTERS ================= */
@@ -1350,7 +1404,12 @@ body.has-custom-cursor .cursor-dot {
   }
 }
 
-/* ================= SCROLL PROGRESS ================= */
+/* ================= SCROLL PROGRESS =================
+   CSS-native when animation-timeline: scroll() is available
+   (Baseline Newly Available 2024). Feature-detected: if the
+   browser supports it, the JS width update is ignored because
+   the CSS animation owns the property. JS fallback stays for
+   older engines. */
 
 .scroll-progress {
   position: fixed;
@@ -1367,7 +1426,28 @@ body.has-custom-cursor .cursor-dot {
   width: 0%;
   background: linear-gradient(90deg, var(--cyan), var(--violet));
   box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+  /* JS fallback transition for older browsers */
   transition: width 0.08s linear;
+}
+
+/* CSS-native scroll-driven animation — overrides JS transition
+   when supported. scaleX avoids reflow; transform-origin fixes
+   the bar to the left edge. */
+@supports (animation-timeline: scroll()) {
+  .scroll-progress-bar {
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: none;
+    animation: scrollProgress linear;
+    animation-timeline: scroll(root);
+    animation-range: 0% 100%;
+  }
+
+  @keyframes scrollProgress {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
 }
 
 /* ================= SIGNATURE TOPOLOGY CANVAS =================
@@ -1901,6 +1981,19 @@ body.topology-ready .topology-canvas {
     animation: none !important;
     transform: none !important;
   }
+
+  /* CSS scroll-driven progress bar: disable the animation so the
+     bar stays hidden rather than jumping to full-width instantly. */
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress-bar {
+      animation: none !important;
+      transform: scaleX(0) !important;
+    }
+  }
+
+  /* content-visibility: auto skips rendering; under reduced-motion
+     this is fine. No override needed — the browser still renders
+     correctly, just without paint optimisation where not wanted. */
 }
 
 /* ================= ACCESSIBILITY PRIMITIVES ================= */
