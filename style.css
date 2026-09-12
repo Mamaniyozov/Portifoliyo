@@ -920,7 +920,6 @@ a {
 .timeline-role,
 .timeline-date,
 .section-title,
-.loader-label,
 .projects-story-title {
   text-wrap: balance;
 }
@@ -1304,59 +1303,50 @@ a {
   position: fixed;
   inset: 0;
   z-index: 200;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+  display: grid;
+  place-items: center;
   background: #000;
-  transition: opacity 0.7s ease, visibility 0.7s ease;
+  /* Chiqish easeInCubic: sekin boshlanib tezlashadi, ya'ni parda
+     "tortib olinadi" hissi beradi, oddiy crossfade emas. */
+  transition: opacity 0.5s cubic-bezier(0.32, 0, 0.67, 0),
+              visibility 0.5s;
 }
 
-.loader-hatch {
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(var(--accent-rgb), 0.05) 0px,
-    rgba(var(--accent-rgb), 0.05) 1px,
-    transparent 1px,
-    transparent 14px
-  );
-  opacity: 0.7;
+/* Glyph maydoni va foiz bitta grid katakda ustma-ust turadi */
+.loader-field,
+.loader-count {
+  grid-area: 1 / 1;
 }
 
-.loader-inner {
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
+/* 16 qator x 30 belgi. Doiraviy niqob chekkalarni kesadi, shuning
+   uchun to'lish kvadrat emas, disk bo'lib o'sadi. */
+.loader-field {
+  margin: 0;
+  width: 220px;
+  height: 220px;
   font-family: var(--font-accent), monospace;
-  font-size: clamp(2.2rem, 8vw, 4rem);
-  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-align: left;
   color: var(--accent);
-  text-shadow: 0 0 24px rgba(var(--accent-rgb), 0.6);
-  letter-spacing: 0.02em;
-  /* The counter runs 00→30; without tabular figures the slashes
-     either side visibly twitch on every digit change. */
+  opacity: 0.4;
+  white-space: pre;
+  overflow: hidden;
+  -webkit-mask-image: radial-gradient(#000 49%, transparent 50%);
+  mask-image: radial-gradient(#000 49%, transparent 50%);
+}
+
+/* Raqam ataylab kichik. Katta hisoblagich effektni "o'yin" registriga
+   tortadi; kichik raqam esa asbob ko'rsatkichiday o'qiladi. */
+.loader-count {
+  place-self: center;
+  font-family: var(--font-accent), monospace;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--accent-pale);
   font-variant-numeric: tabular-nums;
-}
-
-.loader-slash {
-  color: rgba(var(--accent-rgb), 0.4);
-}
-
-.loader-total {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.loader-label {
-  position: relative;
-  font-family: var(--font-accent);
-  font-size: 12px;
-  letter-spacing: 0.3em;
-  color: var(--text-muted);
-  text-transform: uppercase;
 }
 
 .loader.is-done {

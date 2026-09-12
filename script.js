@@ -899,6 +899,48 @@ function decodeHeroSub() {
    strand a visitor behind a black screen — the page always
    arrives, the counter just stops claiming to measure anything. */
 
+/* Glyph maydoni — Active Theory'ning LoaderView'idan olingan g'oya.
+   16x30 belgi bloki progress bilan to'ladi, doiraviy niqob ostida
+   disk bo'lib o'sadi. Har ikkinchi kadrda 30 ta tasodifiy pozitsiya
+   joriy foiz raqamlari bilan almashtiriladi — bu "hisoblanmoqda"
+   hissini beradi.
+
+   Ataylab ~12fps: silliq animatsiya emas, mashina chiqishi kabi
+   diskret o'qilishi kerak. Yon foyda — yuklanish paytida asosiy
+   ip band qilinmaydi. */
+const FIELD_COLS = 30;
+const FIELD_ROWS = 16;
+
+function makeFieldRenderer(el) {
+  if (!el) return () => {};
+  const full = ("/".repeat(FIELD_COLS) + "\n").repeat(FIELD_ROWS);
+  let tick = 0;
+  let last = -Infinity;
+
+  return function draw(ratio, now) {
+    if (now - last < 83) return;   // ~12fps
+    last = now;
+    tick++;
+
+    let text = full.slice(0, Math.round(ratio * full.length));
+
+    if (text.length && tick % 2 === 0) {
+      const digits = String(Math.round(ratio * 100));
+      const chars = text.split("");
+      for (let i = 0; i < 30; i++) {
+        const pos = Math.floor(Math.random() * chars.length);
+        // Qator uzilishlarini saqlaymiz, aks holda panjara buziladi
+        if (chars[pos] !== "\n") {
+          chars[pos] = digits.charAt(Math.floor(Math.random() * digits.length));
+        }
+      }
+      text = chars.join("");
+    }
+
+    el.textContent = text;
+  };
+}
+
 function runLoader() {
   if (!loader || !loaderCount) {
     decodeHeroSub();
@@ -908,7 +950,7 @@ function runLoader() {
 
   const finish = () => {
     if (loader.classList.contains("is-done")) return;
-    loaderCount.textContent = "10";
+    loaderCount.textContent = "100";
     loader.classList.add("is-done");
     decodeHeroSub();
     document.dispatchEvent(new CustomEvent("loaderdone"));
@@ -941,8 +983,10 @@ function runLoader() {
     ready = true;
   });
 
+  const drawField = makeFieldRenderer(document.getElementById("loaderField"));
+
   const total = 10;
-  const minMs = 900;
+  const minMs = 1500;
   const ceilingMs = 4000;
   const start = performance.now();
 
@@ -953,11 +997,13 @@ function runLoader() {
     // once the real work is done. A bar that sits at 99% is a lie
     // people recognise, so it never parks at the top.
     const timed = Math.min(elapsed / minMs, 1) * 9;
-    const value = ready ? Math.min(9 + (elapsed - minMs) / 40, total) : timed;
-    loaderCount.textContent = String(Math.floor(Math.min(value, total))).padStart(2, "0");
+    const value = ready ? Math.min(9 + (elapsed - minMs) / 90, total) : timed;
+    const ratio = Math.min(value, total) / total;
+    loaderCount.textContent = String(Math.floor(ratio * 100)).padStart(3, "0");
+    drawField(ratio, now);
 
     if ((ready && value >= total && elapsed >= minMs) || elapsed >= ceilingMs) {
-      setTimeout(finish, 180);
+      setTimeout(finish, 260);
       return;
     }
     requestAnimationFrame(tick);

@@ -111,14 +111,11 @@
 
   <!-- ================= LOADING SCREEN ================= -->
   <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader-hatch"></div>
-    <div class="loader-inner">
-      <span class="loader-slash">/</span>
-      <span class="loader-count" id="loaderCount">00</span>
-      <span class="loader-slash">/</span>
-      <span class="loader-total">10</span>
-    </div>
-    <p class="loader-label">SYSTEM INITIALIZING…</p>
+    <!-- Glyph maydoni progress bilan to'ladi va doiraviy niqob ostida
+         ko'rinadi. Matn JS tomonidan yoziladi; bo'sh qolsa ham layout
+         buzilmaydi. -->
+    <pre class="loader-field" id="loaderField"></pre>
+    <span class="loader-count" id="loaderCount">000</span>
   </div>
 
   <!-- ================= CUSTOM CURSOR ================= -->
