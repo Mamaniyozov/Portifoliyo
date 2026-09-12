@@ -237,7 +237,7 @@ export function initSystemTopology({ canvas, reducedMotion } = {}) {
   function intensityFor(progress) {
     const HERO_END = 0.05;
     const SETTLED = 0.18;
-    const FLOOR = 0.38;
+    const FLOOR = 0.6;
     if (progress <= HERO_END) return 1;
     const t = Math.min((progress - HERO_END) / (SETTLED - HERO_END), 1);
     return 1 - (1 - FLOOR) * t;
