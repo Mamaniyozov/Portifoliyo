@@ -1523,7 +1523,7 @@ function setupTopologyInteractions() {
         ctx.fillStyle = "rgba(5, 7, 12, 0.15)";
         ctx.fillRect(0, 0, width, height);
 
-        ctx.fillStyle = "#00f2fe";
+        ctx.fillStyle = "#7dc2f0";
         ctx.font = `${14 * dpr}px monospace`;
 
         for (let i = 0; i < drops.length; i++) {

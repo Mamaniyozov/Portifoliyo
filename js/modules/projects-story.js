@@ -14,10 +14,10 @@
    ============================================================ */
 
 const ACCENT_MAP = {
-  cyan: "var(--cyan)",
-  violet: "var(--violet)",
-  green: "var(--neon-green)",
-  indigo: "var(--indigo)",
+  cyan: "var(--accent)",
+  violet: "var(--accent-deep)",
+  green: "var(--accent)",
+  indigo: "var(--accent-deep)",
 };
 
 export function initProjectsStory({ reducedMotion } = {}) {
@@ -54,7 +54,7 @@ export function initProjectsStory({ reducedMotion } = {}) {
       .map((tag) => tag.textContent)
       .join(" · ");
     const accentKey = card.dataset.storyAccent;
-    const accent = ACCENT_MAP[accentKey] || "var(--cyan)";
+    const accent = ACCENT_MAP[accentKey] || "var(--accent)";
 
     frame.style.setProperty("--story-accent", accent);
     if (countEl) countEl.textContent = String(index + 1).padStart(2, "0");

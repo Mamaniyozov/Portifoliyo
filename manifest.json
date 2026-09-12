@@ -5,7 +5,7 @@
   "start_url": "./",
   "display": "standalone",
   "background_color": "#05070c",
-  "theme_color": "#00f2fe",
+  "theme_color": "#7dc2f0",
   "icons": [
     {
       "src": "public/assets/images/hrmm-poster.png",

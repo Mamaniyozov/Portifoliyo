@@ -56,14 +56,18 @@ import { scrollState } from "./scroll-progress.js";
 
 /* ---------- palette, matched to style.css custom properties ---------- */
 
-const CORE_RGB = [0.0, 0.949, 0.996];   // --cyan   #00f2fe
-const WARM_RGB = [0.549, 0.325, 1.0];   // --violet #7c3aed, lifted
-// Raised well above the literal --indigo. Under additive blending a
+// Single-hue system: everything decorative sits on the --accent ramp,
+// so the background reads as one material rather than five signals.
+const CORE_RGB = [0.490, 0.761, 0.941];  // --accent      #7dc2f0
+const WARM_RGB = [0.773, 0.886, 0.969];  // --accent-pale #c5e2f7, lifted
+// Raised above the literal --accent-deep. Under additive blending a
 // hairline at the source colour's luminance is effectively invisible;
 // the edges need to be emissive, not merely tinted.
-const EDGE_RGB = [0.25, 0.55, 1.0];
-const OK_RGB   = [0.133, 1.0, 0.62];    // --neon-green #22ff9e
-const WARN_RGB = [1.0, 0.737, 0.18];    // amber — the minority path
+const EDGE_RGB = [0.35, 0.62, 0.86];
+const OK_RGB   = [0.635, 0.878, 1.0];    // accent, lifted — healthy path
+// Amber is the one deliberate exception to the single-hue rule: it
+// encodes the minority path, so it must not read as the same material.
+const WARN_RGB = [1.0, 0.737, 0.18];
 
 /* ============================================================ */
 
