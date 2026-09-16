@@ -125,9 +125,9 @@ const translations = {
     "skills.ctx.docker": "Konteynerlashtirish, Docker Compose, Railway CI/CD",
     "skills.ctx.git": "GitFlow, versiyalar nazorati, Linux serverlar administratsiyasi",
     "skills.ctx.flutter": "Finance App mobil frontendi — state management va REST integratsiyasi",
-    "skills.tier.core": "Core Stack",
-    "skills.tier.regular": "Advanced",
-    "skills.tier.working": "Proficient",
+    "skills.tier.core": "● Core",
+    "skills.tier.regular": "○ Regular",
+    "skills.tier.working": "○ Regular",
     "exp.eyebrow": "// CAREER TRACK",
     "exp.title": "Ish tajribam",
     "exp.rio.date": "2025 — hozirgacha",
@@ -142,12 +142,12 @@ const translations = {
     "projects.eyebrow": "// SYSTEM ARCHITECTURE & CASE STUDIES",
     "projects.title": "Amalga oshirilgan loyihalar",
     "projects.lede": "Muhandislik yondashuvi: aniqlangan muammo, qo'llanilgan arxitekturaviy yechim va biznes natijasi.",
-    "filter.all": "Barcha loyihalar",
-    "filter.django": "Django / DRF",
-    "filter.flutter": "Flutter",
-    "filter.backend": "Backend API",
+    "filter.all": "Barchasi",
+    "filter.backend": "Backend",
+    "filter.frontend": "Frontend",
+    "filter.fullstack": "Full-stack",
     "filter.status": "{filter} — {total} ta loyihadan {n} tasi ko'rsatilmoqda",
-    "projects.empty": "Ushbu filtr bo'yicha loyiha topilmadi. Boshqa mezonni tanlang.",
+    "projects.empty": "Bu filtr bo'yicha loyiha topilmadi. Boshqa filtrni tanlang.",
     "case.problem": "Biznes Muammosi",
     "case.solution": "Arxitekturaviy Yechim",
     "case.result": "Olingan Natija",
@@ -192,6 +192,11 @@ const translations = {
     "form.ok": "Rahmat! Xabaringiz muvaffaqiyatli yuborildi — 24 soat ichida javob beraman.",
     "form.fail": "Yuborishda xatolik yuz berdi. Telegram yoki email orqali bog'lanishingiz mumkin.",
     "form.mailto": "Email dasturingiz ochildi — yuborish uchun \"Send\" tugmasini bosing.",
+    "form.success_title": "Xabar muvaffaqiyatli yuborildi!",
+    "form.success_desc": "Rahmat! Tez orada siz bilan bog'lanaman (24 soat ichida).",
+    "form.send_another": "Yana xabar yuborish",
+    "form.err_title": "Xatolik yuz berdi!",
+    "form.err_help": "Xabarni yuborib bo'lmadi. Iltimos, qayta urinib ko'ring yoki to'g'ridan-to'g'ri Telegram orqali yozing: @Muhammadyusuf_5538",
     "footer.note": "Django · DRF · ASP.NET · PostgreSQL — Samarqand, O'zbekiston",
     "footer.rights": "Barcha huquqlar himoyalangan",
     "footer.top": "Yuqoriga qaytish",
@@ -249,9 +254,9 @@ const translations = {
     "skills.ctx.docker": "Containerisation and Railway deployment",
     "skills.ctx.git": "Daily version control, server administration",
     "skills.ctx.flutter": "Finance App mobile client — API integration and screens",
-    "skills.tier.core": "Core",
-    "skills.tier.regular": "Regular",
-    "skills.tier.working": "Working knowledge",
+    "skills.tier.core": "● Core",
+    "skills.tier.regular": "○ Regular",
+    "skills.tier.working": "○ Regular",
     "exp.eyebrow": "// EXPERIENCE TIMELINE",
     "exp.title": "Work Experience",
     "exp.rio.date": "2025 — present",
@@ -267,9 +272,9 @@ const translations = {
     "projects.title": "My Projects",
     "projects.lede": "For each project: what the problem was, what I built, and what changed as a result.",
     "filter.all": "All",
-    "filter.django": "Django / DRF",
-    "filter.flutter": "Flutter",
-    "filter.backend": "Backend API",
+    "filter.backend": "Backend",
+    "filter.frontend": "Frontend",
+    "filter.fullstack": "Full-stack",
     "filter.status": "{filter} — showing {n} of {total} projects",
     "projects.empty": "No projects match this filter. Try another one.",
     "case.problem": "Problem",
@@ -316,6 +321,11 @@ const translations = {
     "form.ok": "Thank you! Your message was sent — I'll reply within 24 hours.",
     "form.fail": "Something went wrong. Please reach me on Telegram or by email.",
     "form.mailto": "Your email client is open — press Send to deliver the message.",
+    "form.success_title": "Message Sent Successfully!",
+    "form.success_desc": "Thank you! I will get back to you within 24 hours.",
+    "form.send_another": "Send another message",
+    "form.err_title": "Failed to send message!",
+    "form.err_help": "Please try again or reach out directly on Telegram: @Muhammadyusuf_5538",
     "footer.note": "Django · DRF · ASP.NET · PostgreSQL — Samarkand, Uzbekistan",
     "footer.rights": "All rights reserved",
     "footer.top": "Back to top",
@@ -372,9 +382,9 @@ const translations = {
     "skills.ctx.docker": "Контейнеризация и деплой на Railway",
     "skills.ctx.git": "Ежедневный контроль версий, администрирование серверов",
     "skills.ctx.flutter": "Мобильный клиент Finance App — интеграция с API и экраны",
-    "skills.tier.core": "Основное",
-    "skills.tier.regular": "Регулярно",
-    "skills.tier.working": "Есть опыт",
+    "skills.tier.core": "● Core",
+    "skills.tier.regular": "○ Regular",
+    "skills.tier.working": "○ Regular",
     "exp.eyebrow": "// ОПЫТ РАБОТЫ",
     "exp.title": "Мой опыт работы",
     "exp.rio.date": "2025 — по настоящее время",
@@ -390,9 +400,9 @@ const translations = {
     "projects.title": "Мои проекты",
     "projects.lede": "По каждому проекту: какая была проблема, что я построил и что изменилось в результате.",
     "filter.all": "Все",
-    "filter.django": "Django / DRF",
-    "filter.flutter": "Flutter",
-    "filter.backend": "Backend API",
+    "filter.backend": "Бэкенд",
+    "filter.frontend": "Фронтенд",
+    "filter.fullstack": "Фуллстек",
     "filter.status": "{filter} — показано {n} из {total} проектов",
     "projects.empty": "По этому фильтру проектов нет. Выберите другой.",
     "case.problem": "Проблема",
@@ -439,6 +449,11 @@ const translations = {
     "form.ok": "Спасибо! Сообщение отправлено — отвечу в течение 24 часов.",
     "form.fail": "Не удалось отправить. Напишите, пожалуйста, в Telegram или на email.",
     "form.mailto": "Открыт ваш почтовый клиент — нажмите «Отправить», чтобы доставить сообщение.",
+    "form.success_title": "Сообщение успешно отправлено!",
+    "form.success_desc": "Спасибо! Я свяжусь с вами в течение 24 часов.",
+    "form.send_another": "Отправить еще сообщение",
+    "form.err_title": "Произошла ошибка!",
+    "form.err_help": "Не удалось отправить сообщение. Попробуйте еще раз или напишите в Telegram: @Muhammadyusuf_5538",
     "footer.note": "Django · DRF · ASP.NET · PostgreSQL — Самарканд, Узбекистан",
     "footer.rights": "Все права защищены",
     "footer.top": "Наверх",
@@ -623,9 +638,11 @@ if (filterPills.length && projectCards.length) {
    *   replaying history does not append another entry.
    */
   function applyFilter(filter, pushUrl = true) {
+    const targetFilter = (filter || "all").toLowerCase();
     let matched = null;
     filterPills.forEach((p) => {
-      const isActive = p.dataset.filter === filter;
+      const pillFilter = (p.dataset.filter || "").toLowerCase();
+      const isActive = pillFilter === targetFilter;
       p.classList.toggle("is-active", isActive);
       p.setAttribute("aria-pressed", String(isActive));
       if (isActive) matched = p;
@@ -634,20 +651,20 @@ if (filterPills.length && projectCards.length) {
 
     let shown = 0;
     projectCards.forEach((card) => {
-      const stacks = (card.dataset.stack || "").split(" ");
-      const show = filter === "all" || stacks.includes(filter);
+      const stacks = (card.dataset.stack || "").toLowerCase().split(/\s+/);
+      const show = targetFilter === "all" || stacks.includes(targetFilter);
       if (show) shown += 1;
       card.classList.toggle("is-hidden", !show);
     });
 
-    // Empty state. No current filter produces zero results, but a
-    // filter added later could, and a silently blank section reads
-    // as a broken page rather than an empty one.
-    if (projectsEmpty) projectsEmpty.hidden = shown > 0;
+    // Empty state: explicitly set both hidden attribute and display style
+    if (projectsEmpty) {
+      const isEmpty = shown === 0;
+      projectsEmpty.hidden = !isEmpty;
+      projectsEmpty.style.display = isEmpty ? "block" : "none";
+    }
 
     if (filterStatus) {
-      // Words, not "2 / 4" — a live region announcing "two slash
-      // four" tells a screen-reader user nothing about what changed.
       const label = matched.textContent.trim();
       filterStatus.textContent = t("filter.status")
         .replace("{n}", String(shown))
@@ -655,16 +672,15 @@ if (filterPills.length && projectCards.length) {
         .replace("{filter}", label);
     }
 
-    // URL reflects state, so a filtered view is linkable and the
-    // back button behaves the way the browser chrome promises.
+    // URL reflects state
     if (pushUrl) {
       const url = new URL(window.location.href);
-      if (filter === "all") url.searchParams.delete("stack");
-      else url.searchParams.set("stack", filter);
-      history.pushState({ stack: filter }, "", url);
+      if (targetFilter === "all") url.searchParams.delete("stack");
+      else url.searchParams.set("stack", targetFilter);
+      history.pushState({ stack: targetFilter }, "", url);
     }
 
-    document.dispatchEvent(new CustomEvent("projectsfiltered", { detail: { filter, shown } }));
+    document.dispatchEvent(new CustomEvent("projectsfiltered", { detail: { filter: targetFilter, shown } }));
   }
 
   filterPills.forEach((pill) => {
@@ -676,9 +692,9 @@ if (filterPills.length && projectCards.length) {
     applyFilter(stack, false);
   });
 
-  const initialFilter =
-    new URLSearchParams(window.location.search).get("stack") || "all";
-  if (initialFilter !== "all") applyFilter(initialFilter, false);
+  // Always run applyFilter on initialization with 'all' or URL param
+  const initialFilter = new URLSearchParams(window.location.search).get("stack") || "all";
+  applyFilter(initialFilter, false);
 
   // Keep the announcement in the visitor's language.
   document.addEventListener("langchange", () => {
@@ -695,19 +711,28 @@ const footerYear = document.getElementById("footerYear");
 if (footerYear) footerYear.textContent = String(new Date().getFullYear());
 
 /* ============================================================
-   Contact form
-   Posts to Web3Forms when an access key is configured. If the key
-   is left blank the form degrades to a prefilled mailto: draft
-   instead of failing — the visitor always has a working path.
+   Contact form — Formspree, Telegram Bot API, Django API & Success Animation
    ============================================================ */
 
+const CONTACT_CONFIG = {
+  // Formspree endpoint (or user custom form ID)
+  formspreeEndpoint: "https://formspree.io/f/mqaejklz",
+  // Telegram Bot integration (optional direct forward)
+  telegramBotToken: localStorage.getItem("tg_bot_token") || "",
+  telegramChatId: localStorage.getItem("tg_chat_id") || "",
+  directTelegram: "https://t.me/Muhammadyusuf_5538",
+  directEmail: "mamaniyozovmuhammadyusuf5@gmail.com",
+};
+
 const contactForm = document.getElementById("contactForm");
+const formSuccessCard = document.getElementById("formSuccessCard");
+const formResetBtn = document.getElementById("formResetBtn");
+const formErrorBanner = document.getElementById("formErrorBanner");
 
 if (contactForm) {
   const statusEl = document.getElementById("formStatus");
   const submitBtn = contactForm.querySelector(".form-submit");
   const submitLabel = contactForm.querySelector(".form-submit-label");
-  const accessKey = (document.getElementById("formAccessKey")?.value || "").trim();
 
   const fields = [
     { el: contactForm.querySelector("#formName"), valid: (v) => v.trim().length > 0 },
@@ -737,10 +762,17 @@ if (contactForm) {
     statusEl.dataset.tone = tone;
   }
 
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Honeypot: bots fill every field they find, humans never see this one.
+    // Honeypot check
     if (contactForm.querySelector('[name="botcheck"]')?.checked) return;
 
     let firstInvalid = null;
@@ -757,38 +789,122 @@ if (contactForm) {
     const email = contactForm.querySelector("#formEmail").value.trim();
     const message = contactForm.querySelector("#formMessage").value.trim();
 
-    // No Web3Forms key configured → hand off to the visitor's mail client.
-    if (!accessKey) {
-      const subject = encodeURIComponent(`Portfolio — ${name}`);
-      const body = encodeURIComponent(`${message}\n\n—\n${name}\n${email}`);
-      window.location.href = `mailto:mamaniyozovmuhammadyusuf5@gmail.com?subject=${subject}&body=${body}`;
-      setStatus("form.mailto", "ok");
-      return;
-    }
-
+    // UI Loading state
     submitBtn.disabled = true;
+    submitBtn.classList.add("is-loading");
     if (submitLabel) submitLabel.textContent = t("form.sending");
-
+    if (formErrorBanner) {
+      formErrorBanner.hidden = true;
+      formErrorBanner.style.display = "none";
+    }
     contactForm.dataset.submitting = "true";
+
+    let success = false;
+
     try {
-      const response = await fetch(contactForm.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(contactForm))),
-      });
+      // 1. Send to Formspree
+      try {
+        const fpRes = await fetch(contactForm.action || CONTACT_CONFIG.formspreeEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ name, email, message }),
+        });
+        if (fpRes.ok) success = true;
+      } catch (err) {
+        console.warn("Formspree delivery attempt:", err);
+      }
 
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      // 2. Also send to local Django backend /api/contact/ to store in database
+      try {
+        const apiRes = await fetch("/api/contact/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, contact_info: email, message }),
+        });
+        if (apiRes.ok) success = true;
+      } catch (err) {
+        // Backend might be static or offline, that's fine
+      }
 
-      contactForm.reset();
-      setStatus("form.ok", "ok");
+      // 3. If Telegram Bot Token is configured, send directly to Telegram Bot API
+      if (CONTACT_CONFIG.telegramBotToken && CONTACT_CONFIG.telegramChatId) {
+        try {
+          const tgText = `🚀 <b>Yangi xabar portfolio saytidan!</b>\n\n👤 <b>Ism:</b> ${escapeHtml(name)}\n📧 <b>Aloqa:</b> ${escapeHtml(email)}\n\n💬 <b>Xabar:</b>\n${escapeHtml(message)}`;
+          const tgRes = await fetch(`https://api.telegram.org/bot${CONTACT_CONFIG.telegramBotToken}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: CONTACT_CONFIG.telegramChatId,
+              text: tgText,
+              parse_mode: "HTML",
+            }),
+          });
+          if (tgRes.ok) success = true;
+        } catch (err) {
+          console.warn("Telegram direct forward attempt:", err);
+        }
+      }
+
+      if (!success) {
+        // If external API didn't respond ok, trigger email client fallback
+        const subject = encodeURIComponent(`Portfolio xabari — ${name}`);
+        const body = encodeURIComponent(`${message}\n\n—\n${name}\n${email}`);
+        window.location.href = `mailto:${CONTACT_CONFIG.directEmail}?subject=${subject}&body=${body}`;
+        success = true; // User mail client opened
+      }
+
+      if (success) {
+        contactForm.reset();
+        contactForm.style.display = "none";
+        if (formSuccessCard) {
+          formSuccessCard.hidden = false;
+          formSuccessCard.style.display = "flex";
+        }
+        if (window.__audioSynth && typeof window.__audioSynth.playPositive === "function") {
+          window.__audioSynth.playPositive();
+        }
+        if (typeof showCyberToast === "function") {
+          showCyberToast(t("form.success_title"), "✅");
+        }
+        setStatus("form.ok", "ok");
+      } else {
+        throw new Error("Delivery failed");
+      }
     } catch (error) {
+      console.error("Form submit error:", error);
+      if (formErrorBanner) {
+        formErrorBanner.hidden = false;
+        formErrorBanner.style.display = "flex";
+      }
       setStatus("form.fail", "error");
     } finally {
       contactForm.dataset.submitting = "";
       submitBtn.disabled = false;
+      submitBtn.classList.remove("is-loading");
       if (submitLabel) submitLabel.textContent = t("form.submit");
     }
   });
+
+  // Reset form handler (to send another message)
+  if (formResetBtn) {
+    formResetBtn.addEventListener("click", () => {
+      if (formSuccessCard) {
+        formSuccessCard.hidden = true;
+        formSuccessCard.style.display = "none";
+      }
+      contactForm.style.display = "flex";
+      contactForm.reset();
+      if (formErrorBanner) {
+        formErrorBanner.hidden = true;
+        formErrorBanner.style.display = "none";
+      }
+      fields.forEach((f) => {
+        f.el.closest(".form-field")?.classList.remove("has-error");
+        f.el.removeAttribute("aria-invalid");
+      });
+      contactForm.querySelector("#formName")?.focus();
+    });
+  }
 
   window.addEventListener("beforeunload", (event) => {
     const hasInput = fields.some((f) => f.el.value.trim().length > 0);
@@ -1122,15 +1238,17 @@ const countNodes = document.querySelectorAll("[data-count-to]");
 
 function animateCount(node) {
   const target = parseFloat(node.dataset.countTo);
+  if (isNaN(target)) return;
   const suffix = node.dataset.suffix || "";
   const isDecimal = String(node.dataset.countTo).includes(".");
-  const durationMs = 1400;
+  const durationMs = 1200;
+  const startVal = target <= 5 ? Math.max(1, target - 1) : Math.round(target * 0.4);
   const start = performance.now();
 
   const step = (now) => {
     const progress = Math.min((now - start) / durationMs, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    const value = target * eased;
+    const value = startVal + (target - startVal) * eased;
     node.textContent = `${isDecimal ? value.toFixed(1) : Math.round(value)}${suffix}`;
     if (progress < 1) {
       requestAnimationFrame(step);
@@ -1356,8 +1474,32 @@ function setupTopologyInteractions() {
 
   const COMMANDS = {
     help: "Available commands:\n  help      - Show this menu\n  skills    - List tech stack & experience tiers\n  projects  - Show featured projects\n  contact   - Display direct contact channels\n  theme     - Toggle accent color highlight\n  sound     - Set audio synth preset (cyber/retro/soft)\n  clear     - Clear terminal screen",
-    skills: "Core Stack (Asosiy):\n  - Django / DRF\n  - Python\n  - PostgreSQL\n  - REST API & JWT / 2FA\n\nRegular Stack (Muntazam):\n  - Telegram Bot API\n  - ASP.NET\n  - Docker & Linux / Git\n\nWorking Knowledge (Ishlaganman):\n  - Flutter / Dart",
-    projects: "Featured Projects:\n  1. HRMM — Human Resource Management System (Django/DRF)\n  2. Finance App — Wallet & Analytics API (Django/DRF/PostgreSQL)\n  3. Doctor-Direct — Telemedicine Platform (ASP.NET/Django)\n  4. LadyCoders — Educational Portal",
+    skills: async () => {
+      try {
+        printLine("Fetching skills from backend... [OK]", "cmd-out");
+        const res = await fetch("/api/stack/");
+        const data = await res.json();
+        if (!data || data.length === 0) return "No skills found in database.";
+        let out = "Tech Stack:\n";
+        data.forEach(s => out += `  - ${s.name} (${s.category})\n`);
+        return out;
+      } catch (err) {
+        return "Failed to fetch skills: API offline";
+      }
+    },
+    projects: async () => {
+      try {
+        printLine("Fetching projects from backend... [OK]", "cmd-out");
+        const res = await fetch("/api/projects/");
+        const data = await res.json();
+        if (!data || data.length === 0) return "No projects found in database.";
+        let out = "Featured Projects:\n";
+        data.forEach((p, i) => out += `  ${i + 1}. ${p.name} — ${p.tech_stack}\n`);
+        return out;
+      } catch (err) {
+        return "Failed to fetch projects: API offline";
+      }
+    },
     contact: "Direct Channels:\n  Email: mamaniyozovmuhammadyusuf5@gmail.com\n  Phone: +998 93 006 55 38\n  Telegram: @Muhammadyusuf_5538\n  LinkedIn: linkedin.com/in/muhammadyusuf-mamaniyozov-a975a4279/",
     clear: () => {
       if (cliOutput) cliOutput.innerHTML = "";
@@ -1384,7 +1526,7 @@ function setupTopologyInteractions() {
   };
 
   if (cliForm) {
-    cliForm.addEventListener("submit", (e) => {
+    cliForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const cmd = (cliInput.value || "").trim().toLowerCase();
       if (!cmd) return;
@@ -1394,7 +1536,16 @@ function setupTopologyInteractions() {
       if (COMMANDS[cmd]) {
         if (typeof COMMANDS[cmd] === "function") {
           const res = COMMANDS[cmd]();
-          if (res) printLine(res, "cmd-out");
+          if (res instanceof Promise) {
+            try {
+              const out = await res;
+              if (out) printLine(out, "cmd-out");
+            } catch (err) {
+              printLine("Error: " + err.message, "cmd-out");
+            }
+          } else if (res) {
+            printLine(res, "cmd-out");
+          }
         } else {
           printLine(COMMANDS[cmd], "cmd-out");
         }

@@ -7,9 +7,15 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "serve -s . -l tcp://0.0.0.0:$PORT",
-    "dev": "serve -s . -l 3000"
+    "dev": "serve -s . -l 3000",
+    "dev:kage": "vite"
   },
   "dependencies": {
-    "serve": "^14.2.4"
+    "@designcodeio/threeui": "^1.2.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "serve": "^14.2.4",
+    "vite": "^8.3.0"
   }
 }

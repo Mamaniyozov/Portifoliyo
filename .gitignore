@@ -12,3 +12,6 @@ package-lock.json
 
 # Playwright MCP scratch output
 .playwright-mcp/
+dist/
+__pycache__/
+*.sqlite3

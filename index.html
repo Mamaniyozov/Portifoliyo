@@ -13,9 +13,9 @@
   <link rel="alternate" hreflang="en" href="https://portifoliyo-production.up.railway.app/?lang=en">
   <link rel="alternate" hreflang="ru" href="https://portifoliyo-production.up.railway.app/?lang=ru">
   <link rel="alternate" hreflang="x-default" href="https://portifoliyo-production.up.railway.app/">
-  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="64x64" href="/static/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/static/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/static/manifest.json">
 
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Muhammadyusuf Mamaniyozov">
@@ -44,9 +44,9 @@
   <!-- Preload LCP candidate: browser fetches the avatar during HTML
        parse, before it would normally discover it via layout.
        WebP is declared first; browsers that support it use imagesrcset. -->
-  <link rel="preload" as="image" href="assets/avatar.webp"
-        imagesrcset="assets/avatar.webp" type="image/webp">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="/static/assets/avatar.webp"
+        imagesrcset="/static/assets/avatar.webp" type="image/webp">
+  <link rel="stylesheet" href="/static/style.css">
 
 
   <script type="application/ld+json">
@@ -152,8 +152,9 @@
         <a href="#about" class="nav-link" data-nav="about" data-i18n="nav.about">Men haqimda</a>
         <a href="#skills" class="nav-link" data-nav="skills" data-i18n="nav.skills">Ko'nikmalar</a>
         <a href="#experience" class="nav-link" data-nav="experience" data-i18n="nav.experience">Tajriba</a>
-        <a href="#projects" class="nav-link" data-nav="projects" data-i18n="nav.projects">Loyihalar</a>
-        <a href="#contact" class="nav-link" data-nav="contact" data-i18n="nav.contact">Bog'lanish</a>
+      <a href="#projects" class="nav-link" data-nav="projects" data-i18n="nav.projects">Loyihalar</a>
+      <a href="/scene.html" class="nav-link" style="color: #ff6b64; font-weight: 600;">⛩️ 3D Kage</a>
+      <a href="#contact" class="nav-link" data-nav="contact" data-i18n="nav.contact">Bog'lanish</a>
       </nav>
 
       <div class="navbar-right">
@@ -209,6 +210,10 @@
           <span data-i18n="hero.cta_contact">Bog'lanish</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
+        <a class="btn btn-ghost" href="/scene.html" style="border-color: rgba(224, 35, 28, 0.4); color: #ff6b64;">
+          <span>⛩️ 3D Kage Temple</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
 
       <!-- The topology canvas renders in its own fixed layer behind
@@ -234,7 +239,7 @@
                    to preload this before layout discovers the <img>.
                    loading=eager overrides any lazy-loading heuristics.
                    decoding=sync keeps paint atomic for this element. -->
-              <img src="assets/avatar.jpg" alt="Muhammadyusuf Mamaniyozov" width="256" height="256"
+              <img src="/static/assets/avatar.jpg" alt="Muhammadyusuf Mamaniyozov" width="256" height="256"
                    loading="eager" decoding="sync" fetchpriority="high">
             </picture>
           </div>
@@ -250,7 +255,7 @@
             </blockquote>
 
             <div class="about-actions">
-              <a class="btn btn-primary" href="assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download="Muhammadyusuf_Mamaniyozov_CV.pdf">
+              <a class="btn btn-primary" href="/static/assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download="Muhammadyusuf_Mamaniyozov_CV.pdf">
                 <span data-i18n="about.cv_btn">CV yuklab olish</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
               </a>
@@ -266,15 +271,15 @@
           <p class="card-eyebrow" data-i18n="about.exp_eyebrow">// SNAPSHOT</p>
           <div class="stat-grid">
             <div class="stat">
-              <span class="stat-num" data-count-to="3" data-suffix="+">0</span>
+              <span class="stat-num" data-count-to="2" data-suffix="+">2+</span>
               <span class="stat-label" data-i18n="about.stat_years">Yillik tijorat tajribasi</span>
             </div>
             <div class="stat">
-              <span class="stat-num" data-count-to="4">0</span>
+              <span class="stat-num" data-count-to="4">4</span>
               <span class="stat-label" data-i18n="about.stat_projects">Ochiq kodli loyiha</span>
             </div>
             <div class="stat">
-              <span class="stat-num" data-count-to="24" data-suffix="s">0</span>
+              <span class="stat-num" data-count-to="24" data-suffix="s">24s</span>
               <span class="stat-label" data-i18n="about.stat_response">Javob berish vaqti</span>
             </div>
           </div>
@@ -294,7 +299,7 @@
       <div class="section-head" data-scroll-reveal>
         <p class="card-eyebrow" data-i18n="skills.eyebrow">// TECH STACK</p>
         <h2 class="section-title" id="skills-heading" data-i18n="skills.title">Ko'nikmalar</h2>
-        <p class="section-lede" data-i18n="skills.lede">Foizlar o'rniga — har bir texnologiyani qayerda va qanday ishlatganim.</p>
+        <p class="section-lede" data-i18n="skills.lede">Asosiy va muntazam texnologiyalar darajasi hamda amaliy tajriba.</p>
       </div>
 
       <div class="skills-list" data-scroll-reveal>
@@ -303,100 +308,100 @@
           <div class="skill-main">
             <span class="skill-name">Django / DRF</span>
             <span class="skill-context" data-i18n="skills.ctx.django">HRMM · Doctor-Direct · LadyCoders · Finance App</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 95%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="95" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.core">Asosiy</span>
+          <span class="skill-percent" data-count-to="95" data-suffix="%">95%</span>
+          <span class="skill-tier skill-tier--core" data-i18n="skills.tier.core"><span class="tier-dot">●</span> Core</span>
         </div>
         <div class="skill-row" data-reveal data-tier="core" data-level="92">
           <span class="skill-index">02</span>
           <div class="skill-main">
             <span class="skill-name">Python</span>
             <span class="skill-context" data-i18n="skills.ctx.python">Backend logikasi, avtomatlashtirish skriptlari, bot xizmatlari</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 92%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="92" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.core">Asosiy</span>
+          <span class="skill-percent" data-count-to="92" data-suffix="%">92%</span>
+          <span class="skill-tier skill-tier--core" data-i18n="skills.tier.core"><span class="tier-dot">●</span> Core</span>
         </div>
         <div class="skill-row" data-reveal data-tier="core" data-level="90">
           <span class="skill-index">03</span>
           <div class="skill-main">
             <span class="skill-name">PostgreSQL</span>
             <span class="skill-context" data-i18n="skills.ctx.pg">Sxema dizayni, migratsiyalar, so'rovlarni tahlil qilish va tuzatish</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="90" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.core">Asosiy</span>
+          <span class="skill-percent" data-count-to="90" data-suffix="%">90%</span>
+          <span class="skill-tier skill-tier--core" data-i18n="skills.tier.core"><span class="tier-dot">●</span> Core</span>
         </div>
         <div class="skill-row" data-reveal data-tier="core" data-level="94">
           <span class="skill-index">04</span>
           <div class="skill-main">
             <span class="skill-name" data-i18n="skills.name.api">REST API dizayni</span>
             <span class="skill-context" data-i18n="skills.ctx.api">Versiyalash, rol asosidagi ruxsatlar, Swagger/OpenAPI hujjatlari</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 94%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="94" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.core">Asosiy</span>
+          <span class="skill-percent" data-count-to="94" data-suffix="%">94%</span>
+          <span class="skill-tier skill-tier--core" data-i18n="skills.tier.core"><span class="tier-dot">●</span> Core</span>
         </div>
         <div class="skill-row" data-reveal data-tier="core" data-level="92">
           <span class="skill-index">05</span>
           <div class="skill-main">
             <span class="skill-name" data-i18n="skills.name.auth">Autentifikatsiya — JWT / 2FA / OTP</span>
             <span class="skill-context" data-i18n="skills.ctx.auth">SimpleJWT, blacklist bilan logout, audit jurnali</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 92%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="92" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.core">Asosiy</span>
+          <span class="skill-percent" data-count-to="92" data-suffix="%">92%</span>
+          <span class="skill-tier skill-tier--core" data-i18n="skills.tier.core"><span class="tier-dot">●</span> Core</span>
         </div>
         <div class="skill-row" data-reveal data-tier="regular" data-level="88">
           <span class="skill-index">06</span>
           <div class="skill-main">
             <span class="skill-name">Telegram Bot API</span>
             <span class="skill-context" data-i18n="skills.ctx.tg">Bildirishnoma botlari va xizmat botlarini tiklash / qo'llab-quvvatlash</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 88%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="88" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.regular">Muntazam</span>
+          <span class="skill-percent" data-count-to="88" data-suffix="%">88%</span>
+          <span class="skill-tier skill-tier--regular" data-i18n="skills.tier.regular"><span class="tier-dot">○</span> Regular</span>
         </div>
         <div class="skill-row" data-reveal data-tier="regular" data-level="84">
           <span class="skill-index">07</span>
           <div class="skill-main">
             <span class="skill-name">ASP.NET</span>
             <span class="skill-context" data-i18n="skills.ctx.aspnet">Karmed tibbiy tizimini qo'llab-quvvatlash va xatoliklarni tuzatish</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 84%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="84" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.regular">Muntazam</span>
+          <span class="skill-percent" data-count-to="84" data-suffix="%">84%</span>
+          <span class="skill-tier skill-tier--regular" data-i18n="skills.tier.regular"><span class="tier-dot">○</span> Regular</span>
         </div>
         <div class="skill-row" data-reveal data-tier="regular" data-level="85">
           <span class="skill-index">08</span>
           <div class="skill-main">
             <span class="skill-name">Docker</span>
             <span class="skill-context" data-i18n="skills.ctx.docker">Konteynerlash va Railway'ga deployment</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="85" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.regular">Muntazam</span>
+          <span class="skill-percent" data-count-to="85" data-suffix="%">85%</span>
+          <span class="skill-tier skill-tier--regular" data-i18n="skills.tier.regular"><span class="tier-dot">○</span> Regular</span>
         </div>
         <div class="skill-row" data-reveal data-tier="regular" data-level="86">
           <span class="skill-index">09</span>
           <div class="skill-main">
             <span class="skill-name">Git · Linux</span>
             <span class="skill-context" data-i18n="skills.ctx.git">Kundalik versiya nazorati, server administratsiyasi</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 86%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="86" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.regular">Muntazam</span>
+          <span class="skill-percent" data-count-to="86" data-suffix="%">86%</span>
+          <span class="skill-tier skill-tier--regular" data-i18n="skills.tier.regular"><span class="tier-dot">○</span> Regular</span>
         </div>
-        <div class="skill-row" data-reveal data-tier="working" data-level="78">
+        <div class="skill-row" data-reveal data-tier="regular" data-level="78">
           <span class="skill-index">10</span>
           <div class="skill-main">
             <span class="skill-name">Flutter</span>
             <span class="skill-context" data-i18n="skills.ctx.flutter">Finance App mobil klienti — API integratsiyasi va ekranlar</span>
-            <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 78%;"></div></div>
           </div>
-          <span class="skill-percent" data-count-to="78" data-suffix="%">0%</span>
-          <span class="skill-tier" data-i18n="skills.tier.working">Ishlaganman</span>
+          <span class="skill-percent" data-count-to="78" data-suffix="%">78%</span>
+          <span class="skill-tier skill-tier--regular" data-i18n="skills.tier.regular"><span class="tier-dot">○</span> Regular</span>
         </div>
       </div>
 
@@ -456,25 +461,25 @@
 
       <div class="project-filters" role="group" aria-label="Loyihalarni filtrlash" data-scroll-reveal>
         <button type="button" class="filter-pill is-active" data-filter="all" aria-pressed="true" data-i18n="filter.all">Hammasi</button>
-        <button type="button" class="filter-pill" data-filter="django" aria-pressed="false" data-i18n="filter.django">Django / DRF</button>
-        <button type="button" class="filter-pill" data-filter="flutter" aria-pressed="false" data-i18n="filter.flutter">Flutter</button>
-        <button type="button" class="filter-pill" data-filter="backend" aria-pressed="false" data-i18n="filter.backend">Backend API</button>
+        <button type="button" class="filter-pill" data-filter="backend" aria-pressed="false" data-i18n="filter.backend">Backend</button>
+        <button type="button" class="filter-pill" data-filter="frontend" aria-pressed="false" data-i18n="filter.frontend">Frontend</button>
+        <button type="button" class="filter-pill" data-filter="fullstack" aria-pressed="false" data-i18n="filter.fullstack">Full-stack</button>
 
         <button type="button" class="view-toggle-btn" id="stageViewToggle" aria-label="3D stage almashtirish">
           <span class="view-icon">🧊</span> <span class="view-label">3D STAGE</span>
         </button>
       </div>
       <p class="filter-status visually-hidden" role="status" aria-live="polite" id="filterStatus"></p>
-      <p class="projects-empty" id="projectsEmpty" data-i18n="projects.empty" hidden>Bu filtr bo'yicha loyiha topilmadi. Boshqa filtrni tanlang.</p>
+      <p class="projects-empty" id="projectsEmpty" data-i18n="projects.empty" hidden style="display: none;">Bu filtr bo'yicha loyiha topilmadi. Boshqa filtrni tanlang.</p>
 
       <div class="projects-story" id="projectsStory">
       <div class="projects-story-track">
 
-        <article class="card project-card" data-stack="django backend" data-story-accent="cyan" data-scroll-reveal>
+        <article class="card project-card" data-stack="all backend fullstack django" data-story-accent="cyan" data-scroll-reveal>
           <div class="project-banner">
             <picture>
               <source srcset="assets/poster-hrmm.webp" type="image/webp">
-              <img src="assets/poster-hrmm.jpg" alt="HRMM — Human Resource Management System" width="1280" height="853" loading="lazy" decoding="async">
+              <img src="/static/assets/poster-hrmm.jpg" alt="HRMM — Human Resource Management System" width="1280" height="853" loading="lazy" decoding="async">
             </picture>
           </div>
           <p class="project-index">01 <span class="project-kind" data-i18n="proj.hrmm.kind">HR PLATFORMA</span></p>
@@ -498,11 +503,11 @@
           </div>
         </article>
 
-        <article class="card project-card" data-stack="django flutter backend" data-story-accent="violet" data-scroll-reveal data-reveal-delay="100">
+        <article class="card project-card" data-stack="all backend frontend fullstack flutter django" data-story-accent="violet" data-scroll-reveal data-reveal-delay="100">
           <div class="project-banner">
             <picture>
               <source srcset="assets/poster-finance-app.webp" type="image/webp">
-              <img src="assets/poster-finance-app.jpg" alt="Finance App — Hamyon va analitika" width="1280" height="853" loading="lazy" decoding="async">
+              <img src="/static/assets/poster-finance-app.jpg" alt="Finance App — Hamyon va analitika" width="1280" height="853" loading="lazy" decoding="async">
             </picture>
           </div>
           <p class="project-index">02 <span class="project-kind" data-i18n="proj.finance.kind">API + MOBIL</span></p>
@@ -529,7 +534,7 @@
           </div>
         </article>
 
-        <article class="card project-card" data-stack="django backend" data-story-accent="green" data-scroll-reveal>
+        <article class="card project-card" data-stack="all backend django" data-story-accent="green" data-scroll-reveal>
           <div class="terminal-panel" aria-hidden="true">
             <div class="terminal-head">
               <span class="terminal-dot terminal-dot-red"></span>
@@ -570,7 +575,7 @@
           </div>
         </article>
 
-        <article class="card project-card" data-stack="django backend" data-story-accent="indigo" data-scroll-reveal data-reveal-delay="100">
+        <article class="card project-card" data-stack="all backend frontend fullstack django" data-story-accent="indigo" data-scroll-reveal data-reveal-delay="100">
           <div class="terminal-panel" aria-hidden="true">
             <div class="terminal-head">
               <span class="terminal-dot terminal-dot-red"></span>
@@ -652,8 +657,7 @@
             Kalit qo'yilmasa forma avtomatik ravishda email klientini ochadigan
             rejimga o'tadi — ya'ni hech qachon "sindirilgan" holatda qolmaydi.
           -->
-          <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-            <input type="hidden" name="access_key" id="formAccessKey" value="a0747877-27e4-4948-acfd-e23c7c1bcd13">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqaejklz" method="POST" novalidate>
             <input type="hidden" name="subject" value="Portfolio orqali yangi xabar">
             <input type="hidden" name="from_name" value="Portfolio">
             <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -679,13 +683,38 @@
               <p class="form-error" id="formMessageError" data-error-for="formMessage" data-i18n="form.err_message">Xabar matnini yozing (kamida 10 belgi).</p>
             </div>
 
-            <button type="submit" class="btn btn-primary form-submit">
+            <div class="form-error-banner" id="formErrorBanner" hidden style="display: none;">
+              <span class="error-banner-icon" aria-hidden="true">⚠️</span>
+              <div class="error-banner-text">
+                <strong data-i18n="form.err_title">Xatolik yuz berdi!</strong>
+                <p data-i18n="form.err_help">Xabarni yuborib bo'lmadi. Iltimos, qayta urinib ko'ring yoki to'g'ridan-to'g'ri Telegram orqali yozing: <a href="https://t.me/Muhammadyusuf_5538" target="_blank" rel="noopener">@Muhammadyusuf_5538</a></p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit" id="formSubmitBtn">
+              <span class="btn-spinner" aria-hidden="true"></span>
               <span class="form-submit-label" data-i18n="form.submit">Xabarni yuborish</span>
-              <span aria-hidden="true">→</span>
+              <span class="form-submit-arrow" aria-hidden="true">→</span>
             </button>
 
             <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
           </form>
+
+          <!-- Success Animation State -->
+          <div class="form-success-card" id="formSuccessCard" hidden style="display: none;">
+            <div class="success-checkmark-wrap">
+              <svg class="success-checkmark" viewBox="0 0 52 52" aria-hidden="true">
+                <circle class="checkmark-circle" cx="26" cy="26" r="24" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+              </svg>
+            </div>
+            <h4 class="success-title" data-i18n="form.success_title">Xabar muvaffaqiyatli yuborildi!</h4>
+            <p class="success-desc" data-i18n="form.success_desc">Rahmat! Tez orada siz bilan bog'lanaman (24 soat ichida).</p>
+            <button type="button" class="btn btn-ghost success-reset-btn" id="formResetBtn">
+              <span data-i18n="form.send_another">Yana xabar yuborish</span>
+              <span aria-hidden="true">↺</span>
+            </button>
+          </div>
         </div>
 
         <!-- ---- Direct channels ---- -->
@@ -803,7 +832,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-  <script src="script.js" defer></script>
-  <script type="module" src="js/scroll-experience.js"></script>
+  <script src="/static/script.js" defer></script>
+  <script type="module" src="/static/js/scroll-experience.js"></script>
 </body>
 </html>
