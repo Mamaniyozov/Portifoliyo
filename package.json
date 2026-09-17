@@ -6,8 +6,8 @@
   "author": "Muhammadyusuf Mamaniyozov <mamaniyozovmuhammadyusuf5@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "serve -s . -l tcp://0.0.0.0:$PORT",
-    "dev": "serve -s . -l 3000",
+    "start": "serve . -l tcp://0.0.0.0:$PORT",
+    "dev": "serve . -l 3000",
     "dev:kage": "vite"
   },
   "dependencies": {
