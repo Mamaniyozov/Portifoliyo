@@ -13,9 +13,9 @@
   <link rel="alternate" hreflang="en" href="https://portifoliyo-production.up.railway.app/?lang=en">
   <link rel="alternate" hreflang="ru" href="https://portifoliyo-production.up.railway.app/?lang=ru">
   <link rel="alternate" hreflang="x-default" href="https://portifoliyo-production.up.railway.app/">
-  <link rel="icon" type="image/png" sizes="64x64" href="/static/assets/favicon.png">
-  <link rel="apple-touch-icon" href="/static/assets/apple-touch-icon.png">
-  <link rel="manifest" href="/static/manifest.json">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
 
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Muhammadyusuf Mamaniyozov">
@@ -44,9 +44,9 @@
   <!-- Preload LCP candidate: browser fetches the avatar during HTML
        parse, before it would normally discover it via layout.
        WebP is declared first; browsers that support it use imagesrcset. -->
-  <link rel="preload" as="image" href="/static/assets/avatar.webp"
-        imagesrcset="/static/assets/avatar.webp" type="image/webp">
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preload" as="image" href="/assets/avatar.webp"
+        imagesrcset="/assets/avatar.webp" type="image/webp">
+  <link rel="stylesheet" href="/style.css">
 
 
   <script type="application/ld+json">
@@ -153,7 +153,7 @@
         <a href="#skills" class="nav-link" data-nav="skills" data-i18n="nav.skills">Ko'nikmalar</a>
         <a href="#experience" class="nav-link" data-nav="experience" data-i18n="nav.experience">Tajriba</a>
       <a href="#projects" class="nav-link" data-nav="projects" data-i18n="nav.projects">Loyihalar</a>
-      <a href="/scene.html" class="nav-link" style="color: #ff6b64; font-weight: 600;">⛩️ 3D Kage</a>
+      <a href="/landing-pages/kage.html" class="nav-link" style="color: #ff6b64; font-weight: 600;">⛩️ 3D Kage</a>
       <a href="#contact" class="nav-link" data-nav="contact" data-i18n="nav.contact">Bog'lanish</a>
       </nav>
 
@@ -210,7 +210,7 @@
           <span data-i18n="hero.cta_contact">Bog'lanish</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
-        <a class="btn btn-ghost" href="/scene.html" style="border-color: rgba(224, 35, 28, 0.4); color: #ff6b64;">
+        <a class="btn btn-ghost" href="/landing-pages/kage.html" style="border-color: rgba(224, 35, 28, 0.4); color: #ff6b64;">
           <span>⛩️ 3D Kage Temple</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
@@ -239,7 +239,7 @@
                    to preload this before layout discovers the <img>.
                    loading=eager overrides any lazy-loading heuristics.
                    decoding=sync keeps paint atomic for this element. -->
-              <img src="/static/assets/avatar.jpg" alt="Muhammadyusuf Mamaniyozov" width="256" height="256"
+              <img src="/assets/avatar.webp" alt="Muhammadyusuf Mamaniyozov" width="256" height="256"
                    loading="eager" decoding="sync" fetchpriority="high">
             </picture>
           </div>
@@ -255,7 +255,7 @@
             </blockquote>
 
             <div class="about-actions">
-              <a class="btn btn-primary" href="/static/assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download="Muhammadyusuf_Mamaniyozov_CV.pdf">
+              <a class="btn btn-primary" href="/assets/CV_Muhammadyusuf_Mamaniyozov.pdf" download="Muhammadyusuf_Mamaniyozov_CV.pdf">
                 <span data-i18n="about.cv_btn">CV yuklab olish</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
               </a>
@@ -479,7 +479,7 @@
           <div class="project-banner">
             <picture>
               <source srcset="assets/poster-hrmm.webp" type="image/webp">
-              <img src="/static/assets/poster-hrmm.jpg" alt="HRMM — Human Resource Management System" width="1280" height="853" loading="lazy" decoding="async">
+              <img src="/assets/poster-hrmm.jpg" alt="HRMM — Human Resource Management System" width="1280" height="853" loading="lazy" decoding="async">
             </picture>
           </div>
           <p class="project-index">01 <span class="project-kind" data-i18n="proj.hrmm.kind">HR PLATFORMA</span></p>
@@ -507,7 +507,7 @@
           <div class="project-banner">
             <picture>
               <source srcset="assets/poster-finance-app.webp" type="image/webp">
-              <img src="/static/assets/poster-finance-app.jpg" alt="Finance App — Hamyon va analitika" width="1280" height="853" loading="lazy" decoding="async">
+              <img src="/assets/poster-finance-app.jpg" alt="Finance App — Hamyon va analitika" width="1280" height="853" loading="lazy" decoding="async">
             </picture>
           </div>
           <p class="project-index">02 <span class="project-kind" data-i18n="proj.finance.kind">API + MOBIL</span></p>
@@ -832,7 +832,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-  <script src="/static/script.js" defer></script>
-  <script type="module" src="/static/js/scroll-experience.js"></script>
+  <script src="/script.js" defer></script>
+  <script type="module" src="/js/scroll-experience.js"></script>
 </body>
 </html>
