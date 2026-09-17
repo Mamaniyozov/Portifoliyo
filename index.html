@@ -4756,7 +4756,16 @@ function wireNav() {
      one link per section in matching order. With five links over four chapters
      every entry past the third lit for its neighbour: standing in Afterlight
      highlighted Stories. Reading the destination cannot drift. */
-  const linkSec = links.map(l => SECS.indexOf(document.querySelector(l.getAttribute('href'))));
+  const linkSec = links.map(l => {
+    const h = l.getAttribute('href');
+    if (!h || !h.startsWith('#')) return -1;
+    try {
+      const el = document.querySelector(h);
+      return el ? SECS.indexOf(el) : -1;
+    } catch {
+      return -1;
+    }
+  });
   window.addEventListener('scroll', () => {
     const y = scrollY;
     nav.classList.toggle('stuck', y > 40);
@@ -5088,7 +5097,13 @@ function queue() { TIMER ? setTimeout(() => frame(performance.now()), 16) : requ
 
 /* ======================================================== 14 · booting */
 const JOBS = [
-  ['Reading the type', () => document.fonts && document.fonts.load('600 320px Wordmark')],
+  ['Reading the type', () => {
+    if (!document.fonts) return Promise.resolve();
+    return Promise.race([
+      document.fonts.load('600 320px Wordmark'),
+      new Promise(r => setTimeout(r, 600))
+    ]);
+  }],
   ['Pouring the ground', () => { initGL(); WORLD.uT = { value: 0 }; buildRig(); buildLights(); }],
   ['Cutting the approach', () => buildShell()],
   ['Raising the hall', () => buildTemple()],
@@ -5135,8 +5150,14 @@ const JOBS = [
 ];
 
 function boot() {
-  makeGrain();
-  wireReveals(); wireForegroundStages(); wireNav(); wireHeroExit(); wireFocus(); wireCursor();
+  try {
+    makeGrain();
+    wireReveals(); wireForegroundStages(); wireNav(); wireHeroExit(); wireFocus(); wireCursor();
+  } catch (err) {
+    console.error('[kage] initialization error', err);
+    fallback(err);
+    return;
+  }
   document.body.classList.add('is-locked');
   let i = 0;
   const step = () => {
@@ -5157,6 +5178,14 @@ function boot() {
     (r && r.then) ? r.then(done, done) : done();
   };
   setTimeout(step, 60);
+
+  // Safety fallback: if anything stalls, dismiss loader after 4 seconds
+  setTimeout(() => {
+    if (preEl && !preEl.classList.contains('done')) {
+      console.warn('[kage] preloader safety dismiss triggered');
+      start();
+    }
+  }, 4000);
 }
 
 function fallback(err) {
