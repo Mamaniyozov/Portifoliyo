@@ -1141,6 +1141,179 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   flex-wrap: wrap;
 }
 
+/* ============================================================= stack & language details */
+.stack-details-wrap {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.stack-group-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 860px) {
+  .stack-group-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.stack-group-card {
+  padding: 22px;
+  background: rgba(10, 14, 18, 0.72);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.35s var(--ease);
+}
+.stack-group-card:hover {
+  border-color: rgba(224, 35, 28, 0.35);
+  background: rgba(15, 20, 26, 0.85);
+  transform: translateY(-2px);
+}
+.stack-group-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 10px;
+}
+.stack-group-head h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--bone);
+  letter-spacing: 0.02em;
+}
+.stack-group-head .jp {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+.stack-group-desc {
+  font-size: 12px;
+  color: var(--bone-dim);
+  line-height: 1.5;
+  margin: 0;
+}
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.stack-tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(223, 231, 224, 0.06);
+  border: 1px solid rgba(223, 231, 224, 0.12);
+  color: var(--bone);
+  font-family: inherit;
+  transition: all 0.25s;
+}
+.stack-tag:hover {
+  background: rgba(224, 35, 28, 0.15);
+  border-color: rgba(224, 35, 28, 0.4);
+  color: #ff857f;
+}
+.stack-tag--core {
+  background: rgba(224, 35, 28, 0.12);
+  border-color: rgba(224, 35, 28, 0.32);
+  color: #ffa5a0;
+}
+
+/* Languages Card */
+.languages-box {
+  padding: 24px;
+  background: rgba(10, 14, 18, 0.72);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.languages-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+.languages-head h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bone);
+}
+.languages-head .jp {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.language-item {
+  padding: 14px;
+  background: rgba(5, 7, 10, 0.5);
+  border: 1px solid rgba(223, 231, 224, 0.07);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s;
+}
+.language-item:hover {
+  border-color: rgba(224, 35, 28, 0.3);
+  transform: translateY(-2px);
+}
+.language-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.language-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--bone);
+}
+.language-badge {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(224, 35, 28, 0.15);
+  color: #ff857f;
+  border: 1px solid rgba(224, 35, 28, 0.3);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.language-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(223, 231, 224, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.language-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e0231c, #ff5a3c);
+  border-radius: 2px;
+}
+.language-detail {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
 </style>
 </head>
 <body data-layout-hero="b" data-layout-story="b" data-layout-gallery="b"
@@ -1279,9 +1452,11 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
     </div>
     <div class="gate-bio-grid">
       <div class="gate-bio-item"><span class="lbl">Ta'lim</span><span class="val">TATU SF (IT Muhandis)</span></div>
-      <div class="gate-bio-item"><span class="lbl">Faoliyat</span><span class="val">"RIO vs RIATM" Backend muhandisi</span></div>
-      <div class="gate-bio-item"><span class="lbl">Asosiy Stack</span><span class="val">Django, ASP.NET, PostgreSQL</span></div>
-      <div class="gate-bio-item"><span class="lbl">Manzil</span><span class="val">Samarqand, O'zbekiston</span></div>
+      <div class="gate-bio-item"><span class="lbl">Faoliyat</span><span class="val">"RIO vs RIATM" HIS Backend muhandisi</span></div>
+      <div class="gate-bio-item"><span class="lbl">Asosiy Stack</span><span class="val">Python/Django, C#/ASP.NET, PostgreSQL, Docker</span></div>
+      <div class="gate-bio-item"><span class="lbl">Tillar</span><span class="val">O'zbek (Ona tili), Rus (B2), Ingliz (B1/B2), Turk (B1)</span></div>
+      <div class="gate-bio-item"><span class="lbl">Tajriba</span><span class="val">3+ yil tijoriy &amp; production tajriba</span></div>
+      <div class="gate-bio-item"><span class="lbl">Manzil &amp; Format</span><span class="val">Samarqand · Remote / Hybrid / On-site</span></div>
     </div>
   </div>
   <div class="gate-stats" data-rv="up">
@@ -1337,6 +1512,127 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
       </div>
       <div class="card-meta"><span>Docker, Linux & JWT/2FA</span><span>03 / 03</span></div>
     </article>
+  </div>
+
+  <!-- Detailed Tech Stack Ecosystem & Languages -->
+  <div class="stack-details-wrap" data-rv="up">
+    <div class="stack-group-grid">
+      <div class="stack-group-card">
+        <div class="stack-group-head">
+          <h4>Backend &amp; Core Freymvorklar</h4>
+          <span class="jp">骨組 · 言語</span>
+        </div>
+        <p class="stack-group-desc">Yuqori yuklamali REST API, asinxron biznes mantiq va mikroxizmatlar arxitekturasi.</p>
+        <div class="stack-tags">
+          <span class="stack-tag stack-tag--core">Python 3.12</span>
+          <span class="stack-tag stack-tag--core">Django 5</span>
+          <span class="stack-tag stack-tag--core">Django REST Framework</span>
+          <span class="stack-tag stack-tag--core">ASP.NET Core</span>
+          <span class="stack-tag">C# (.NET 8)</span>
+          <span class="stack-tag">Flask</span>
+          <span class="stack-tag">FastReport</span>
+          <span class="stack-tag">Celery &amp; Async</span>
+        </div>
+      </div>
+
+      <div class="stack-group-card">
+        <div class="stack-group-head">
+          <h4>Ma'lumotlar Bazasi &amp; Kesh</h4>
+          <span class="jp">基盤 · 高速化</span>
+        </div>
+        <p class="stack-group-desc">Relatsion DB sxemalari dizayni, indeksatsiya, tranzaksiyalar xavfsizligi va kesh.</p>
+        <div class="stack-tags">
+          <span class="stack-tag stack-tag--core">PostgreSQL 16</span>
+          <span class="stack-tag stack-tag--core">Redis Caching</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">EXPLAIN Query Tuning</span>
+          <span class="stack-tag">B-Tree Indekslash</span>
+          <span class="stack-tag">Schema Migrations</span>
+          <span class="stack-tag">Complex SQL Joins</span>
+        </div>
+      </div>
+
+      <div class="stack-group-card">
+        <div class="stack-group-head">
+          <h4>DevOps, Tizim &amp; Xavfsizlik</h4>
+          <span class="jp">防壁 · 運用</span>
+        </div>
+        <p class="stack-group-desc">Konteynerlash, Linux serverlar ma'muriyati, xavfsiz autentifikatsiya va deployment.</p>
+        <div class="stack-tags">
+          <span class="stack-tag stack-tag--core">Docker &amp; Compose</span>
+          <span class="stack-tag stack-tag--core">Linux (Ubuntu/Debian)</span>
+          <span class="stack-tag">Bash / Shell</span>
+          <span class="stack-tag">JWT (SimpleJWT / Blacklist)</span>
+          <span class="stack-tag">2FA / OTP Auth</span>
+          <span class="stack-tag">Nginx Reverse Proxy</span>
+          <span class="stack-tag">Git &amp; GitHub Actions</span>
+          <span class="stack-tag">Railway &amp; Vercel</span>
+        </div>
+      </div>
+
+      <div class="stack-group-card">
+        <div class="stack-group-head">
+          <h4>Integratsiyalar &amp; Frontend</h4>
+          <span class="jp">連携 · 表示</span>
+        </div>
+        <p class="stack-group-desc">Korxona axborot tizimlari, bot xizmatlari va zamonaviy veb/mobil interfeyslar.</p>
+        <div class="stack-tags">
+          <span class="stack-tag stack-tag--core">Telegram Bot API</span>
+          <span class="stack-tag stack-tag--core">Karmed HIS Tizimi</span>
+          <span class="stack-tag">Webhooks &amp; REST</span>
+          <span class="stack-tag">JavaScript (ES6+)</span>
+          <span class="stack-tag">Three.js / WebGL</span>
+          <span class="stack-tag">HTML5 &amp; CSS3</span>
+          <span class="stack-tag">Flutter (Mobile Client)</span>
+          <span class="stack-tag">Swagger / OpenAPI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language Proficiency Panel -->
+    <div class="languages-box" data-rv="up">
+      <div class="languages-head">
+        <h3>Til Bilish Darajasi &amp; Kommunikatsiya</h3>
+        <span class="jp">語学能力</span>
+      </div>
+      <div class="languages-grid">
+        <div class="language-item">
+          <div class="language-top">
+            <span class="language-name">O'zbek tili</span>
+            <span class="language-badge">Ona tili · 100%</span>
+          </div>
+          <div class="language-bar"><div class="language-bar-fill" style="width: 100%;"></div></div>
+          <p class="language-detail">Ona tili: mukammal og'zaki va yozma so'zlashuv, texnik terminologiya.</p>
+        </div>
+
+        <div class="language-item">
+          <div class="language-top">
+            <span class="language-name">Rus tili</span>
+            <span class="language-badge">B2 · Erkin · 85%</span>
+          </div>
+          <div class="language-bar"><div class="language-bar-fill" style="width: 85%;"></div></div>
+          <p class="language-detail">Erkin muloqot, texnik hujjatlar, MDH jamoalari bilan professional ish olib borish.</p>
+        </div>
+
+        <div class="language-item">
+          <div class="language-top">
+            <span class="language-name">Ingliz tili</span>
+            <span class="language-badge">B1/B2 · Texnik · 75%</span>
+          </div>
+          <div class="language-bar"><div class="language-bar-fill" style="width: 75%;"></div></div>
+          <p class="language-detail">Texnik adabiyotlar, API spetsifikatsiyalari, xalqaro kod bazasi va yozishmalar.</p>
+        </div>
+
+        <div class="language-item">
+          <div class="language-top">
+            <span class="language-name">Turk tili</span>
+            <span class="language-badge">B1 · O'rta · 65%</span>
+          </div>
+          <div class="language-bar"><div class="language-bar-fill" style="width: 65%;"></div></div>
+          <p class="language-detail">O'rta daraja: og'zaki muloqot, umumiy va texnik mavzularda erkin fikr almashish.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
